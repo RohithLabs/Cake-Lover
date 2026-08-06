@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const products = [
     // === cakes/cakes === (all 20 images)
     { id:1,  name:"Red Velvet Blast",          category:"red-velvet", tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.95, img:"./cakes/cakes/Red velvet Cake .jfif", desc:"Extravagant red velvet layers with cream cheese bomb centers." },
-    { id:2,  name:"Choco Truffle Blast",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.90, img:"./img/Download AI generated birthday beautiful chocolate cake with strawberry and blueberry for free/Download AI generated birthday beautiful chocolate cake with strawberry and blueberry for free.jfif", desc:"Decadent chocolate volcano core with fresh berries and ganache." },
+    { id:2,  name:"Choco Truffle Blast",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.90, img:"./cakes2/cakes2/cake3.jfif", desc:"Decadent chocolate volcano core with fresh berries and ganache." },
     { id:3,  name:"Nutella Delight",            category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1390, originalPrice:1890, offerText:"1 kg + 1 kg FREE",  rating:4.96, img:"./cakes/cakes/caramel chocolate.jfif", desc:"Creamy Nutella mousse layers with roasted Italian hazelnuts." },
     { id:4,  name:"Dead By Chocolate",          category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1390, originalPrice:1890, offerText:"1 kg + 1 kg FREE",  rating:4.98, img:"./cakes/cakes/Dark Chocolate .jfif", desc:"Triple layer dark chocolate ganache with Belgian cacao nibs." },
     { id:5,  name:"Choco Truffle",              category:"chocolate",  tag:"1.5 Kg",            basePrice:1030, originalPrice:1390, offerText:"1.5 Kg Pack",       rating:4.88, img:"./cakes/cakes/download (3).jfif", desc:"Pure chocolate fudge layered with silky cream and truffle drizzle." },
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { id:16, name:"Sprinkle Birthday Cake",     category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.90, img:"./cakes/cakes/Sprinkle Birthday Cake _ Hungry Happenings.jfif", desc:"Vibrant rainbow sprinkle layers with vanilla cream frosting." },
     { id:17, name:"Birthday Special",           category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1150, originalPrice:1490, offerText:"1 kg + ½ kg FREE",  rating:4.87, img:"./cakes/cakes/birthday cake.jfif", desc:"Cheerful birthday layers with colorful cream and festive toppings." },
     { id:18, name:"Oreo Crunch Cake",           category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1320, originalPrice:1720, offerText:"1 kg + 1 kg FREE",  rating:4.92, img:"./cakes/cakes/cake", desc:"Crushed Oreo cookie cream layered with dark cocoa sponge." },
-    { id:19, name:"White Wedding Cake",         category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1390, originalPrice:1850, offerText:"1 kg + ½ kg FREE",  rating:4.93, img:"./cakes/cakes/Easy White Wedding Cake recipe from RecipeGirl_com #easy #white #wedding #cake #recipe #RecipeGirl.jfif", desc:"Classic tiered white wedding cake with delicate floral accents." },
-    { id:20, name:"Black Forest Gâteau",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.91, img:"./cakes/cakes/G\u00e2teau For\u00eat Noire sans Alcool.jfif", desc:"Traditional French-style black forest with kirsch cream layers." },
+    { id:19, name:"White Wedding Cake",         category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1390, originalPrice:1850, offerText:"1 kg + ½ kg FREE",  rating:4.93, img:"./cakes/cakes/white-wedding-cake.jfif", desc:"Classic tiered white wedding cake with delicate floral accents." },
+    { id:20, name:"Black Forest Gâteau",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.91, img:"./cakes/cakes/black-forest-gateau.jfif", desc:"Traditional French-style black forest with kirsch cream layers." },
     // === cakes2/cakes2 === (all 14 images)
     { id:21, name:"Butterscotch Dream",         category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1250, originalPrice:1690, offerText:"1 kg + 1 kg FREE",  rating:4.92, img:"./cakes2/cakes2/butterscotch.jfif", desc:"Buttery caramel praline crunch with silky butterscotch mousse." },
     { id:22, name:"Blueberry Blossom",          category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.88, img:"./cakes2/cakes2/Blueberry Cake.jfif", desc:"Wild blueberry compote over a light vanilla chiffon sponge." },
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== HERO CAROUSEL (SINGLE IMAGE) =====
   const heroSlides = [
-    { name: 'Chocolate Berry Truffle', img: './img/Download AI generated birthday beautiful chocolate cake with strawberry and blueberry for free/Download AI generated birthday beautiful chocolate cake with strawberry and blueberry for free.jfif' },
+    { name: 'Chocolate Berry Truffle', img: './cakes2/cakes2/download (8).jfif' },
     { name: 'Red Velvet Royale', img: './cakes/cakes/Red velvet Cake .jfif' },
     { name: 'Belgian Dark Chocolate', img: './cakes/cakes/Dark Chocolate .jfif' },
     { name: 'Nutella Hazelnut', img: './cakes/cakes/caramel chocolate.jfif' },
