@@ -266,16 +266,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn) { btn.textContent = '✓ Subscribed!'; btn.style.background = 'var(--clr-green)'; }
   };
 
-  // ===== SCROLL REVEAL =====
+  // ===== SCROLL REVEAL (60/120 FPS OPTIMIZED) =====
   function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          requestAnimationFrame(() => {
+            entry.target.classList.add('visible');
+          });
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
       if (!el.classList.contains('visible')) observer.observe(el);
@@ -291,21 +293,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== HERO CAROUSEL (SINGLE IMAGE) =====
   const heroSlides = [
-    { name: 'Choco Scotch Cake', img: './cakes/cakes/caramel chocolate.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Red Scotch Cake', img: './cakes/cakes/Red velvet Cake .jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Ferro Scotch Cake', img: './cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Rasmalai Scotch Cake', img: "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Black Forest Cake', img: './cakes/cakes/Black forest cake recipe.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Strawberry Delight', img: './cakes/cakes/cakestrawberry.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Ritch Choco KitKat Cake', img: './cakes/cakes/download (5).jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Mango Premium Cake', img: './cakes/cakes/Mango Chiffon Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'White Forest Cake', img: './cakes/cakes/White Forest Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Pineapple Cake', img: './cakes/cakes/Dole Whip Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Butterscotch Cake', img: './cakes2/cakes2/butterscotch.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Blueberry Cake', img: './cakes2/cakes2/Blueberry Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Rasmalai Fusion', img: './cakes2/cakes2/rasmalai cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Red Velvet Premium Cake', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif', rating: '4.6★', orders: '33 Google Reviews' },
-    { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.6★', orders: '33 Google Reviews' }
+    { name: 'Choco Scotch Cake', img: './cakes/cakes/caramel chocolate.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Red Scotch Cake', img: './cakes/cakes/Red velvet Cake .jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Ferro Scotch Cake', img: './cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Rasmalai Scotch Cake', img: "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Black Forest Cake', img: './cakes/cakes/Black forest cake recipe.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Strawberry Delight', img: './cakes/cakes/cakestrawberry.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Ritch Choco KitKat Cake', img: './cakes/cakes/download (5).jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Mango Premium Cake', img: './cakes/cakes/Mango Chiffon Cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'White Forest Cake', img: './cakes/cakes/White Forest Cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Pineapple Cake', img: './cakes/cakes/Dole Whip Cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Butterscotch Cake', img: './cakes2/cakes2/butterscotch.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Blueberry Cake', img: './cakes2/cakes2/Blueberry Cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Rasmalai Fusion', img: './cakes2/cakes2/rasmalai cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Red Velvet Premium Cake', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif', rating: '4.6+★', orders: '33 Google Reviews' },
+    { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.6+★', orders: '33 Google Reviews' }
   ];
 
   function initHeroCarousel() {
