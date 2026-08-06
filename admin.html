@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cake Lover — Admin Management Panel</title>
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN MODAL / OVERLAY -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="cake-logo.jpg" alt="Cake Lover Logo" class="login-logo">
+        <h2>Cake Lover Admin Login</h2>
+        <p>Enter administrator username &amp; password to manage bakery menu</p>
+      </div>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group" style="margin-bottom:12px; text-align:left;">
+          <label for="admin-user"><i class="fa-solid fa-user"></i> Username</label>
+          <input type="text" id="admin-user" class="form-input" value="cakelover_admin" required autofocus autocomplete="username">
+        </div>
+        <div class="form-group" style="margin-bottom:16px; text-align:left;">
+          <label for="admin-pass"><i class="fa-solid fa-lock"></i> Password</label>
+          <input type="password" id="admin-pass" class="form-input" value="CakeLover@2026#Namakkal" required autocomplete="current-password">
+        </div>
+        <div class="login-credentials-hint" style="background:#FFF4EE; border:1px solid var(--logo-orange); border-radius:10px; padding:10px 12px; font-size:0.75rem; color:#444; margin-bottom:16px; text-align:left;">
+          <strong>🔑 Bakery Admin Credentials:</strong><br>
+          Username: <code>cakelover_admin</code><br>
+          Password: <code>CakeLover@2026#Namakkal</code>
+        </div>
+        <div class="login-error" id="login-error">Incorrect Username or Password. Please try again.</div>
+        <button type="submit" class="btn-admin-primary btn-full"><i class="fa-solid fa-right-to-bracket"></i> Login to Admin Panel</button>
+      </form>
+      <div class="login-footer">
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Main Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN ADMIN DASHBOARD (Hidden until logged in) -->
+  <div class="admin-wrapper" id="admin-content" style="display:none;">
+
+    <!-- ADMIN NAVBAR -->
+    <header class="admin-navbar">
+      <div class="admin-nav-inner">
+        <div class="admin-brand">
+          <img src="cake-logo.jpg" alt="Cake Lover Logo">
+          <div>
+            <h1 class="admin-brand-title">Cake Lover Admin</h1>
+            <span class="admin-brand-sub">Menu, Price & Photo Manager</span>
+          </div>
+        </div>
+        <div class="admin-nav-actions">
+          <a href="index.html" target="_blank" class="btn-admin-secondary"><i class="fa-solid fa-globe"></i> View Website ↗</a>
+          <button onclick="handleLogout()" class="btn-admin-danger"><i class="fa-solid fa-power-off"></i> Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container admin-container">
+
+      <!-- SECTION TAB NAVIGATION BAR -->
+      <div class="admin-tab-nav">
+        <button class="admin-tab-btn active" id="tab-btn-cakes" onclick="switchAdminSection('cakes')">
+          <i class="fa-solid fa-cake-candles"></i> 1. Cakes & Categories
+        </button>
+        <button class="admin-tab-btn" id="tab-btn-hero" onclick="switchAdminSection('hero')">
+          <i class="fa-solid fa-sliders"></i> 2. Hero Slider Showcase (<span id="count-hero">15</span>)
+        </button>
+        <button class="admin-tab-btn" id="tab-btn-marquee" onclick="switchAdminSection('marquee')">
+          <i class="fa-solid fa-arrows-left-right-to-line"></i> 3. Scrolling Marquee Strip (<span id="count-marquee">17</span>)
+        </button>
+        <button class="admin-tab-btn" id="tab-btn-story" onclick="switchAdminSection('story')">
+          <i class="fa-solid fa-book-open"></i> 4. Brand Story Photos
+        </button>
+        <button class="admin-tab-btn" id="tab-btn-reels" onclick="switchAdminSection('reels')">
+          <i class="fa-solid fa-video"></i> 5. Instagram Reels (<span id="count-reels">8</span>)
+        </button>
+      </div>
+
+      <!-- ================= SECTION 1: CAKES & CATEGORIES ================= -->
+      <div class="admin-tab-panel active" id="panel-cakes">
+        <!-- DASHBOARD STATS STRIP -->
+        <div class="admin-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon red"><i class="fa-solid fa-cake-candles"></i></div>
+            <div>
+              <div class="stat-num" id="stat-total">50</div>
+              <div class="stat-label">Total Cakes</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-layer-group"></i></div>
+            <div>
+              <div class="stat-num" id="stat-categories">7</div>
+              <div class="stat-label">Categories</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-check-circle"></i></div>
+            <div>
+              <div class="stat-num" id="stat-active">50</div>
+              <div class="stat-label">Active on Site</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-tag"></i></div>
+            <div>
+              <div class="stat-num" id="stat-avg-price">₹750</div>
+              <div class="stat-label">Average Price</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTION BAR & CONTROLS -->
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <div class="admin-search-wrap">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="admin-search" placeholder="Search cakes by name..." oninput="filterAdminProducts()">
+            </div>
+            <select id="admin-category-filter" class="admin-select" onchange="filterAdminProducts()">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <button class="btn-admin-success" onclick="openCakeModal()"><i class="fa-solid fa-plus"></i> Add New Cake</button>
+            <button class="btn-admin-secondary" onclick="openCategoryModal()" title="Add, Edit or Delete Cake Categories"><i class="fa-solid fa-layer-group"></i> Manage Categories</button>
+            <button class="btn-admin-secondary" onclick="exportDataJSON()" title="Export JSON backup file"><i class="fa-solid fa-download"></i> Export Data</button>
+            <button class="btn-admin-secondary" onclick="document.getElementById('import-file-input').click()" title="Import JSON data file"><i class="fa-solid fa-upload"></i> Import</button>
+            <input type="file" id="import-file-input" style="display:none" accept=".json" onchange="importDataJSON(event)">
+            <button class="btn-admin-outline-danger" onclick="resetToDefaults()" title="Reset to original 50 cakes"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
+          </div>
+        </div>
+
+        <!-- CAKE LIST TABLE / GRID -->
+        <div class="admin-table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width:60px">Photo</th>
+                  <th>Cake Name & Description</th>
+                  <th>Category</th>
+                  <th style="width:120px">Offer Tag</th>
+                  <th style="width:110px">Selling Price</th>
+                  <th style="width:110px">Original Price</th>
+                  <th style="width:90px">Status</th>
+                  <th style="width:140px; text-align:center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-product-rows">
+                <!-- Dynamically populated by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SECTION 2: HERO SLIDER ================= -->
+      <div class="admin-tab-panel" id="panel-hero">
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <h3 style="margin:0; font-size:1.1rem; color:#1A1A1A;"><i class="fa-solid fa-sliders" style="color:var(--logo-red);"></i> Hero Slider Showcase Images</h3>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-admin-success" onclick="openHeroSlideModal()"><i class="fa-solid fa-plus"></i> Add New Hero Slide</button>
+          </div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width:80px">Photo</th>
+                  <th>Cake Title Name</th>
+                  <th style="width:140px">Rating Badge</th>
+                  <th style="width:180px">Review Label</th>
+                  <th style="width:120px; text-align:center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-hero-rows">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SECTION 3: SCROLLING MARQUEE ================= -->
+      <div class="admin-tab-panel" id="panel-marquee">
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <h3 style="margin:0; font-size:1.1rem; color:#1A1A1A;"><i class="fa-solid fa-arrows-left-right-to-line" style="color:var(--logo-orange);"></i> "Handcrafted Fresh Daily" Scrolling Images</h3>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-admin-success" onclick="openMarqueeModal()"><i class="fa-solid fa-plus"></i> Add Scrolling Image</button>
+          </div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width:80px">Photo</th>
+                  <th>Label Name</th>
+                  <th style="width:120px; text-align:center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-marquee-rows">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SECTION 4: BRAND STORY PHOTOS ================= -->
+      <div class="admin-tab-panel" id="panel-story">
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <h3 style="margin:0; font-size:1.1rem; color:#1A1A1A;"><i class="fa-solid fa-book-open" style="color:var(--logo-blue);"></i> "Who We Are" Brand Story Photos & Text</h3>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-admin-primary" onclick="saveBrandStory(event)"><i class="fa-solid fa-floppy-disk"></i> Save Brand Story Changes</button>
+          </div>
+        </div>
+
+        <div class="admin-table-card" style="padding:24px;">
+          <form id="brand-story-form" onsubmit="saveBrandStory(event)">
+            <h4 style="margin-bottom:16px; color:var(--logo-red); font-size:0.95rem;">📸 Story Collage Photos (4 Images)</h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px; margin-bottom:28px;">
+              <!-- Photo 1 Main Big -->
+              <div style="background:#FFF5F7; padding:16px; border-radius:14px; border:1px solid #FADCE0;">
+                <label style="font-weight:700; font-size:0.82rem; display:block; margin-bottom:8px;">1. Main Large Collage Photo</label>
+                <div class="image-preview-box" style="width:100%; height:140px; margin-bottom:10px;">
+                  <img id="story-img1-prev" src="./cakes/cakes/Red velvet Cake .jfif" alt="Preview">
+                </div>
+                <input type="file" class="file-input" accept="image/*" onchange="handleStoryImgUpload(event, 1)" style="margin-bottom:6px; width:100%;">
+                <input type="text" id="story-img1-url" class="form-input" placeholder="Image URL / path" oninput="document.getElementById('story-img1-prev').src = this.value">
+              </div>
+
+              <!-- Photo 2 Side 1 -->
+              <div style="background:#FFF5F7; padding:16px; border-radius:14px; border:1px solid #FADCE0;">
+                <label style="font-weight:700; font-size:0.82rem; display:block; margin-bottom:8px;">2. Side Photo #1</label>
+                <div class="image-preview-box" style="width:100%; height:140px; margin-bottom:10px;">
+                  <img id="story-img2-prev" src="./cakes2/cakes2/butterscotch.jfif" alt="Preview">
+                </div>
+                <input type="file" class="file-input" accept="image/*" onchange="handleStoryImgUpload(event, 2)" style="margin-bottom:6px; width:100%;">
+                <input type="text" id="story-img2-url" class="form-input" placeholder="Image URL / path" oninput="document.getElementById('story-img2-prev').src = this.value">
+              </div>
+
+              <!-- Photo 3 Side 2 -->
+              <div style="background:#FFF5F7; padding:16px; border-radius:14px; border:1px solid #FADCE0;">
+                <label style="font-weight:700; font-size:0.82rem; display:block; margin-bottom:8px;">3. Side Photo #2</label>
+                <div class="image-preview-box" style="width:100%; height:140px; margin-bottom:10px;">
+                  <img id="story-img3-prev" src="./cakes/cakes/Black forest cake recipe.jfif" alt="Preview">
+                </div>
+                <input type="file" class="file-input" accept="image/*" onchange="handleStoryImgUpload(event, 3)" style="margin-bottom:6px; width:100%;">
+                <input type="text" id="story-img3-url" class="form-input" placeholder="Image URL / path" oninput="document.getElementById('story-img3-prev').src = this.value">
+              </div>
+
+              <!-- Photo 4 Side 3 -->
+              <div style="background:#FFF5F7; padding:16px; border-radius:14px; border:1px solid #FADCE0;">
+                <label style="font-weight:700; font-size:0.82rem; display:block; margin-bottom:8px;">4. Side Photo #3</label>
+                <div class="image-preview-box" style="width:100%; height:140px; margin-bottom:10px;">
+                  <img id="story-img4-prev" src="./cakes2/cakes2/Dream cake.jfif" alt="Preview">
+                </div>
+                <input type="file" class="file-input" accept="image/*" onchange="handleStoryImgUpload(event, 4)" style="margin-bottom:6px; width:100%;">
+                <input type="text" id="story-img4-url" class="form-input" placeholder="Image URL / path" oninput="document.getElementById('story-img4-prev').src = this.value">
+              </div>
+            </div>
+
+            <h4 style="margin-bottom:16px; color:var(--logo-red); font-size:0.95rem;">✏️ Brand Story Text Details</h4>
+            <div class="form-group" style="margin-bottom:16px;">
+              <label for="story-quote-input">Quote / Motto Line *</label>
+              <input type="text" id="story-quote-input" class="form-input" required value='"If we wouldn&apos;t serve it at our own family function, we won&apos;t sell it to you."'>
+            </div>
+            <div class="form-group">
+              <label for="story-body-input">Story Description Paragraph *</label>
+              <textarea id="story-body-input" class="form-input form-textarea" rows="4" required>Cake Lover started in Namakkal with one goal — bake cakes the way they should be. Real butter, fresh cream, and no shortcuts. Every cake is made on the day of your order. No frozen bases, no readymade fillings. Just honest baking, every single day.</textarea>
+            </div>
+
+            <div style="margin-top:20px; text-align:right;">
+              <button type="submit" class="btn-admin-primary"><i class="fa-solid fa-floppy-disk"></i> Save Brand Story</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================= SECTION 5: INSTAGRAM REELS ================= -->
+      <div class="admin-tab-panel" id="panel-reels">
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <h3 style="margin:0; font-size:1.1rem; color:#1A1A1A;"><i class="fa-solid fa-video" style="color:var(--logo-red);"></i> "Trending Now" Instagram Reels & Videos</h3>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-admin-success" onclick="openReelModal()"><i class="fa-solid fa-plus"></i> Add New Reel / Video</button>
+          </div>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width:80px">Thumbnail</th>
+                  <th>Reel Title & Description</th>
+                  <th style="width:100px">Views</th>
+                  <th style="width:100px">Shares</th>
+                  <th style="width:120px; text-align:center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-reels-rows">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /.container -->
+  </div> <!-- /#admin-content -->
+
+  <!-- ADD / EDIT CAKE MODAL -->
+  <div class="modal-overlay" id="cake-modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title"><i class="fa-solid fa-pen-to-square"></i> Edit Cake Details</h3>
+        <button class="modal-close" onclick="closeCakeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="cake-form" onsubmit="saveCake(event)">
+        <input type="hidden" id="edit-cake-id">
+
+        <div class="modal-body">
+          <div class="form-grid">
+
+            <!-- Cake Name -->
+            <div class="form-group span-2">
+              <label for="cake-name">Cake Name *</label>
+              <input type="text" id="cake-name" class="form-input" required placeholder="e.g. Choco Scotch Cake">
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <label for="cake-category" style="margin:0;">Category *</label>
+                <button type="button" onclick="openCategoryModal()" style="font-size:0.75rem; color:var(--logo-blue); background:none; border:none; cursor:pointer; font-weight:700; text-decoration:underline;">+ Add / Manage</button>
+              </div>
+              <select id="cake-category" class="form-input" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <!-- Offer Tag -->
+            <div class="form-group">
+              <label for="cake-tag">Offer Tag</label>
+              <input type="text" id="cake-tag" class="form-input" placeholder="e.g. 1 kg + ½ kg FREE">
+            </div>
+
+            <!-- Selling Price -->
+            <div class="form-group">
+              <label for="cake-price">Selling Price (₹) *</label>
+              <input type="number" id="cake-price" class="form-input" required min="1" step="1" placeholder="750">
+            </div>
+
+            <!-- Original Price -->
+            <div class="form-group">
+              <label for="cake-original-price">Original Price (₹)</label>
+              <input type="number" id="cake-original-price" class="form-input" min="1" step="1" placeholder="1100">
+            </div>
+
+            <!-- Rating -->
+            <div class="form-group">
+              <label for="cake-rating">Rating (★)</label>
+              <input type="number" id="cake-rating" class="form-input" min="1" max="5" step="0.05" value="4.8">
+            </div>
+
+            <!-- Active Status -->
+            <div class="form-group">
+              <label for="cake-active">Visibility Status</label>
+              <select id="cake-active" class="form-input">
+                <option value="true">Active (Show on website)</option>
+                <option value="false">Hidden (Sold Out / Draft)</option>
+              </select>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group span-2">
+              <label for="cake-desc">Short Description</label>
+              <textarea id="cake-desc" class="form-input form-textarea" rows="2" placeholder="Delicious cake layered with rich cream..."></textarea>
+            </div>
+
+            <!-- Image Photo Section -->
+            <div class="form-group span-2">
+              <label>Cake Photo *</label>
+              <div class="image-upload-wrap">
+                <div class="image-preview-box">
+                  <img id="img-preview" src="./cakes/cakes/caramel chocolate.jfif" alt="Preview">
+                </div>
+                <div class="image-inputs">
+                  <div style="margin-bottom:8px;">
+                    <label style="font-size:0.78rem; color:var(--clr-muted)">Upload New Image File:</label>
+                    <input type="file" id="cake-img-file" class="file-input" accept="image/*" onchange="handleImageFileUpload(event)">
+                  </div>
+                  <div>
+                    <label style="font-size:0.78rem; color:var(--clr-muted)">Or Image URL / Path:</label>
+                    <input type="text" id="cake-img-url" class="form-input" placeholder="./cakes/cakes/your-image.jfif or https://..." oninput="updateImagePreviewFromUrl()">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /.form-grid -->
+        </div> <!-- /.modal-body -->
+
+        <div class="modal-footer">
+          <button type="button" class="btn-admin-secondary" onclick="closeCakeModal()">Cancel</button>
+          <button type="submit" class="btn-admin-primary"><i class="fa-solid fa-floppy-disk"></i> Save Cake Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CATEGORY MANAGEMENT MODAL -->
+  <div class="modal-overlay" id="category-modal" aria-hidden="true">
+    <div class="modal-card" style="max-width:540px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-layer-group"></i> Manage Cake Categories</h3>
+        <button class="modal-close" onclick="closeCategoryModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Add New Category Form -->
+        <form id="add-category-form" onsubmit="handleAddNewCategory(event)" style="background:#FFF5F5; border:1px solid var(--border); padding:16px; border-radius:12px; margin-bottom:20px;">
+          <label style="font-weight:700; font-size:0.85rem; color:#1A1A1A; margin-bottom:8px; display:block;">➕ Add New Category</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="new-category-name" class="form-input" placeholder="e.g. Fruit Delights, Custom Photo Cakes" required style="flex:1;">
+            <button type="submit" class="btn-admin-success" style="white-space:nowrap;"><i class="fa-solid fa-plus"></i> Add Category</button>
+          </div>
+        </form>
+
+        <!-- Category List -->
+        <label style="font-weight:700; font-size:0.85rem; color:#1A1A1A; margin-bottom:10px; display:block;">Current Categories</label>
+        <div style="max-height:280px; overflow-y:auto; border:1px solid #EEE; border-radius:12px;">
+          <table class="admin-table" style="margin:0;">
+            <thead>
+              <tr>
+                <th>Category Name</th>
+                <th style="width:100px; text-align:center;">Cake Count</th>
+                <th style="width:100px; text-align:center;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="category-table-rows">
+              <!-- Dynamically populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-admin-secondary" onclick="closeCategoryModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SLIDE MODAL -->
+  <div class="modal-overlay" id="hero-slide-modal" aria-hidden="true">
+    <div class="modal-card" style="max-width:540px;">
+      <div class="modal-header">
+        <h3 id="hero-modal-title"><i class="fa-solid fa-sliders"></i> Edit Hero Slide</h3>
+        <button class="modal-close" onclick="closeHeroSlideModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="hero-slide-form" onsubmit="saveHeroSlide(event)">
+        <input type="hidden" id="hero-slide-index">
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="hero-slide-name">Cake Title Name *</label>
+            <input type="text" id="hero-slide-name-input" class="form-input" required placeholder="e.g. Choco Scotch Cake">
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="hero-slide-rating">Rating Badge (e.g. 4.9★) *</label>
+            <input type="text" id="hero-slide-rating-input" class="form-input" required value="4.9★">
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="hero-slide-orders">Review Subtext (e.g. 33 Google Reviews)</label>
+            <input type="text" id="hero-slide-orders-input" class="form-input" value="33 Google Reviews">
+          </div>
+          <div class="form-group">
+            <label>Hero Photo *</label>
+            <div class="image-upload-wrap">
+              <div class="image-preview-box">
+                <img id="hero-img-prev" src="./cakes/cakes/caramel chocolate.jfif" alt="Preview">
+              </div>
+              <div class="image-inputs">
+                <div style="margin-bottom:8px;">
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Upload Image File:</label>
+                  <input type="file" class="file-input" accept="image/*" onchange="handleHeroImgFileUpload(event)">
+                </div>
+                <div>
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Or Image URL / Path:</label>
+                  <input type="text" id="hero-img-url" class="form-input" placeholder="./cakes/cakes/..." oninput="document.getElementById('hero-img-prev').src = this.value">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin-secondary" onclick="closeHeroSlideModal()">Cancel</button>
+          <button type="submit" class="btn-admin-primary">Save Hero Slide</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MARQUEE ITEM MODAL -->
+  <div class="modal-overlay" id="marquee-modal" aria-hidden="true">
+    <div class="modal-card" style="max-width:500px;">
+      <div class="modal-header">
+        <h3 id="marquee-modal-title"><i class="fa-solid fa-arrows-left-right-to-line"></i> Edit Scrolling Image</h3>
+        <button class="modal-close" onclick="closeMarqueeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="marquee-form" onsubmit="saveMarqueeItem(event)">
+        <input type="hidden" id="marquee-item-index">
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="marquee-label-input">Label Name *</label>
+            <input type="text" id="marquee-label-input" class="form-input" required placeholder="e.g. Red Velvet Special">
+          </div>
+          <div class="form-group">
+            <label>Scrolling Photo *</label>
+            <div class="image-upload-wrap">
+              <div class="image-preview-box">
+                <img id="marquee-img-prev" src="./cakes/cakes/Red velvet Cake .jfif" alt="Preview">
+              </div>
+              <div class="image-inputs">
+                <div style="margin-bottom:8px;">
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Upload Image File:</label>
+                  <input type="file" class="file-input" accept="image/*" onchange="handleMarqueeImgFileUpload(event)">
+                </div>
+                <div>
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Or Image URL / Path:</label>
+                  <input type="text" id="marquee-img-url" class="form-input" placeholder="./cakes/cakes/..." oninput="document.getElementById('marquee-img-prev').src = this.value">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin-secondary" onclick="closeMarqueeModal()">Cancel</button>
+          <button type="submit" class="btn-admin-primary">Save Scrolling Image</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- REEL MODAL -->
+  <div class="modal-overlay" id="reel-modal" aria-hidden="true">
+    <div class="modal-card" style="max-width:540px;">
+      <div class="modal-header">
+        <h3 id="reel-modal-title"><i class="fa-solid fa-video"></i> Edit Reel Card</h3>
+        <button class="modal-close" onclick="closeReelModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="reel-form" onsubmit="saveReel(event)">
+        <input type="hidden" id="reel-index">
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="reel-title-input">Reel Title *</label>
+            <input type="text" id="reel-title-input" class="form-input" required placeholder="e.g. Celebration Cakes">
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="reel-sub-input">Subtitle / Description</label>
+            <input type="text" id="reel-sub-input" class="form-input" placeholder="e.g. Crafted for magical moments 🎉">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+            <div class="form-group">
+              <label for="reel-views-input">Views Count (e.g. 9.7k)</label>
+              <input type="text" id="reel-views-input" class="form-input" value="9.7k">
+            </div>
+            <div class="form-group">
+              <label for="reel-shares-input">Shares Count (e.g. 41)</label>
+              <input type="text" id="reel-shares-input" class="form-input" value="41">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="reel-link-input">Instagram Video URL Link</label>
+            <input type="text" id="reel-link-input" class="form-input" value="https://www.instagram.com/cakes_lover_namakkal_official/">
+          </div>
+          <div class="form-group">
+            <label>Video Thumbnail Photo *</label>
+            <div class="image-upload-wrap">
+              <div class="image-preview-box">
+                <img id="reel-img-prev" src="./cakes/cakes/birthday cake.jfif" alt="Preview">
+              </div>
+              <div class="image-inputs">
+                <div style="margin-bottom:8px;">
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Upload Image File:</label>
+                  <input type="file" class="file-input" accept="image/*" onchange="handleReelImgFileUpload(event)">
+                </div>
+                <div>
+                  <label style="font-size:0.78rem; color:var(--clr-muted)">Or Image URL / Path:</label>
+                  <input type="text" id="reel-img-url" class="form-input" placeholder="./cakes/cakes/..." oninput="document.getElementById('reel-img-prev').src = this.value">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin-secondary" onclick="closeReelModal()">Cancel</button>
+          <button type="submit" class="btn-admin-primary">Save Reel Card</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="admin-toast" id="admin-toast"></div>
+
+  <script src="data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

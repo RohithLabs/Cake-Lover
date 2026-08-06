@@ -11,18 +11,7 @@
 </head>
 <body>
 
-  <!-- ======== TOP BAR ======== -->
-  <div class="top-bar">
-    <div class="container top-bar-inner">
-      <div class="top-bar-left">🎉 <span>BUY 1 KG, GET ½ KG FREE</span> — On All Signature Cakes</div>
-      <div class="top-bar-right">
-        <a href="tel:+919159158325"><i class="fa-solid fa-phone"></i> 9159158325</a>
-        <a href="#stores"><i class="fa-solid fa-location-dot"></i> Namakkal &amp; Salem</a>
-        <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google"></i> Google Rating</a>
-        <a href="https://www.instagram.com/cakes_lover_namakkal_official/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ======== NAVBAR ======== -->
   <nav class="navbar" id="main-nav">
@@ -56,6 +45,9 @@
         <a href="https://wa.me/919159158325" target="_blank" rel="noopener noreferrer" class="btn-wa">
           <i class="fa-brands fa-whatsapp"></i> Order
         </a>
+        <a href="admin.html" class="btn-admin-nav" title="Manage Cakes & Prices">
+          <i class="fa-solid fa-gear"></i> Admin
+        </a>
         <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -84,6 +76,7 @@
         <a href="#occasions" onclick="closeMenu()"><i class="fa-solid fa-gift"></i> Occasions</a>
         <a href="#about" onclick="closeMenu()"><i class="fa-solid fa-circle-info"></i> About</a>
         <a href="#stores" onclick="closeMenu()"><i class="fa-solid fa-store"></i> Branches</a>
+        <a href="admin.html" onclick="closeMenu()"><i class="fa-solid fa-user-gear"></i> Owner Admin Panel</a>
       </nav>
       <div class="mobile-nav-ctas">
         <a href="https://wa.me/919159158325" target="_blank" rel="noopener noreferrer" class="btn-wa" style="justify-content:center;" onclick="closeMenu()">
@@ -103,7 +96,23 @@
 
         <!-- Left: Animated Text -->
         <div class="hero-content reveal-left">
-          <div class="hero-badge"><i class="fa-solid fa-gift"></i> Buy 1 kg, Get ½ kg Free</div>
+          <!-- ===== ALL-TIME SPECIAL OFFER BANNER ===== -->
+          <div class="offer-mega-banner" aria-label="All time special offer: Buy 1 kg Get half kg free">
+            <div class="offer-sparkle offer-sparkle-1">✦</div>
+            <div class="offer-sparkle offer-sparkle-2">★</div>
+            <div class="offer-sparkle offer-sparkle-3">✦</div>
+            <div class="offer-sparkle offer-sparkle-4">★</div>
+            <div class="offer-sparkle offer-sparkle-5">✦</div>
+            <div class="offer-shimmer-bar"></div>
+            <div class="offer-top-tag"><i class="fa-solid fa-crown"></i> ALL TIME SPECIAL <i class="fa-solid fa-crown"></i></div>
+            <div class="offer-main-text">
+              <span class="offer-icon-wrap"><i class="fa-solid fa-gift offer-gift-icon"></i></span>
+              <span class="offer-line-1">Buy <strong>1 kg,</strong></span>
+              <span class="offer-divider">→</span>
+              <span class="offer-line-2">Get <strong class="offer-half">½ kg</strong> <span class="offer-free-word">FREE!</span></span>
+            </div>
+            <div class="offer-sub-text">On All Signature Cakes &nbsp;·&nbsp; Every Day &nbsp;·&nbsp; No Minimum</div>
+          </div>
           <h1 class="hero-title">Baked to <em class="text-shimmer">Celebrate.</em><br>Delivered with <em class="text-shimmer">Love.</em></h1>
           <p class="hero-desc">Fresh cream, real ingredients, baked every single day. Whether it's a birthday, anniversary or just a sweet craving — we've got a cake for it. Serving Namakkal &amp; Salem with love.</p>
           <div class="hero-slide-name-wrap">
@@ -124,13 +133,13 @@
           <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Cake gallery navigation"></div>
 
           <!-- Floating pills -->
-          <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer" class="hero-float-pill pill-top" style="text-decoration:none; color:inherit;">
+          <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer" class="hero-float-pill pill-top">
             <div class="pill-icon gold"><i class="fa-brands fa-google"></i></div>
-            <div><strong id="hero-rating-val">4.95+★</strong> Rating<br><small style="color:var(--clr-muted);" id="hero-orders-val">33 Google Reviews</small></div>
+            <div style="color:#1A1A1A; font-weight:600; line-height:1.2;"><strong style="color:#1A1A1A; font-size:0.85rem;" id="hero-rating-val">4.95+★</strong> <span style="color:#333;">Rating</span><br><small style="color:#666666; font-size:0.72rem;" id="hero-orders-val">33 Google Reviews</small></div>
           </a>
           <div class="hero-float-pill pill-bottom">
             <div class="pill-icon green"><i class="fa-solid fa-truck-fast"></i></div>
-            <div><strong>Express</strong> Delivery<br><small style="color:var(--clr-muted);">Same day available</small></div>
+            <div style="color:#1A1A1A; font-weight:600; line-height:1.2;"><strong style="color:#1A1A1A; font-size:0.85rem;">Express Delivery</strong><br><small style="color:#666666; font-size:0.72rem;">Same day available</small></div>
           </div>
         </div>
 
@@ -241,7 +250,7 @@
   </section>
 
   <!-- ======== PRODUCT SHOWCASE ======== -->
-  <section class="section-pad" id="showcase" style="background:white;">
+  <section class="section-pad" id="showcase" style="background:var(--clr-bg-alt);">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-label">Our Cakes</span>
@@ -306,7 +315,7 @@
   </section>
 
   <!-- ======== REELS / INSTAGRAM ======== -->
-  <section class="section-pad" id="reels" style="background:white;">
+  <section class="section-pad" id="reels" style="background:var(--clr-bg);">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-label">Trending Now</span>
@@ -534,7 +543,7 @@
           <a href="https://wa.me/919159158325" target="_blank" rel="noopener noreferrer" class="btn-wa" style="margin-top:12px; font-size:0.78rem; padding:8px 16px;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
         </div>
       </div>
-      <div class="footer-bottom">© 2026 Cake Lover Namakkal. All rights reserved.</div>
+      <div class="footer-bottom">© 2026 Cake Lover Namakkal. All rights reserved. &nbsp;·&nbsp; <a href="admin.html" style="color:rgba(255,255,255,0.5); text-decoration:underline;"><i class="fa-solid fa-lock" style="font-size:0.7rem;"></i> Owner Admin Panel</a></div>
     </div>
   </footer>
 
@@ -546,6 +555,7 @@
     <a href="https://wa.me/919159158325" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 
+  <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
