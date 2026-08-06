@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id:25, name:"Choco Excess Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:735,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.9, img:"./cakes2/cakes2/download (8).jfif", desc:"Overloaded with melted dark chocolate, fudge & choco chips." },
     { id:26, name:"Choco KitKat Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.95, img:"./cakes/cakes/download (5).jfif", desc:"Bordered with crispy KitKat bars and topped with choco balls." },
     { id:27, name:"Choco Walnut Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1150, offerText:"Buy 1kg get ½kg free", rating:4.8, img:"./cakes/cakes/coffee_mocha_cake.jfif", desc:"Rich chocolate sponge packed with roasted crunchy walnuts." },
-    { id:28, name:"Choco Oreo Cake",            category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.85, img:"./cakes/cakes/cake", desc:"Crushed Oreo cookie cream layered inside rich chocolate sponge." },
+    { id:28, name:"Choco Oreo Cake",            category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.85, img:"./cakes/cakes/download (3).jfif", desc:"Crushed Oreo cookie cream layered inside rich chocolate sponge." },
     { id:29, name:"Milky Truffle Cake",         category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.75, img:"./cakes2/cakes2/cake3.jfif", desc:"Creamy milk chocolate truffle with white cocoa drippings." },
 
     // === Special Edition Cake ===
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="cake-img-wrap">
           <span class="card-tag">${p.tag}</span>
-          <img src="${p.img}" alt="${p.name}">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#f5f0eb,#e8ddd5)';this.style.objectFit='none';this.removeAttribute('src');">
         </div>
         <div class="cake-body">
           <div class="cake-head">
@@ -136,8 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== FILTERS =====
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
       const f = btn.dataset.filter;
       if (f === 'all') renderProducts(products);
       else if (f === 'offer') renderProducts(products.filter(p => p.offerText.includes('FREE')));
@@ -259,11 +260,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // ===== TOAST HELPER =====
+  function showToast(msg, duration = 3000) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+
   // ===== NEWSLETTER =====
   window.handleNewsletter = function(e) {
     e.preventDefault();
     const btn = document.getElementById('newsletter-btn');
+    const input = e.target.querySelector('input[type="email"]');
     if (btn) { btn.textContent = '✓ Subscribed!'; btn.style.background = 'var(--clr-green)'; }
+    if (input) input.value = '';
+    showToast('🎉 Subscribed! You\'ll get our best offers first.');
+    setTimeout(() => {
+      if (btn) { btn.textContent = 'Subscribe'; btn.style.background = ''; }
+    }, 4000);
   };
 
   // ===== SCROLL REVEAL (60/120 FPS OPTIMIZED) =====
@@ -336,9 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goTo(idx) {
-      if (idx === current) return;
       current = ((idx % total) + total) % total;
-      
+
       // Update Dots
       Array.from(dotsContainer.children).forEach((d, i) => {
         d.classList.toggle('active', i === current);
@@ -361,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         imgEl.src = slide.img;
         imgEl.classList.remove('fading');
-      }, 200); // Wait for half transition
+      }, 200);
 
       resetAuto();
     }
@@ -395,5 +410,45 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts(products);
   initScrollReveal();
   initHeroCarousel();
+  initTimer();
 });
 
+// ===== HAMBURGER MENU (global scope for onclick) =====
+(function() {
+  const hamburger = document.getElementById('hamburger-btn');
+  const overlay   = document.getElementById('mobile-nav-overlay');
+  const closeBtn  = document.getElementById('mobile-nav-close');
+
+  function openMenu() {
+    hamburger?.classList.add('open');
+    overlay?.classList.add('open');
+    overlay?.setAttribute('aria-hidden', 'false');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeMenu = function() {
+    hamburger?.classList.remove('open');
+    overlay?.classList.remove('open');
+    overlay?.setAttribute('aria-hidden', 'true');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  hamburger?.addEventListener('click', () => {
+    if (overlay?.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+
+  closeBtn?.addEventListener('click', closeMenu);
+
+  // Close when clicking backdrop (the ::before pseudo-element area)
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
