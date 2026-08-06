@@ -9295,7 +9295,7 @@ class FooterOneComponent {
     window.open("https://tinyurl.com/ywup3twe", '_blank');
   }
   phone() {
-    window.open('tel:+9003432888', '_self');
+    window.open('tel:+9159158325', '_self');
   }
   subscribe() {
     const trimmedEmail = this.login.email.trim(); // Trim any leading/trailing spaces

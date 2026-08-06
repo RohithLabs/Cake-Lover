@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const w = card?.querySelector('.weight-btn.active')?.dataset.weight || '1';
     const price = document.getElementById(`price-${id}`).textContent;
     const msg = `Hello Cake Lover! 🎂\nI'd like to order:\n• ${p.name}\n• Weight: ${w} kg\n• Price: ${price} (${p.offerText})\nPlease confirm availability.`;
-    window.open(`https://wa.me/919003432888?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/919159158325?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   // ===== SEARCH =====
