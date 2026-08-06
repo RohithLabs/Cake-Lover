@@ -22,17 +22,11 @@
       <form id="login-form" onsubmit="handleLogin(event)">
         <div class="form-group" style="margin-bottom:12px; text-align:left;">
           <label for="admin-user"><i class="fa-solid fa-user"></i> Username</label>
-          <input type="text" id="admin-user" class="form-input" value="cakelover_admin" required autofocus autocomplete="username">
+          <input type="text" id="admin-user" class="form-input" placeholder="Enter username" required autofocus autocomplete="username">
         </div>
         <div class="form-group" style="margin-bottom:16px; text-align:left;">
           <label for="admin-pass"><i class="fa-solid fa-lock"></i> Password</label>
-          <input type="password" id="admin-pass" class="form-input" value="CakeLover@2026#Namakkal" required autocomplete="current-password">
-        </div>
-        <div class="login-credentials-hint" style="background:#FFF4EE; border:1px solid var(--logo-orange); border-radius:10px; padding:10px 12px; font-size:0.75rem; color:#444; margin-bottom:16px; text-align:left;">
-          <strong>🔑 Bakery Admin Credentials:</strong><br>
-          Username: <code>cakelover_admin</code><br>
-          Password: <code>CakeLover@2026#Namakkal</code>
-        </div>
+          <input type="password" id="admin-pass" class="form-input" placeholder="Enter password" required autocomplete="current-password">
         <div class="login-error" id="login-error">Incorrect Username or Password. Please try again.</div>
         <button type="submit" class="btn-admin-primary btn-full"><i class="fa-solid fa-right-to-bracket"></i> Login to Admin Panel</button>
       </form>

@@ -159,6 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
   loadReels();
 });
 
+// ===== TOAST NOTIFICATION =====
+function showToast(msg, type) {
+  let toast = document.getElementById('admin-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'admin-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:99999;padding:14px 22px;border-radius:12px;font-size:0.9rem;font-weight:600;box-shadow:0 6px 30px rgba(0,0,0,0.18);display:flex;align-items:center;gap:10px;transition:all 0.3s ease;transform:translateY(20px);opacity:0;pointer-events:none;min-width:200px;max-width:360px;';
+    document.body.appendChild(toast);
+  }
+  const isError = type === 'error';
+  toast.style.background = isError ? '#FF4757' : 'linear-gradient(135deg,#1A1A2E,#16213E)';
+  toast.style.color = '#fff';
+  toast.style.border = isError ? '1px solid rgba(255,100,100,0.3)' : '1px solid rgba(255,255,255,0.15)';
+  toast.innerHTML = `<i class="fa-solid ${isError ? 'fa-circle-xmark' : 'fa-circle-check'}" style="color:${isError ? '#FFD1D1' : '#4ECCA3'};font-size:1.1rem;"></i> ${msg}`;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateY(0)';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+  }, 3500);
+}
+
 // ===== TAB SWITCHING =====
 function switchAdminSection(secId) {
   document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1055,6 +1078,8 @@ window.importDataJSON = importDataJSON;
 window.resetToDefaults = resetToDefaults;
 window.handleLogin = handleLogin;
 window.handleLogout = handleLogout;
-window.switchTab = switchTab;
+window.switchAdminSection = switchAdminSection;
+window.switchTab = switchAdminSection; // alias for backward compatibility
 window.showToast = showToast;
-
+window.updateImagePreviewFromUrl = updateImagePreviewFromUrl;
+window.checkAuth = checkAuth;
