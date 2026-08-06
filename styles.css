@@ -457,42 +457,40 @@ ul { list-style: none; }
   50% { transform: translateY(-10px); }
 }
 
-/* Countdown strip */
-.countdown-strip {
+/* Trust Highlights Strip */
+.trust-strip {
   background: var(--clr-dark);
-  padding: 14px 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
-.countdown-inner {
+.trust-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-.countdown-label {
-  color: rgba(255,255,255,0.85);
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.92);
+  font-size: 0.88rem;
   font-weight: 600;
-  font-size: 0.9rem;
 }
-.countdown-label i { color: var(--clr-gold); margin-right: 6px; }
-.timer-group { display: flex; gap: 8px; }
-.timer-block {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  text-align: center;
-}
-.timer-num {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
+.trust-item i {
   color: var(--clr-gold);
-  display: block;
-  line-height: 1;
+  font-size: 1.1rem;
 }
-.timer-label {
-  font-size: 0.55rem;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+@media (max-width: 768px) {
+  .trust-inner {
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+  }
+  .trust-item {
+    font-size: 0.82rem;
+  }
 }
 
 /* ==========================================================================

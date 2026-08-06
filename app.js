@@ -5,44 +5,71 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ===== PRODUCT DATA =====
+  // ===== PRODUCT DATA (50 UNIQUE ITEMS WITH DISTINCT IMAGES) =====
   const products = [
-    // === cakes/cakes ===
-    { id:1,  name:"Red Velvet Blast",          category:"red-velvet", tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.95, img:"./cakes/cakes/Red velvet Cake .jfif", desc:"Our red velvet is soft, moist, and topped with real cream cheese. Every bite melts — customers keep coming back for this one." },
-    { id:2,  name:"Choco Truffle Blast",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.90, img:"./cakes2/cakes2/cake3.jfif", desc:"Rich chocolate cake loaded with fresh cream and truffle topping. Great for birthdays — it never fails to impress." },
-    { id:3,  name:"Nutella Delight",            category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1390, originalPrice:1890, offerText:"1 kg + 1 kg FREE",  rating:4.96, img:"./cakes/cakes/caramel chocolate.jfif", desc:"Smooth Nutella cream between soft sponge layers, topped with crunchy hazelnuts. A favourite for people who love chocolate with a twist." },
-    { id:4,  name:"Dead By Chocolate",          category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1390, originalPrice:1890, offerText:"1 kg + 1 kg FREE",  rating:4.98, img:"./cakes/cakes/Dark Chocolate .jfif", desc:"Three full layers of dark chocolate with thick fudge in between. If you really love chocolate, this is the one." },
-    { id:5,  name:"Choco Truffle",              category:"chocolate",  tag:"1.5 Kg",            basePrice:1030, originalPrice:1390, offerText:"1.5 Kg Pack",       rating:4.88, img:"./cakes/cakes/download (3).jfif", desc:"Classic chocolate sponge with truffle cream on top. Simple, satisfying, and loved by all ages." },
-    { id:6,  name:"Kitkat Nuts Cake",           category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1350, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.93, img:"./cakes/cakes/download (5).jfif", desc:"Kitkat pieces around the sides, cashews and almonds on top. This one looks stunning and tastes even better." },
-    { id:7,  name:"Pineapple Delight",          category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1090, originalPrice:1390, offerText:"1 kg + ½ kg FREE",  rating:4.85, img:"./cakes/cakes/Dole Whip Cake.jfif", desc:"Light vanilla sponge with fresh pineapple pieces and whipped cream. Perfect for people who want something fruity and not too heavy." },
-    { id:8,  name:"Black Forest Classic",       category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1250, originalPrice:1650, offerText:"1 kg + 1 kg FREE",  rating:4.89, img:"./cakes/cakes/Black forest cake recipe.jfif", desc:"Our Black Forest is made the old-fashioned way — chocolate sponge, whipped cream, and cherries on top. A timeless crowd-pleaser." },
-    { id:9,  name:"Blueberry Cheesecake",       category:"exotic",     tag:"1 kg + ½ kg FREE",  basePrice:1320, originalPrice:1690, offerText:"1 kg + ½ kg FREE",  rating:4.94, img:"./cakes/cakes/download (4).jfif", desc:"Thick cream cheese base with blueberry topping — baked fresh, not from a mix. Very popular for anniversaries." },
-    { id:10, name:"Rasmalai Fusion",            category:"exotic",     tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.96, img:"./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", desc:"Saffron-flavoured cream with pieces of rasmalai inside the layers. A true desi cake that everyone at the function will talk about." },
-    { id:11, name:"Mango Delight",              category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1090, originalPrice:1450, offerText:"1 kg + ½ kg FREE",  rating:4.87, img:"./cakes/cakes/Mango Chiffon Cake.jfif", desc:"Fresh Alphonso mango pulp folded into light whipped cream. Best ordered in the mango season — it tastes like summer." },
-    { id:12, name:"Butterscotch Crunch",        category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1250, originalPrice:1650, offerText:"1 kg + 1 kg FREE",  rating:4.88, img:"./cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif", desc:"Sweet caramel drizzle on top with crunchy praline bits inside. Kids absolutely love this one — it disappears fast at parties." },
-    { id:13, name:"White Forest",               category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1150, originalPrice:1490, offerText:"1 kg + ½ kg FREE",  rating:4.86, img:"./cakes/cakes/White Forest Cake.jfif", desc:"White chocolate shavings on a vanilla sponge with cherry cream. A lighter option for those who prefer something less rich." },
-    { id:14, name:"Strawberry Vanilla",         category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1090, originalPrice:1390, offerText:"1 kg + ½ kg FREE",  rating:4.84, img:"./cakes/cakes/cakestrawberry.jfif", desc:"Fresh strawberries layered with smooth vanilla cream. Simple and beautiful — great as a gift cake." },
-    { id:15, name:"Coffee Mocha Fusion",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1350, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.91, img:"./cakes/cakes/coffee_mocha_cake.jfif", desc:"Strong coffee-flavoured sponge with dark chocolate cream. Ordered most by office teams — it pairs perfectly with chai too!" },
-    { id:16, name:"Sprinkle Birthday Cake",     category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.90, img:"./cakes/cakes/Sprinkle Birthday Cake _ Hungry Happenings.jfif", desc:"Colourful rainbow sprinkles on vanilla cream frosting. Makes for the most cheerful birthday photo — kids go crazy for it." },
-    { id:17, name:"Birthday Special",           category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1150, originalPrice:1490, offerText:"1 kg + ½ kg FREE",  rating:4.87, img:"./cakes/cakes/birthday cake.jfif", desc:"Our all-rounder birthday cake with cream roses and a festive finish. Works for any age — 5 or 55!" },
-    { id:18, name:"Oreo Crunch Cake",           category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1320, originalPrice:1720, offerText:"1 kg + 1 kg FREE",  rating:4.92, img:"./cakes/cakes/cake", desc:"Crushed Oreo cookies mixed into rich chocolate cream. Teenagers love this one — it sells out fast on weekends." },
-    { id:19, name:"White Wedding Cake",         category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1390, originalPrice:1850, offerText:"1 kg + ½ kg FREE",  rating:4.93, img:"./cakes/cakes/white-wedding-cake.jfif", desc:"Clean white finish with floral cream work. Ordered for engagements, weddings, and housewarmings. Looks stunning on the table." },
-    { id:20, name:"Black Forest Gâteau",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.91, img:"./cakes/cakes/black-forest-gateau.jfif", desc:"A richer take on our regular black forest — with extra cream layers and double the cherries. Worth every bite." },
-    // === cakes2/cakes2 ===
-    { id:21, name:"Butterscotch Dream",         category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1250, originalPrice:1690, offerText:"1 kg + 1 kg FREE",  rating:4.92, img:"./cakes2/cakes2/butterscotch.jfif", desc:"Super creamy butterscotch filling with a sweet caramel glaze on top. One of our most reordered cakes in Namakkal." },
-    { id:22, name:"Blueberry Blossom",          category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.88, img:"./cakes2/cakes2/Blueberry Cake.jfif", desc:"Fresh blueberries on light vanilla sponge with whipped cream. A pretty cake that tastes as good as it looks." },
-    { id:23, name:"Rasmalai Special",           category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1350, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.96, img:"./cakes2/cakes2/rasmalai cake.jfif", desc:"Rasmalai cream soaked right into the sponge — every layer has that milky, cardamom goodness. A big hit at traditional functions." },
-    { id:24, name:"Red Velvet White Choco",     category:"red-velvet", tag:"1 kg + 1 kg FREE",  basePrice:1390, originalPrice:1850, offerText:"1 kg + 1 kg FREE",  rating:4.95, img:"./cakes2/cakes2/Red Velvet White Chocolate.jfif", desc:"Red velvet base with white chocolate drip on top. Two classics in one cake — looks amazing and tastes even better." },
-    { id:25, name:"Dream Cake Special",         category:"exotic",     tag:"1 kg + ½ kg FREE",  basePrice:1290, originalPrice:1690, offerText:"1 kg + ½ kg FREE",  rating:4.93, img:"./cakes2/cakes2/Dream cake.jfif", desc:"Soft pastel layers with light cream filling. Girls especially love this one for birthdays — the colours are beautiful." },
-    { id:26, name:"Choco Vanilla Swirl",        category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1320, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.90, img:"./cakes2/cakes2/choconillla", desc:"Chocolate and vanilla swirled together in one cake. Good for families where everyone wants something different." },
-    { id:27, name:"Triple Chocolate Drip",      category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1450, originalPrice:1950, offerText:"1 kg + 1 kg FREE",  rating:4.97, img:"./cakes2/cakes2/download (8).jfif", desc:"Dark chocolate, milk chocolate, and white chocolate drips all in one cake. Looks like it came from a fancy bakery — because it did!" },
-    { id:28, name:"Caramel Celebration",        category:"exotic",     tag:"1 kg + 1 kg FREE",  basePrice:1290, originalPrice:1750, offerText:"1 kg + 1 kg FREE",  rating:4.91, img:"./cakes2/cakes2/download (7).jfif", desc:"Layers of caramel cream with a golden toffee crunch on top. Rich but not too sweet — adults love this one." },
-    { id:29, name:"Signature Special Cake",     category:"exotic",     tag:"1 kg + ½ kg FREE",  basePrice:1390, originalPrice:1890, offerText:"1 kg + ½ kg FREE",  rating:4.94, img:"./cakes2/cakes2/download (6).jfif", desc:"Our chef's own recipe — a mix of our best flavours baked into one cake. This one is hard to describe; just try it." },
-    { id:30, name:"Luxury Celebration",         category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1490, originalPrice:1990, offerText:"1 kg + 1 kg FREE",  rating:4.98, img:"./cakes2/cakes2/cake3.jfif", desc:"Our premium cake for big occasions. Thick chocolate layers, gold finish on top. When you want something really special." },
-    { id:31, name:"Festive Special",            category:"fruit",      tag:"1 kg + ½ kg FREE",  basePrice:1190, originalPrice:1590, offerText:"1 kg + ½ kg FREE",  rating:4.89, img:"./cakes2/cakes2/(13) Facebook.jfif", desc:"Bright cream decorations with a festive theme. Perfect for Diwali, Pongal, or any house celebration." },
-    { id:32, name:"Vanilla Elegance",           category:"exotic",     tag:"1 kg + ½ kg FREE",  basePrice:1150, originalPrice:1490, offerText:"1 kg + ½ kg FREE",  rating:4.86, img:"./cakes2/cakes2/cake.jfif", desc:"Pure vanilla sponge with smooth cream — no fuss, no fancy flavours. Sometimes simple is the best." },
-    { id:33, name:"Berry Cream Delight",        category:"fruit",      tag:"1 kg + 1 kg FREE",  basePrice:1250, originalPrice:1650, offerText:"1 kg + 1 kg FREE",  rating:4.90, img:"./cakes2/cakes2/download (4).jfif", desc:"Mixed berry topping with fresh whipped cream on a vanilla base. Light, colourful and perfect for summer gatherings." },
-    { id:34, name:"Premium Chocolate Cake",     category:"chocolate",  tag:"1 kg + 1 kg FREE",  basePrice:1350, originalPrice:1790, offerText:"1 kg + 1 kg FREE",  rating:4.93, img:"./cakes2/cakes2/download (5).jfif", desc:"Full chocolate from sponge to topping — no shortcuts. This is for the real chocolate lovers out there." }
+    // === Caramel Nut Cakes ===
+    { id:1,  name:"Choco Scotch Cake",          category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:734,  originalPrice:1099, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/caramel chocolate.jfif", desc:"Delicious blend of rich chocolate and golden butterscotch crunch." },
+    { id:2,  name:"Red Scotch Cake",            category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:882,  originalPrice:1299, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Red velvet Cake .jfif", desc:"Soft red velvet sponge with a crispy butterscotch crunch layer." },
+    { id:3,  name:"Ferro Scotch Cake",          category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1150, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif", desc:"Premium Ferrero-style hazelnut crunch combined with rich caramel." },
+    { id:4,  name:"Rasmalai Scotch Cake",       category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:706,  originalPrice:1050, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", desc:"Desi rasmalai milk sponge paired with golden butterscotch bits." },
+    { id:5,  name:"Triple Scotch Cake",         category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1150, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/butterscotch.jfif", desc:"Triple-layered caramel mousse and crispy praline nuggets." },
+    { id:6,  name:"Milky Scotch Cake",          category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:853,  originalPrice:1250, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake.jfif", desc:"Silky milk cream sponge infused with butterscotch crunch." },
+    { id:7,  name:"Butterscotch Cake",          category:"caramel-nut",     tag:"1 kg + ½ kg FREE", basePrice:662,  originalPrice:990,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra1.webp", desc:"Classic golden butterscotch with real caramel drizzle." },
+
+    // === Flavored Cakes ===
+    { id:8,  name:"Classic Vanilla Cake",       category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:440,  originalPrice:650,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra2.webp", desc:"Pure Madagascar vanilla bean cream over fluffy white sponge." },
+    { id:9,  name:"White Forest Cake",          category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:603,  originalPrice:890,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/White Forest Cake.jfif", desc:"White chocolate curls over vanilla sponge with cherry fillings." },
+    { id:10, name:"Mango Cake",                 category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:574,  originalPrice:850,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Mango Chiffon Cake.jfif", desc:"Fresh Alphonso mango pulp blended into light whipped cream." },
+    { id:11, name:"Pineapple Cake",             category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:574,  originalPrice:850,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Dole Whip Cake.jfif", desc:"Juicy pineapple compote layered with light vanilla cream." },
+    { id:12, name:"Blueberry Cake",             category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/Blueberry Cake.jfif", desc:"Wild blueberry reduction swirled into smooth vanilla frosting." },
+    { id:13, name:"Strawberry Cake",            category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:574,  originalPrice:850,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/cakestrawberry.jfif", desc:"Fresh strawberry compote layered with sweet vanilla cream." },
+    { id:14, name:"Red Velvet Cake",            category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/Red Velvet White Chocolate.jfif", desc:"Soft crimson cocoa sponge layered with rich cream cheese." },
+    { id:15, name:"Black Forest Cake [500 G]",  category:"flavored",        tag:"500g Pack",        basePrice:515,  originalPrice:750,  offerText:"500g Pack",            rating:4.6, img:"./cakes/cakes/Black forest cake recipe.jfif", desc:"Classic dark chocolate shavings with maraschino cherries in a half kg pack." },
+
+    // === Extreme Combo Cakes ===
+    { id:16, name:"Choco Vanilla Cake",         category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/choconillla", desc:"Dual-flavored marble swirl of rich cocoa and pure vanilla." },
+    { id:17, name:"Choco Strawberry Cake",      category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra3.webp", desc:"Decadent dark chocolate ganache paired with fresh strawberry cream." },
+    { id:18, name:"Butterscotch And Blueberry Cake", category:"extreme-combo", tag:"1 kg + ½ kg FREE", basePrice:706, originalPrice:1050, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra4.webp", desc:"Fruity blueberry swirls combined with crunchy butterscotch bits." },
+    { id:19, name:"German Black Forest Cake",   category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:721,  originalPrice:1080, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/black-forest-gateau.jfif", desc:"Authentic German-style dark chocolate cake loaded with cherries." },
+    { id:20, name:"German Chocolate Cake",      category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:721,  originalPrice:1080, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Dark Chocolate .jfif", desc:"Rich chocolate cake with coconut-pecan filling and fudge." },
+
+    // === Choco Cakes ===
+    { id:21, name:"Chocolate Cake",             category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/download (5).jfif", desc:"Rich moist cocoa sponge smothered in silky chocolate frosting." },
+    { id:22, name:"Choco Truffle Cake",         category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:706,  originalPrice:1050, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/download (3).jfif", desc:"Pure chocolate fudge layered with silky cream and truffle glaze." },
+    { id:23, name:"Dead By Chocolate Cake",     category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:735,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra5.webp", desc:"Triple-layer dark chocolate ganache for true cocoa lovers." },
+    { id:24, name:"Choco Forest Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:735,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra6.webp", desc:"Extra chocolatey black forest loaded with dark cocoa curls." },
+    { id:25, name:"Choco Excess Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:735,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/download (8).jfif", desc:"Overloaded with melted dark chocolate, fudge & choco chips." },
+    { id:26, name:"Choco KitKat Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/download (5).jfif", desc:"Bordered with crispy KitKat bars and topped with choco balls." },
+    { id:27, name:"Choco Walnut Cake",          category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1150, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/coffee_mocha_cake.jfif", desc:"Rich chocolate sponge packed with roasted crunchy walnuts." },
+    { id:28, name:"Choco Oreo Cake",            category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/cake", desc:"Crushed Oreo cookie cream layered inside rich chocolate sponge." },
+    { id:29, name:"Milky Truffle Cake",         category:"choco-cakes",     tag:"1 kg + ½ kg FREE", basePrice:809,  originalPrice:1199, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake3.jfif", desc:"Creamy milk chocolate truffle with white cocoa drippings." },
+
+    // === Special Edition Cake ===
+    { id:30, name:"Ritch Choco KitKat Cake",    category:"special-edition", tag:"1 kg + 1 kg FREE", basePrice:1469, originalPrice:2199, offerText:"Buy 1kg get 1kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra7.webp", desc:"Luxury celebration cake wrapped in KitKat bars with rich truffle core." },
+
+    // === Premium Special Cakes ===
+    { id:31, name:"Black Forest Premium Cake",  category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra8.png", desc:"Premium black forest layered with imported cherries & dark cacao." },
+    { id:32, name:"Mango Premium Cake",         category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra9.webp", desc:"Alphonso mango cream cake with premium fruit glaze." },
+    { id:33, name:"White Forest Premium Cake",  category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra10.png", desc:"Belgian white chocolate curls with luxury cherry reduction." },
+    { id:34, name:"Pineapple Premium Cake",     category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra11.webp", desc:"Fresh tropical pineapple compote over rich vanilla sponge." },
+    { id:35, name:"Blueberry Premium Cake",     category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra12.webp", desc:"Handpicked wild blueberry compote layered with whipped cream." },
+    { id:36, name:"Blackcurrant Premium Cake",  category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/download (4).jfif", desc:"Exotic blackcurrant berry glaze over soft vanilla sponge." },
+    { id:37, name:"Red Velvet Premium Cake",    category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:955,  originalPrice:1390, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra13.webp", desc:"Signature crimson cocoa cake with imported cream cheese icing." },
+    { id:38, name:"Choco Truffle Premium Cake", category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra14.webp", desc:"Dense Belgian chocolate truffle cake finished with cocoa dust." },
+    { id:39, name:"Butterscotch Premium Cake",  category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra15.png", desc:"Golden caramel praline crunch with rich butterscotch mousse." },
+    { id:40, name:"Ferro Premium Cake",         category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra16.webp", desc:"Ferrero hazelnut rocher mousse layered with dark chocolate fudge." },
+    { id:41, name:"Lemon Premium Cake",         category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/Dream cake.jfif", desc:"Zesty lemon curd cream layered into fresh vanilla chiffon sponge." },
+    { id:42, name:"Choco Almond Premium Cake",  category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/cake_extra17.webp", desc:"Roasted California almonds embedded in rich chocolate ganache." },
+    { id:43, name:"Milky Premium Cake",         category:"premium-special", tag:"1 kg + ½ kg FREE", basePrice:868,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/download (6).jfif", desc:"Luscious condensed milk sponge with whipped white cream." },
+
+    // === Delight Cakes ===
+    { id:44, name:"Pista Delight Cake",         category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:956,  originalPrice:1390, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/rasmalai cake.jfif", desc:"Real Iranian pistachio cream swirled into aromatic cardamom sponge." },
+    { id:45, name:"Tender Coconut Delight Cake",category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/birthday cake.jfif", desc:"Fresh tender coconut malai folded into light vanilla cream." },
+    { id:46, name:"Strawberry Delight Cake",    category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/Sprinkle Birthday Cake _ Hungry Happenings.jfif", desc:"Luscious fresh strawberry crush layered with velvety cream." },
+    { id:47, name:"Butterscotch Delight Cake",  category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/white-wedding-cake.jfif", desc:"Rich butterscotch cream with extra crispy golden praline." },
+    { id:48, name:"Mango Delight Cake",         category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes/cakes/download (4).jfif", desc:"Sweet mango puree swirled into soft vanilla sponge." },
+    { id:49, name:"Royal Choco Delight Cake",   category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/download (7).jfif", desc:"Royal dark chocolate fudge with silky whipped cream accent." },
+    { id:50, name:"Blueberry Delight Cake",     category:"delight-cakes",   tag:"1 kg + ½ kg FREE", basePrice:881,  originalPrice:1290, offerText:"Buy 1kg get ½kg free", rating:4.6, img:"./cakes2/cakes2/(13) Facebook.jfif", desc:"Wild blueberry crush layered with vanilla sponge & cream." }
   ];
 
   const productsGrid = document.getElementById('products-grid');
@@ -118,16 +145,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== WEIGHT =====
+  // ===== WEIGHT SELECTION & BUSINESS LOGIC =====
   window.selectWeight = function(id, weight, el) {
     const card = el.closest('.cake-card');
     card.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     const p = products.find(x => x.id === id);
     if (!p) return;
-    let mult = weight === 0.5 ? 0.65 : weight === 2 ? 1.8 : 1;
-    document.getElementById(`price-${id}`).textContent = `₹${Math.round(p.basePrice * mult)}`;
-    document.getElementById(`orig-${id}`).textContent = `₹${Math.round(p.originalPrice * mult)}`;
+
+    let priceMult = weight;
+    let origMult = weight;
+    let tagText = p.tag;
+
+    // Handle special case for 500g base item
+    if (p.name.includes('[500 G]') || p.tag.includes('500g')) {
+      priceMult = weight / 0.5;
+      origMult = weight / 0.5;
+      tagText = weight === 0.5 ? '500g Pack' : weight === 1 ? '1 kg Pack (Buy 1kg Get ½kg FREE)' : '2 kg Pack (Buy 2kg Get 1kg FREE)';
+    } else {
+      if (weight === 0.5) {
+        tagText = '0.5 kg Pack';
+      } else if (weight === 2) {
+        tagText = p.tag.includes('1 kg FREE') ? '2 kg + 2 kg FREE (4 kg Total)' : '2 kg + 1 kg FREE (3 kg Total)';
+      } else {
+        tagText = p.tag;
+      }
+    }
+
+    const priceNowEl = document.getElementById(`price-${id}`);
+    const priceWasEl = document.getElementById(`orig-${id}`);
+    const tagEl = card.querySelector('.card-tag');
+
+    if (priceNowEl) priceNowEl.textContent = `₹${Math.round(p.basePrice * priceMult)}`;
+    if (priceWasEl) priceWasEl.textContent = `₹${Math.round(p.originalPrice * origMult)}`;
+    if (tagEl) tagEl.textContent = tagText;
   };
 
   // ===== WHATSAPP ORDER =====
@@ -137,7 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.querySelector(`.cake-card[data-id="${id}"]`);
     const w = card?.querySelector('.weight-btn.active')?.dataset.weight || '1';
     const price = document.getElementById(`price-${id}`).textContent;
-    const msg = `Hello Cake Lover! 🎂\nI'd like to order:\n• ${p.name}\n• Weight: ${w} kg\n• Price: ${price} (${p.offerText})\nPlease confirm availability.`;
+    const tag = card?.querySelector('.card-tag')?.textContent || p.tag;
+    const msg = `Hello Cake Lover! 🎂\nI would like to order:\n• Cake: ${p.name}\n• Selected Weight: ${w} kg\n• Total Price: ${price}\n• Offer Included: ${tag}\n\nPlease confirm availability & delivery time. Thank you!`;
     window.open(`https://wa.me/919159158325?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -239,21 +291,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== HERO CAROUSEL (SINGLE IMAGE) =====
   const heroSlides = [
-    { name: 'Chocolate Berry Truffle', img: './cakes2/cakes2/download (8).jfif' },
-    { name: 'Red Velvet Royale', img: './cakes/cakes/Red velvet Cake .jfif' },
-    { name: 'Belgian Dark Chocolate', img: './cakes/cakes/Dark Chocolate .jfif' },
-    { name: 'Nutella Hazelnut', img: './cakes/cakes/caramel chocolate.jfif' },
-    { name: 'Black Forest Classic', img: './cakes/cakes/Black forest cake recipe.jfif' },
-    { name: 'Strawberry Vanilla Bliss', img: './cakes/cakes/cakestrawberry.jfif' },
-    { name: 'Kitkat Almond Crunch', img: './cakes/cakes/download (5).jfif' },
-    { name: 'Alphonso Mango', img: './cakes/cakes/Mango Chiffon Cake.jfif' },
-    { name: 'White Forest Cream', img: './cakes/cakes/White Forest Cake.jfif' },
-    { name: 'Tropical Pineapple', img: './cakes/cakes/Dole Whip Cake.jfif' },
-    { name: 'Butterscotch Dream', img: './cakes2/cakes2/butterscotch.jfif' },
-    { name: 'Blueberry Blossom', img: './cakes2/cakes2/Blueberry Cake.jfif' },
-    { name: 'Rasmalai Special', img: './cakes2/cakes2/rasmalai cake.jfif' },
-    { name: 'Red Velvet White Chocolate', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif' },
-    { name: 'Dream Cake Special', img: './cakes2/cakes2/Dream cake.jfif' }
+    { name: 'Choco Scotch Cake', img: './cakes/cakes/caramel chocolate.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Red Scotch Cake', img: './cakes/cakes/Red velvet Cake .jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Ferro Scotch Cake', img: './cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Rasmalai Scotch Cake', img: "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Black Forest Cake', img: './cakes/cakes/Black forest cake recipe.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Strawberry Delight', img: './cakes/cakes/cakestrawberry.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Ritch Choco KitKat Cake', img: './cakes2/cakes2/cake_extra7.webp', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Mango Premium Cake', img: './cakes/cakes/Mango Chiffon Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'White Forest Cake', img: './cakes/cakes/White Forest Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Pineapple Cake', img: './cakes/cakes/Dole Whip Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Butterscotch Cake', img: './cakes2/cakes2/butterscotch.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Blueberry Cake', img: './cakes2/cakes2/Blueberry Cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Rasmalai Fusion', img: './cakes2/cakes2/rasmalai cake.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Red Velvet Premium Cake', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif', rating: '4.6★', orders: '33 Google Reviews' },
+    { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.6★', orders: '33 Google Reviews' }
   ];
 
   function initHeroCarousel() {
@@ -263,6 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('hero-next');
     const nameEl = document.getElementById('hero-slide-name');
     const counterEl = document.getElementById('hero-slide-counter');
+    const ratingValEl = document.getElementById('hero-rating-val');
+    const ordersValEl = document.getElementById('hero-orders-val');
     
     if (!imgEl || !dotsContainer) return;
 
@@ -288,19 +342,22 @@ document.addEventListener('DOMContentLoaded', () => {
         d.classList.toggle('active', i === current);
       });
 
-      // Update Text
+      // Update Text & Rating Badge
+      const slide = heroSlides[current];
       if (nameEl) {
         nameEl.classList.remove('pop');
         void nameEl.offsetWidth; // force reflow
-        nameEl.textContent = heroSlides[current].name;
+        nameEl.textContent = slide.name;
         nameEl.classList.add('pop');
       }
       if (counterEl) counterEl.textContent = `${current + 1} / ${total}`;
+      if (ratingValEl) ratingValEl.textContent = slide.rating;
+      if (ordersValEl) ordersValEl.textContent = slide.orders;
 
       // Update Image with fade
       imgEl.classList.add('fading');
       setTimeout(() => {
-        imgEl.src = heroSlides[current].img;
+        imgEl.src = slide.img;
         imgEl.classList.remove('fading');
       }, 200); // Wait for half transition
 
@@ -333,8 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== INIT =====
-  initTimer();
   renderProducts(products);
   initScrollReveal();
   initHeroCarousel();
 });
+
