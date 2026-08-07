@@ -158,13 +158,6 @@ const DEFAULT_REELS = [
   { img: "./cakes2/cakes2/cake3.jfif", title: "Luxury Celebration", desc: "Gold-touched grandeur ✨", views: "8.1k", shares: "55", link: "https://www.instagram.com/cakes_lover_namakkal_official/" }
 ];
 
-let productsList = [];
-let categoriesList = [];
-let heroSlidesList = [];
-let marqueeList = [];
-let brandStoryData = {};
-let reelsList = [];
-
 const bc = window.BroadcastChannel ? new BroadcastChannel('cakelover_updates') : null;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1154,6 +1147,8 @@ async function deleteReel(idx) {
     reelsList.splice(idx, 1);
     saveReelsToStorage(true);
   }
+}
+
 // ===== SECTION 6: COUNTDOWN OFFER BANNER MANAGER =====
 function loadOfferBanner() {
   const stored = localStorage.getItem(STORAGE_OFFER_KEY);
