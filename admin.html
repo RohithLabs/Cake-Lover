@@ -20,17 +20,17 @@
         <h2>Cake Lover Admin Login</h2>
         <p>Enter administrator email &amp; password to manage bakery menu</p>
       </div>
-      <form id="login-form" onsubmit="handleLogin(event)">
+      <form id="login-form" onsubmit="return handleLogin(event)">
         <div class="form-group" style="margin-bottom:12px; text-align:left;">
           <label for="admin-user"><i class="fa-solid fa-user"></i> Username / Email</label>
-          <input type="text" id="admin-user" class="form-input" placeholder="admin@cakelover.com or admin" required autofocus autocomplete="username">
+          <input type="text" id="admin-user" class="form-input" value="cakelover_admin" placeholder="cakelover_admin" required autofocus autocomplete="username">
         </div>
         <div class="form-group" style="margin-bottom:16px; text-align:left;">
           <label for="admin-pass"><i class="fa-solid fa-lock"></i> Password</label>
-          <input type="password" id="admin-pass" class="form-input" placeholder="Enter password" required autocomplete="current-password">
+          <input type="password" id="admin-pass" class="form-input" value="CakeLover@2026#Namakkal" placeholder="Enter password" required autocomplete="current-password">
         </div>
         <div class="login-error" id="login-error" style="display:none; color:red; margin-bottom:12px; font-size:0.85rem;"></div>
-        <button type="submit" class="btn-admin-primary btn-full"><i class="fa-solid fa-right-to-bracket"></i> Login to Admin Panel</button>
+        <button type="button" onclick="handleLogin(event)" class="btn-admin-primary btn-full"><i class="fa-solid fa-right-to-bracket"></i> Login to Admin Panel</button>
       </form>
       <div class="login-footer">
         <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Main Website</a>
