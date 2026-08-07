@@ -576,5 +576,15 @@
   <script src="supabase.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
+
+  <!-- Vercel Web Analytics (@vercel/analytics) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script type="module">
+    import { inject } from 'https://cdn.jsdelivr.net/npm/@vercel/analytics@1/+esm';
+    inject();
+  </script>
 </body>
 </html>

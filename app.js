@@ -89,17 +89,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== DYNAMIC GETTERS (Priority: localStorage -> Supabase cloud -> data.js -> defaults) =====
   function getDynamicProducts() {
+    let sourceProducts = [];
     const stored = localStorage.getItem('cakelover_products');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed.filter(p => p.active !== false);
+        if (Array.isArray(parsed) && parsed.length > 0) sourceProducts = parsed;
       } catch(e) {}
     }
-    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
-      return window.CAKELOVER_DATA.products.filter(p => p.active !== false);
+    if (sourceProducts.length === 0 && window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
+      sourceProducts = window.CAKELOVER_DATA.products;
     }
-    return DEFAULT_PRODUCTS;
+    if (sourceProducts.length === 0) {
+      sourceProducts = DEFAULT_PRODUCTS;
+    }
+
+    if (Array.isArray(sourceProducts) && sourceProducts.length < DEFAULT_PRODUCTS.length) {
+      const existingIds = new Set(sourceProducts.map(p => p.id));
+      DEFAULT_PRODUCTS.forEach(p => {
+        if (!existingIds.has(p.id)) sourceProducts.push(p);
+      });
+    }
+
+    return sourceProducts.filter(p => p.active !== false);
   }
 
   function getDynamicCategories() {
