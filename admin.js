@@ -263,10 +263,9 @@ async function handleLogin(e) {
   const passInput = document.getElementById('admin-pass');
   const errorBox = document.getElementById('login-error');
 
-  const rawUser = userInput.value.trim();
-  const password = passInput.value.trim();
+  const rawUser = userInput ? userInput.value.trim() : '';
+  const password = passInput ? passInput.value.trim() : '';
 
-  // Convert username to valid email format for Supabase Auth if needed
   const email = rawUser.includes('@') ? rawUser : `${rawUser}@cakelover.com`;
 
   if (errorBox) {
@@ -276,23 +275,20 @@ async function handleLogin(e) {
 
   let authenticated = false;
 
-  // 1. Try Supabase Auth Sign In
-  if (window.SupabaseAuth) {
-    const { data, error } = await window.SupabaseAuth.signInWithPassword(email, password);
-    if (!error && data && (data.user || data.access_token)) {
-      authenticated = true;
-    } else {
-      // 2. If single admin doesn't exist in Supabase Auth yet, auto-create the account
-      const { data: signUpData, error: signUpError } = await window.SupabaseAuth.signUp(email, password);
-      if (!signUpError && signUpData && (signUpData.user || signUpData.access_token)) {
-        authenticated = true;
-      }
-    }
+  // 1. Direct local credential check (Instant login)
+  if ((rawUser === DEFAULT_USER || rawUser === 'cakelover_admin' || email === `${DEFAULT_USER}@cakelover.com`) &&
+      (password === DEFAULT_PASS || password === (localStorage.getItem('cakelover_custom_pass') || DEFAULT_PASS))) {
+    authenticated = true;
   }
 
-  // 3. Local fallback check for default admin credentials
-  if (!authenticated && (rawUser === DEFAULT_USER || email === `${DEFAULT_USER}@cakelover.com`) && password === (localStorage.getItem('cakelover_custom_pass') || DEFAULT_PASS)) {
-    authenticated = true;
+  // 2. Try Supabase Auth Sign In if available
+  if (!authenticated && window.SupabaseAuth) {
+    try {
+      const { data, error } = await window.SupabaseAuth.signInWithPassword(email, password);
+      if (!error && data && (data.user || data.access_token)) {
+        authenticated = true;
+      }
+    } catch(err) {}
   }
 
   if (authenticated) {
@@ -305,7 +301,7 @@ async function handleLogin(e) {
       errorBox.textContent = 'Invalid Username/Email or Password. Please try again.';
       errorBox.style.display = 'block';
     }
-    passInput.select();
+    if (passInput) passInput.select();
   }
 }
 
