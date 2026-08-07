@@ -12,6 +12,52 @@ const SUPABASE_ANON_KEY = 'sb_publishable_uiTbttYAnOVY5p92Cotoww_5Fmo1wFB';
    This works directly in the browser without any build step.
    ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------
+   SUPABASE AUTH HELPER
+   Handles Sign Up and Sign In directly with Supabase Auth API
+   ------------------------------------------------------------------ */
+
+window.SupabaseAuth = {
+  url: SUPABASE_URL,
+  key: SUPABASE_ANON_KEY,
+
+  async signUp(email, password) {
+    try {
+      const res = await fetch(this.url + '/auth/v1/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': this.key
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (!res.ok) return { data: null, error: data };
+      return { data, error: null };
+    } catch (err) {
+      return { data: null, error: err };
+    }
+  },
+
+  async signInWithPassword(email, password) {
+    try {
+      const res = await fetch(this.url + '/auth/v1/token?grant_type=password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': this.key
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (!res.ok) return { data: null, error: data };
+      return { data, error: null };
+    } catch (err) {
+      return { data: null, error: err };
+    }
+  }
+};
+
 window.SupabaseClient = {
   url: SUPABASE_URL,
   key: SUPABASE_ANON_KEY,

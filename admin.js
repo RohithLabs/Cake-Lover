@@ -237,19 +237,54 @@ function checkAuth() {
   }
 }
 
-function handleLogin(e) {
+async function handleLogin(e) {
   e.preventDefault();
   const userInput = document.getElementById('admin-user');
   const passInput = document.getElementById('admin-pass');
   const errorBox = document.getElementById('login-error');
 
-  if (userInput.value.trim() === DEFAULT_USER && passInput.value.trim() === (localStorage.getItem('cakelover_custom_pass') || DEFAULT_PASS)) {
-    localStorage.setItem(AUTH_KEY, 'true');
+  const rawUser = userInput.value.trim();
+  const password = passInput.value.trim();
+
+  // Convert username to valid email format for Supabase Auth if needed
+  const email = rawUser.includes('@') ? rawUser : `${rawUser}@cakelover.com`;
+
+  if (errorBox) {
     errorBox.style.display = 'none';
+    errorBox.textContent = '';
+  }
+
+  let authenticated = false;
+
+  // 1. Try Supabase Auth Sign In
+  if (window.SupabaseAuth) {
+    const { data, error } = await window.SupabaseAuth.signInWithPassword(email, password);
+    if (!error && data && (data.user || data.access_token)) {
+      authenticated = true;
+    } else {
+      // 2. If single admin doesn't exist in Supabase Auth yet, auto-create the account
+      const { data: signUpData, error: signUpError } = await window.SupabaseAuth.signUp(email, password);
+      if (!signUpError && signUpData && (signUpData.user || signUpData.access_token)) {
+        authenticated = true;
+      }
+    }
+  }
+
+  // 3. Local fallback check for default admin credentials
+  if (!authenticated && (rawUser === DEFAULT_USER || email === `${DEFAULT_USER}@cakelover.com`) && password === (localStorage.getItem('cakelover_custom_pass') || DEFAULT_PASS)) {
+    authenticated = true;
+  }
+
+  if (authenticated) {
+    localStorage.setItem(AUTH_KEY, 'true');
+    if (errorBox) errorBox.style.display = 'none';
     checkAuth();
     showToast('Logged in successfully!');
   } else {
-    errorBox.style.display = 'block';
+    if (errorBox) {
+      errorBox.textContent = 'Invalid Username/Email or Password. Please try again.';
+      errorBox.style.display = 'block';
+    }
     passInput.select();
   }
 }
@@ -1128,6 +1163,8 @@ window.exportDataJSON = exportDataJSON;
 window.importDataJSON = importDataJSON;
 window.resetToDefaults = resetToDefaults;
 window.handleLogin = handleLogin;
+window.handleAuthSubmit = handleAuthSubmit;
+window.toggleAuthMode = toggleAuthMode;
 window.handleLogout = handleLogout;
 window.switchAdminSection = switchAdminSection;
 window.switchTab = switchAdminSection; // alias for backward compatibility

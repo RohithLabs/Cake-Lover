@@ -12,24 +12,24 @@
 </head>
 <body class="admin-body">
 
-  <!-- LOGIN MODAL / OVERLAY -->
+  <!-- ADMIN LOGIN MODAL -->
   <div class="login-overlay" id="login-overlay">
     <div class="login-box">
       <div class="login-header">
         <img src="cake-logo.jpg" alt="Cake Lover Logo" class="login-logo">
         <h2>Cake Lover Admin Login</h2>
-        <p>Enter administrator username &amp; password to manage bakery menu</p>
+        <p>Enter administrator email &amp; password to manage bakery menu</p>
       </div>
       <form id="login-form" onsubmit="handleLogin(event)">
         <div class="form-group" style="margin-bottom:12px; text-align:left;">
-          <label for="admin-user"><i class="fa-solid fa-user"></i> Username</label>
-          <input type="text" id="admin-user" class="form-input" placeholder="Enter username" required autofocus autocomplete="username">
+          <label for="admin-user"><i class="fa-solid fa-user"></i> Username / Email</label>
+          <input type="text" id="admin-user" class="form-input" placeholder="admin@cakelover.com or admin" required autofocus autocomplete="username">
         </div>
         <div class="form-group" style="margin-bottom:16px; text-align:left;">
           <label for="admin-pass"><i class="fa-solid fa-lock"></i> Password</label>
           <input type="password" id="admin-pass" class="form-input" placeholder="Enter password" required autocomplete="current-password">
         </div>
-        <div class="login-error" id="login-error">Incorrect Username or Password. Please try again.</div>
+        <div class="login-error" id="login-error" style="display:none; color:red; margin-bottom:12px; font-size:0.85rem;"></div>
         <button type="submit" class="btn-admin-primary btn-full"><i class="fa-solid fa-right-to-bracket"></i> Login to Admin Panel</button>
       </form>
       <div class="login-footer">
