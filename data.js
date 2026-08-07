@@ -137,5 +137,14 @@ window.CAKELOVER_DATA = {
     { title: "Caramel Drizzle Magic 🍯", desc: "Real butterscotch crunch & liquid gold caramel", views: "28.9k", shares: "891", img: "./cakes/cakes/caramel chocolate.jfif", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
     { title: "German Chocolate Fudge 🍫", desc: "Pure dark chocolate shavings & maraschino cherry", views: "19.5k", shares: "420", img: "./cakes/cakes/Dark Chocolate .jfif", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
     { title: "Mango Chiffon Delight 🥭", desc: "Fresh Alphonso pulp blended with light cream", views: "11.8k", shares: "215", img: "./cakes/cakes/Mango Chiffon Cake.jfif", link: "https://www.instagram.com/cakes_lover_namakkal_official/" }
-  ]
+  ],
+
+  offerBanner: {
+    title: "Today's Offer Ends In:",
+    hrs: 3,
+    mins: 44,
+    secs: 9,
+    cta: "Order Now",
+    link: "https://wa.me/919159158325"
+  }
 };

@@ -13,10 +13,28 @@ const STORAGE_HERO_KEY = 'cakelover_hero_slides';
 const STORAGE_MARQUEE_KEY = 'cakelover_marquee_items';
 const STORAGE_STORY_KEY = 'cakelover_brand_story';
 const STORAGE_REELS_KEY = 'cakelover_reels';
+const STORAGE_OFFER_KEY = 'cakelover_offer_banner';
 
 const AUTH_KEY = 'cakelover_admin_auth';
 const DEFAULT_USER = 'cakelover_admin';
 const DEFAULT_PASS = 'CakeLover@2026#Namakkal';
+
+let productsList = [];
+let categoriesList = [];
+let heroSlidesList = [];
+let marqueeList = [];
+let brandStoryData = {};
+let reelsList = [];
+let offerBannerData = {};
+
+const DEFAULT_OFFER_BANNER = {
+  title: "Today's Offer Ends In:",
+  hrs: 3,
+  mins: 44,
+  secs: 9,
+  cta: "Order Now",
+  link: "https://wa.me/919159158325"
+};
 
 // Initial default datasets
 const DEFAULT_CATEGORIES = [
@@ -170,6 +188,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('cakelover_marquee_items', JSON.stringify(cloudData.marqueeItems || []));
         localStorage.setItem('cakelover_brand_story', JSON.stringify(cloudData.brandStory || {}));
         localStorage.setItem('cakelover_reels', JSON.stringify(cloudData.reels || []));
+        if (cloudData.offerBanner) localStorage.setItem('cakelover_offer_banner', JSON.stringify(cloudData.offerBanner));
         loadedFromCloud = true;
         console.log('[Admin] Data loaded from Supabase.');
       }
@@ -186,6 +205,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadMarqueeItems();
   loadBrandStory();
   loadReels();
+  loadOfferBanner();
 });
 
 // ===== TOAST NOTIFICATION =====
@@ -1125,6 +1145,46 @@ async function deleteReel(idx) {
     reelsList.splice(idx, 1);
     saveReelsToStorage(true);
   }
+// ===== SECTION 6: COUNTDOWN OFFER BANNER MANAGER =====
+function loadOfferBanner() {
+  const stored = localStorage.getItem(STORAGE_OFFER_KEY);
+  if (stored) {
+    try { offerBannerData = JSON.parse(stored); } catch(e) { offerBannerData = { ...DEFAULT_OFFER_BANNER }; }
+  } else if (window.CAKELOVER_DATA && window.CAKELOVER_DATA.offerBanner) {
+    offerBannerData = window.CAKELOVER_DATA.offerBanner;
+  } else {
+    offerBannerData = { ...DEFAULT_OFFER_BANNER };
+  }
+
+  const titleEl = document.getElementById('offer-title-input');
+  const hrsEl = document.getElementById('offer-hrs-input');
+  const minsEl = document.getElementById('offer-mins-input');
+  const secsEl = document.getElementById('offer-secs-input');
+  const ctaEl = document.getElementById('offer-cta-input');
+  const linkEl = document.getElementById('offer-link-input');
+
+  if (titleEl) titleEl.value = offerBannerData.title || DEFAULT_OFFER_BANNER.title;
+  if (hrsEl) hrsEl.value = offerBannerData.hrs !== undefined ? offerBannerData.hrs : 3;
+  if (minsEl) minsEl.value = offerBannerData.mins !== undefined ? offerBannerData.mins : 44;
+  if (secsEl) secsEl.value = offerBannerData.secs !== undefined ? offerBannerData.secs : 9;
+  if (ctaEl) ctaEl.value = offerBannerData.cta || DEFAULT_OFFER_BANNER.cta;
+  if (linkEl) linkEl.value = offerBannerData.link || DEFAULT_OFFER_BANNER.link;
+}
+
+function saveOfferBanner(e) {
+  if (e) e.preventDefault();
+  offerBannerData = {
+    title: document.getElementById('offer-title-input').value.trim() || DEFAULT_OFFER_BANNER.title,
+    hrs: Number(document.getElementById('offer-hrs-input').value) || 0,
+    mins: Number(document.getElementById('offer-mins-input').value) || 0,
+    secs: Number(document.getElementById('offer-secs-input').value) || 0,
+    cta: document.getElementById('offer-cta-input').value.trim() || DEFAULT_OFFER_BANNER.cta,
+    link: document.getElementById('offer-link-input').value.trim() || DEFAULT_OFFER_BANNER.link
+  };
+
+  localStorage.setItem(STORAGE_OFFER_KEY, JSON.stringify(offerBannerData));
+  if (bc) bc.postMessage('offer_updated');
+  syncLiveDataToServer('Offer banner updated live!');
 }
 
 // ===== EXPORT / IMPORT =====
@@ -1135,7 +1195,8 @@ function exportDataJSON() {
     heroSlides: heroSlidesList,
     marqueeItems: marqueeList,
     brandStory: brandStoryData,
-    reels: reelsList
+    reels: reelsList,
+    offerBanner: offerBannerData
   };
   const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
   const dlAnchorElem = document.createElement('a');
@@ -1164,6 +1225,7 @@ function importDataJSON(e) {
           if (imported.marqueeItems) marqueeList = imported.marqueeItems;
           if (imported.brandStory) brandStoryData = imported.brandStory;
           if (imported.reels) reelsList = imported.reels;
+          if (imported.offerBanner) offerBannerData = imported.offerBanner;
         }
 
         saveProductsToStorage(false);
@@ -1171,6 +1233,7 @@ function importDataJSON(e) {
         saveHeroSlidesToStorage(false);
         saveMarqueeItemsToStorage(false);
         if (imported.brandStory) localStorage.setItem(STORAGE_STORY_KEY, JSON.stringify(brandStoryData));
+        if (imported.offerBanner) localStorage.setItem(STORAGE_OFFER_KEY, JSON.stringify(offerBannerData));
         saveReelsToStorage(true);
 
         renderAdminTable(productsList);
@@ -1194,7 +1257,8 @@ function syncLiveDataToServer(msg) {
     heroSlides: heroSlidesList,
     marqueeItems: marqueeList,
     brandStory: brandStoryData,
-    reels: reelsList
+    reels: reelsList,
+    offerBanner: offerBannerData
   };
 
   // 1. Update in-memory global
@@ -1207,6 +1271,7 @@ function syncLiveDataToServer(msg) {
   localStorage.setItem('cakelover_marquee_items', JSON.stringify(marqueeList));
   localStorage.setItem('cakelover_brand_story', JSON.stringify(brandStoryData));
   localStorage.setItem('cakelover_reels', JSON.stringify(reelsList));
+  localStorage.setItem('cakelover_offer_banner', JSON.stringify(offerBannerData));
 
   // 3. Save to Supabase (cloud persistence — primary source of truth)
   if (window.SupabaseDB) {
@@ -1277,6 +1342,8 @@ window.saveReel = saveReel;
 window.deleteReel = deleteReel;
 window.handleReelImgFileUpload = handleReelImgFileUpload;
 
+window.saveOfferBanner = saveOfferBanner;
+window.loadOfferBanner = loadOfferBanner;
 window.exportDataJSON = exportDataJSON;
 window.importDataJSON = importDataJSON;
 window.resetToDefaults = resetToDefaults;

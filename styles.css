@@ -11,35 +11,28 @@
   --font-body: 'DM Sans', sans-serif;
   --font-heading: 'DM Serif Display', serif;
 
-  /* ===== LOGO COLOUR PALETTE ===== */
-  --logo-red: #E8202A;
-  --logo-orange: #F5821F;
-  --logo-blue: #1E2E8C;
-  --logo-blue-dark: #111B5C;
+  /* ===== LOVELY PINKISH & REDDISH MODERN COLOUR PALETTE ===== */
+  --logo-red: #E01E5A;
+  --logo-orange: #FF5A79;
+  --logo-blue: #C1121F;
+  --logo-blue-dark: #8B0000;
 
-  /* Page colours — Light Attractive Rose Red Blush Background */
-  --clr-bg: #FFF2F4;
-  /* Soft light strawberry blush background */
-  --clr-bg-alt: #FCE8EB;
-  /* Slightly deeper rose blush for section contrast */
+  /* Page colours — Lovely Soft Pink & Rose Backgrounds */
+  --clr-bg: #FFF0F3;
+  --clr-bg-alt: #FFE5EC;
   --clr-surface: #FFFFFF;
-  --clr-dark: #1A1A1A;
-  /* Headings and body text in crisp dark charcoal */
-  --clr-dark-text: #1A1A1A;
-  /* Dark text for inside white cards */
-  --clr-muted: #555555;
-  /* Muted text in refined dark charcoal */
-  --clr-light: #888888;
+  --clr-dark: #2D151E;
+  --clr-dark-text: #2D151E;
+  --clr-muted: #6B4D57;
+  --clr-light: #9E7A87;
 
-  /* Brand accent — full logo red */
-  --clr-accent: #E8202A;
-  --clr-accent-soft: rgba(232, 32, 42, 0.08);
+  /* Brand accent — Lovely Reddish Pink */
+  --clr-accent: #E01E5A;
+  --clr-accent-soft: rgba(224, 30, 90, 0.08);
 
-  /* Gold → Logo orange */
-  --clr-gold: #F5821F;
-  --clr-gold-soft: #FFF4EE;
+  --clr-gold: #FF5A79;
+  --clr-gold-soft: #FFF0F3;
 
-  /* WhatsApp green — unchanged */
   --clr-green: #25D366;
   --clr-green-dark: #1EBE5D;
 
@@ -696,7 +689,7 @@ ul {
 
 /* ==========================================================================
    HERO SECTION — SPLIT LAYOUT
-   Left: Text content  |  Right: Pristine AI cake image (no overlay)
+   Left: Text content  |  Right: High resolution cake image (no overlay)
    ========================================================================== */
 .hero {
   padding: 24px 0 48px;
@@ -983,6 +976,101 @@ ul {
   50% {
     transform: translateY(-10px);
   }
+}
+
+/* ==========================================================================
+   COUNTDOWN OFFER STRIP — LOVELY MODERN PINKISH RED GRADIENT
+   ========================================================================== */
+.countdown-strip {
+  background: linear-gradient(135deg, #E01E5A 0%, #C1121F 50%, #8B001C 100%);
+  color: white;
+  padding: 14px 0;
+  box-shadow: 0 4px 20px rgba(224, 30, 90, 0.3);
+  position: relative;
+  z-index: 10;
+}
+
+.countdown-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countdown-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFF0F3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.3px;
+}
+
+.countdown-label i {
+  color: #FFD166;
+  animation: offer-gift-bounce 1.5s infinite ease-in-out;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timer-block {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+  backdrop-filter: blur(4px);
+}
+
+.timer-num {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.timer-unit {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #FFD166;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.timer-sep {
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.countdown-cta {
+  background: #FFFFFF !important;
+  color: #E01E5A !important;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  padding: 8px 22px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #C1121F !important;
 }
 
 /* Trust Highlights Strip */
@@ -1342,27 +1430,29 @@ ul {
 }
 
 .filter-btn {
-  padding: 9px 20px;
+  padding: 10px 22px;
   border-radius: var(--radius-full);
-  background: white;
-  border: 1px solid #E2D0D2;
+  background: #FFF0F3;
+  border: 1px solid #FFCCD5;
   font-weight: 700;
-  font-size: 0.82rem;
-  color: #555555;
+  font-size: 0.84rem;
+  color: #800F2F;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s var(--ease-out);
 }
 
 .filter-btn:hover {
-  border-color: var(--logo-red);
-  color: var(--logo-red);
+  border-color: #E01E5A;
+  color: #E01E5A;
+  background: #FFE5EC;
+  transform: translateY(-1px);
 }
 
 .filter-btn.active {
-  background: var(--logo-red);
+  background: linear-gradient(135deg, #E01E5A 0%, #C1121F 100%);
   color: white;
-  border-color: var(--logo-red);
-  box-shadow: 0 4px 12px rgba(232, 32, 42, 0.25);
+  border-color: #E01E5A;
+  box-shadow: 0 4px 16px rgba(224, 30, 90, 0.35);
 }
 
 .products-grid {

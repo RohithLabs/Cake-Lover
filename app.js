@@ -130,6 +130,34 @@ document.addEventListener('DOMContentLoaded', () => {
     return DEFAULT_HERO_SLIDES;
   }
 
+  function getDynamicOfferBanner() {
+    const stored = localStorage.getItem('cakelover_offer_banner');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.title) return parsed;
+      } catch(e) {}
+    }
+    if (window.CAKELOVER_DATA && window.CAKELOVER_DATA.offerBanner) {
+      return window.CAKELOVER_DATA.offerBanner;
+    }
+    return { title: "Today's Offer Ends In:", hrs: 3, mins: 44, secs: 9, cta: "Order Now", link: "https://wa.me/919159158325" };
+  }
+
+  function renderOfferBanner() {
+    const offer = getDynamicOfferBanner();
+    const labelEl = document.getElementById('countdown-label-text');
+    const ctaBtn = document.getElementById('countdown-cta-btn');
+
+    if (labelEl) {
+      labelEl.innerHTML = `<i class="fa-solid fa-fire-flame-curved"></i> ${escapeHtml(offer.title || "Today's Offer Ends In:")}`;
+    }
+    if (ctaBtn) {
+      ctaBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${escapeHtml(offer.cta || "Order Now")}`;
+      if (offer.link) ctaBtn.href = offer.link;
+    }
+  }
+
   function escapeHtml(str) {
     if (!str) return '';
     return String(str).replace(/[&<>"']/g, function(m) {
@@ -464,7 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== TIMER =====
   function initTimer() {
-    let duration = 3 * 3600 + 44 * 60 + 31;
+    renderOfferBanner();
+    const offer = getDynamicOfferBanner();
+    let duration = (Number(offer.hrs || 3) * 3600) + (Number(offer.mins || 44) * 60) + Number(offer.secs || 9);
     const h = document.getElementById('timer-hours');
     const m = document.getElementById('timer-mins');
     const s = document.getElementById('timer-secs');
@@ -595,6 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderDynamicMarqueeTrack();
       renderDynamicBrandStory();
       renderDynamicReelsRow();
+      renderOfferBanner();
     }
   });
 });
