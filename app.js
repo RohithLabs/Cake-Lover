@@ -87,11 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.9★', orders: '33 Google Reviews' }
   ];
 
-  // ===== DYNAMIC GETTERS (Priority: Supabase cloud -> data.js -> localStorage -> defaults) =====
+  // ===== DYNAMIC GETTERS (Priority: localStorage -> Supabase cloud -> data.js -> defaults) =====
   function getDynamicProducts() {
-    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
-      return window.CAKELOVER_DATA.products.filter(p => p.active !== false);
-    }
     const stored = localStorage.getItem('cakelover_products');
     if (stored) {
       try {
@@ -99,13 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Array.isArray(parsed) && parsed.length > 0) return parsed.filter(p => p.active !== false);
       } catch(e) {}
     }
+    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
+      return window.CAKELOVER_DATA.products.filter(p => p.active !== false);
+    }
     return DEFAULT_PRODUCTS;
   }
 
   function getDynamicCategories() {
-    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.categories) && window.CAKELOVER_DATA.categories.length > 0) {
-      return window.CAKELOVER_DATA.categories;
-    }
     const stored = localStorage.getItem('cakelover_categories');
     if (stored) {
       try {
@@ -113,19 +110,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       } catch(e) {}
     }
+    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.categories) && window.CAKELOVER_DATA.categories.length > 0) {
+      return window.CAKELOVER_DATA.categories;
+    }
     return DEFAULT_CATEGORIES;
   }
 
   function getDynamicHeroSlides() {
-    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.heroSlides) && window.CAKELOVER_DATA.heroSlides.length > 0) {
-      return window.CAKELOVER_DATA.heroSlides;
-    }
     const stored = localStorage.getItem('cakelover_hero_slides');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       } catch(e) {}
+    }
+    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.heroSlides) && window.CAKELOVER_DATA.heroSlides.length > 0) {
+      return window.CAKELOVER_DATA.heroSlides;
     }
     return DEFAULT_HERO_SLIDES;
   }

@@ -297,15 +297,13 @@ function handleLogout() {
 
 // ===== SECTION 1: CATEGORIES =====
 function loadCategories() {
-  if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.categories) && window.CAKELOVER_DATA.categories.length > 0) {
+  const stored = localStorage.getItem(STORAGE_CAT_KEY);
+  if (stored) {
+    try { categoriesList = JSON.parse(stored); } catch(e) { categoriesList = [...DEFAULT_CATEGORIES]; }
+  } else if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.categories) && window.CAKELOVER_DATA.categories.length > 0) {
     categoriesList = window.CAKELOVER_DATA.categories;
   } else {
-    const stored = localStorage.getItem(STORAGE_CAT_KEY);
-    if (stored) {
-      try { categoriesList = JSON.parse(stored); } catch(e) { categoriesList = [...DEFAULT_CATEGORIES]; }
-    } else {
-      categoriesList = [...DEFAULT_CATEGORIES];
-    }
+    categoriesList = [...DEFAULT_CATEGORIES];
   }
   renderCategoryDropdowns();
 }
@@ -338,7 +336,7 @@ function renderCategoryDropdowns() {
   const currentFormVal = cakeCatSelect ? cakeCatSelect.value : (categoriesList[0] ? categoriesList[0].id : '');
 
   if (filterSelect) {
-    filterSelect.innerHTML = `<option value="all">All Categories (${productsList.length})</option>`;
+    filterSelect.innerHTML = `<option value="all">All Cakes (${productsList.length})</option>`;
     categoriesList.forEach(cat => {
       const count = productsList.filter(p => p.category === cat.id).length;
       filterSelect.innerHTML += `<option value="${cat.id}">${escapeHtml(cat.name)} (${count})</option>`;
@@ -429,15 +427,13 @@ function deleteCategory(catId) {
 
 // ===== SECTION 1: PRODUCTS =====
 function loadProducts() {
-  if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    try { productsList = JSON.parse(stored); } catch(e) { productsList = [...DEFAULT_PRODUCTS]; }
+  } else if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
     productsList = window.CAKELOVER_DATA.products;
   } else {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try { productsList = JSON.parse(stored); } catch(e) { productsList = [...DEFAULT_PRODUCTS]; }
-    } else {
-      productsList = [...DEFAULT_PRODUCTS];
-    }
+    productsList = [...DEFAULT_PRODUCTS];
   }
   renderCategoryDropdowns();
   renderAdminTable(productsList);
@@ -462,13 +458,37 @@ function resetToDefaults() {
   }
 }
 
-function updateStats() {
+async function updateStats() {
   const statTotal = document.getElementById('stat-total');
   const statCategories = document.getElementById('stat-categories');
   const statActive = document.getElementById('stat-active');
   const statAvgPrice = document.getElementById('stat-avg-price');
 
-  if (statTotal) statTotal.textContent = productsList.length;
+  let realCount = productsList.length;
+
+  // Fetch current authenticated user and database count from Supabase
+  if (window.SupabaseStorage) {
+    const sdk = window.SupabaseStorage.getSDK();
+    if (sdk) {
+      try {
+        const { data: { user } } = await sdk.auth.getUser();
+        if (user?.id) {
+          const { count, error } = await sdk
+            .from('cakes')
+            .select('*', { count: 'exact', head: true })
+            .eq('user_id', user.id);
+
+          if (!error && count !== null && count > 0) {
+            realCount = count;
+          }
+        }
+      } catch (e) {
+        console.warn('[Supabase] Count fetch info:', e);
+      }
+    }
+  }
+
+  if (statTotal) statTotal.textContent = realCount;
   if (statCategories) statCategories.textContent = categoriesList.length;
   if (statActive) statActive.textContent = productsList.filter(p => p.active !== false).length;
   if (productsList.length > 0 && statAvgPrice) {
@@ -562,18 +582,20 @@ function saveCake(e) {
   const rating = Number(document.getElementById('cake-rating').value) || 4.8;
   const active = document.getElementById('cake-active').value === 'true';
   const desc = document.getElementById('cake-desc').value.trim();
-  const imgUrl = document.getElementById('cake-img-url').value.trim() || document.getElementById('img-preview').src;
+  const imgUrlInput = document.getElementById('cake-img-url');
+  const imgUrl = imgUrlInput.value.trim() || document.getElementById('img-preview').src;
+  const filePath = imgUrlInput.dataset.filePath || null;
 
   if (!name || !basePrice) { alert('Please fill in Cake Name and Price'); return; }
 
   if (idInput) {
     const index = productsList.findIndex(p => p.id === Number(idInput));
     if (index !== -1) {
-      productsList[index] = { ...productsList[index], name, category, tag, basePrice, originalPrice, rating, active, desc, img: imgUrl };
+      productsList[index] = { ...productsList[index], name, category, tag, basePrice, originalPrice, rating, active, desc, img: imgUrl, filePath: filePath || productsList[index].filePath };
     }
   } else {
     const newId = productsList.length > 0 ? Math.max(...productsList.map(p => p.id)) + 1 : 1;
-    productsList.unshift({ id: newId, name, category, tag: tag || '1 kg + ½ kg FREE', basePrice, originalPrice, offerText: tag || 'Buy 1kg get ½kg free', rating, active, desc, img: imgUrl });
+    productsList.unshift({ id: newId, name, category, tag: tag || '1 kg + ½ kg FREE', basePrice, originalPrice, offerText: tag || 'Buy 1kg get ½kg free', rating, active, desc, img: imgUrl, filePath });
   }
 
   saveProductsToStorage(true);
@@ -592,9 +614,12 @@ function toggleStatus(id) {
   }
 }
 
-function deleteCake(id) {
+async function deleteCake(id) {
   const item = productsList.find(p => p.id === id);
   if (item && confirm(`Delete "${item.name}"?`)) {
+    if (item.filePath && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(item.filePath);
+    }
     productsList = productsList.filter(p => p.id !== id);
     saveProductsToStorage(true);
     renderAdminTable(productsList);
@@ -602,9 +627,24 @@ function deleteCake(id) {
   }
 }
 
-function handleImageFileUpload(e) {
+async function handleImageFileUpload(e) {
   const file = e.target.files[0];
   if (!file) return;
+  const cakeId = document.getElementById('edit-cake-id').value || 'new';
+
+  if (window.SupabaseStorage) {
+    showToast('Uploading cake photo to Supabase Storage...');
+    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'cakes', cakeId);
+    if (!error && signedUrl) {
+      document.getElementById('img-preview').src = signedUrl;
+      const urlInput = document.getElementById('cake-img-url');
+      urlInput.value = signedUrl;
+      urlInput.dataset.filePath = filePath;
+      showToast('Cake photo uploaded to Supabase Storage!');
+      return;
+    }
+  }
+
   const reader = new FileReader();
   reader.onload = function(evt) {
     document.getElementById('img-preview').src = evt.target.result;
@@ -692,9 +732,24 @@ function openHeroSlideModal(idx = null) {
 
 function closeHeroSlideModal() { document.getElementById('hero-slide-modal').classList.remove('open'); }
 
-function handleHeroImgFileUpload(e) {
+async function handleHeroImgFileUpload(e) {
   const file = e.target.files[0];
   if (!file) return;
+  const slideIdx = document.getElementById('hero-slide-index').value || 'new';
+
+  if (window.SupabaseStorage) {
+    showToast('Uploading hero image to Supabase Storage...');
+    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'hero_slides', slideIdx);
+    if (!error && signedUrl) {
+      document.getElementById('hero-img-prev').src = signedUrl;
+      const urlInput = document.getElementById('hero-img-url');
+      urlInput.value = signedUrl;
+      urlInput.dataset.filePath = filePath;
+      showToast('Hero image uploaded to Supabase Storage!');
+      return;
+    }
+  }
+
   const reader = new FileReader();
   reader.onload = function(evt) {
     document.getElementById('hero-img-prev').src = evt.target.result;
@@ -711,14 +766,16 @@ function saveHeroSlide(e) {
   const name = document.getElementById('hero-slide-name-input').value.trim();
   const rating = document.getElementById('hero-slide-rating-input').value.trim() || '4.9★';
   const orders = document.getElementById('hero-slide-orders-input').value.trim() || '33 Google Reviews';
-  const img = document.getElementById('hero-img-url').value.trim() || document.getElementById('hero-img-prev').src;
+  const imgUrlInput = document.getElementById('hero-img-url');
+  const img = imgUrlInput.value.trim() || document.getElementById('hero-img-prev').src;
+  const filePath = imgUrlInput.dataset.filePath || null;
 
   if (!name) { alert('Please enter slide name'); return; }
 
-  const slideObj = { name, img, rating, orders };
+  const slideObj = { name, img, rating, orders, filePath };
 
   if (idxVal !== '') {
-    heroSlidesList[Number(idxVal)] = slideObj;
+    heroSlidesList[Number(idxVal)] = { ...heroSlidesList[Number(idxVal)], ...slideObj };
   } else {
     heroSlidesList.push(slideObj);
   }
@@ -727,8 +784,12 @@ function saveHeroSlide(e) {
   closeHeroSlideModal();
 }
 
-function deleteHeroSlide(idx) {
+async function deleteHeroSlide(idx) {
+  const item = heroSlidesList[idx];
   if (confirm(`Delete hero slide #${idx + 1}?`)) {
+    if (item && item.filePath && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(item.filePath);
+    }
     heroSlidesList.splice(idx, 1);
     saveHeroSlidesToStorage(true);
   }
@@ -804,9 +865,25 @@ function openMarqueeModal(idx = null) {
 
 function closeMarqueeModal() { document.getElementById('marquee-modal').classList.remove('open'); }
 
-function handleMarqueeImgFileUpload(e) {
+async function handleMarqueeImgFileUpload(e) {
   const file = e.target.files[0];
   if (!file) return;
+  const marqueeIdx = document.getElementById('marquee-item-index').value || 'new';
+
+  if (window.SupabaseStorage) {
+    showToast('Uploading marquee image to Supabase Storage...');
+    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'marquee', marqueeIdx);
+    if (!error && signedUrl) {
+      document.getElementById('marquee-img-prev').src = signedUrl;
+      const urlInput = document.getElementById('marquee-label-input'); // target container
+      const imgUrlInput = document.getElementById('marquee-img-url');
+      imgUrlInput.value = signedUrl;
+      imgUrlInput.dataset.filePath = filePath;
+      showToast('Marquee image uploaded to Supabase Storage!');
+      return;
+    }
+  }
+
   const reader = new FileReader();
   reader.onload = function(evt) {
     document.getElementById('marquee-img-prev').src = evt.target.result;
@@ -821,20 +898,26 @@ function saveMarqueeItem(e) {
   e.preventDefault();
   const idxVal = document.getElementById('marquee-item-index').value;
   const label = document.getElementById('marquee-label-input').value.trim();
-  const img = document.getElementById('marquee-img-url').value.trim() || document.getElementById('marquee-img-prev').src;
+  const imgInput = document.getElementById('marquee-img-url');
+  const img = imgInput.value.trim() || document.getElementById('marquee-img-prev').src;
+  const filePath = imgInput.dataset.filePath || null;
 
   if (!label) { alert('Please enter label name'); return; }
 
-  const itemObj = { label, img };
-  if (idxVal !== '') marqueeList[Number(idxVal)] = itemObj;
+  const itemObj = { label, img, filePath };
+  if (idxVal !== '') marqueeList[Number(idxVal)] = { ...marqueeList[Number(idxVal)], ...itemObj };
   else marqueeList.push(itemObj);
 
   saveMarqueeItemsToStorage(true);
   closeMarqueeModal();
 }
 
-function deleteMarqueeItem(idx) {
+async function deleteMarqueeItem(idx) {
+  const item = marqueeList[idx];
   if (confirm(`Delete marquee item #${idx + 1}?`)) {
+    if (item && item.filePath && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(item.filePath);
+    }
     marqueeList.splice(idx, 1);
     saveMarqueeItemsToStorage(true);
   }
@@ -866,9 +949,23 @@ function loadBrandStory() {
   document.getElementById('story-body-input').value = brandStoryData.body || DEFAULT_BRAND_STORY.body;
 }
 
-function handleStoryImgUpload(e, num) {
+async function handleStoryImgUpload(e, num) {
   const file = e.target.files[0];
   if (!file) return;
+
+  if (window.SupabaseStorage) {
+    showToast(`Uploading story photo #${num} to Supabase Storage...`);
+    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'brand_story', `slot_${num}`);
+    if (!error && signedUrl) {
+      document.getElementById(`story-img${num}-prev`).src = signedUrl;
+      const urlInput = document.getElementById(`story-img${num}-url`);
+      urlInput.value = signedUrl;
+      urlInput.dataset.filePath = filePath;
+      showToast(`Story photo #${num} uploaded to Supabase Storage!`);
+      return;
+    }
+  }
+
   const reader = new FileReader();
   reader.onload = function(evt) {
     document.getElementById(`story-img${num}-prev`).src = evt.target.result;
@@ -969,9 +1066,24 @@ function openReelModal(idx = null) {
 
 function closeReelModal() { document.getElementById('reel-modal').classList.remove('open'); }
 
-function handleReelImgFileUpload(e) {
+async function handleReelImgFileUpload(e) {
   const file = e.target.files[0];
   if (!file) return;
+  const reelIdx = document.getElementById('reel-index').value || 'new';
+
+  if (window.SupabaseStorage) {
+    showToast('Uploading reel image to Supabase Storage...');
+    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'reels', reelIdx);
+    if (!error && signedUrl) {
+      document.getElementById('reel-img-prev').src = signedUrl;
+      const urlInput = document.getElementById('reel-img-url');
+      urlInput.value = signedUrl;
+      urlInput.dataset.filePath = filePath;
+      showToast('Reel image uploaded to Supabase Storage!');
+      return;
+    }
+  }
+
   const reader = new FileReader();
   reader.onload = function(evt) {
     document.getElementById('reel-img-prev').src = evt.target.result;
@@ -990,20 +1102,26 @@ function saveReel(e) {
   const views = document.getElementById('reel-views-input').value.trim() || '1.0k';
   const shares = document.getElementById('reel-shares-input').value.trim() || '10';
   const link = document.getElementById('reel-link-input').value.trim() || 'https://www.instagram.com/cakes_lover_namakkal_official/';
-  const img = document.getElementById('reel-img-url').value.trim() || document.getElementById('reel-img-prev').src;
+  const imgInput = document.getElementById('reel-img-url');
+  const img = imgInput.value.trim() || document.getElementById('reel-img-prev').src;
+  const filePath = imgInput.dataset.filePath || null;
 
   if (!title) { alert('Please enter reel title'); return; }
 
-  const reelObj = { title, desc, views, shares, link, img };
-  if (idxVal !== '') reelsList[Number(idxVal)] = reelObj;
+  const reelObj = { title, desc, views, shares, link, img, filePath };
+  if (idxVal !== '') reelsList[Number(idxVal)] = { ...reelsList[Number(idxVal)], ...reelObj };
   else reelsList.push(reelObj);
 
   saveReelsToStorage(true);
   closeReelModal();
 }
 
-function deleteReel(idx) {
+async function deleteReel(idx) {
+  const item = reelsList[idx];
   if (confirm(`Delete reel #${idx + 1}?`)) {
+    if (item && item.filePath && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(item.filePath);
+    }
     reelsList.splice(idx, 1);
     saveReelsToStorage(true);
   }

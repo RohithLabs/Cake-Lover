@@ -213,4 +213,107 @@ window.SupabaseDB = {
   }
 };
 
+window.SupabaseStorage = {
+  BUCKET: 'app-files',
+  url: SUPABASE_URL,
+  key: SUPABASE_ANON_KEY,
+
+  getSDK() {
+    if (window.supabase && !window._supabaseClientInstance) {
+      window._supabaseClientInstance = window.supabase.createClient(this.url, this.key);
+    }
+    return window._supabaseClientInstance;
+  },
+
+  async uploadFile(file, featureName, itemId = 'new') {
+    const sdk = this.getSDK();
+    const uuid = Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+    const ext = file.name.split('.').pop() || 'jpg';
+
+    let userId = 'public-user';
+    if (sdk) {
+      try {
+        const { data: { user } } = await sdk.auth.getUser();
+        if (user?.id) userId = user.id;
+      } catch(e) {}
+    }
+
+    const filePath = `${userId}/${featureName}/${itemId}/${uuid}.${ext}`;
+
+    if (sdk) {
+      const { data, error } = await sdk.storage
+        .from(this.BUCKET)
+        .upload(filePath, file, { upsert: true });
+
+      if (error) {
+        console.error('[Supabase Storage] Upload error:', error);
+        return { filePath: null, signedUrl: null, error };
+      }
+
+      const { data: signedData } = await sdk.storage
+        .from(this.BUCKET)
+        .createSignedUrl(filePath, 31536000);
+
+      return { filePath, signedUrl: signedData?.signedUrl || null, error: null };
+    } else {
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const res = await fetch(`${this.url}/storage/v1/object/${this.BUCKET}/${filePath}`, {
+          method: 'POST',
+          headers: {
+            'apikey': this.key,
+            'Authorization': 'Bearer ' + this.key
+          },
+          body: formData
+        });
+
+        const data = await res.json();
+        if (!res.ok) return { filePath: null, signedUrl: null, error: data };
+
+        const signedRes = await fetch(`${this.url}/storage/v1/object/sign/${this.BUCKET}/${filePath}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': this.key,
+            'Authorization': 'Bearer ' + this.key
+          },
+          body: JSON.stringify({ expiresIn: 31536000 })
+        });
+        const signedJson = await signedRes.json();
+        const signedUrl = signedJson.signedURL ? `${this.url}/storage/v1${signedJson.signedURL}` : null;
+
+        return { filePath, signedUrl, error: null };
+      } catch (err) {
+        return { filePath: null, signedUrl: null, error: err };
+      }
+    }
+  },
+
+  async getSignedUrl(filePath) {
+    if (!filePath || !filePath.includes('/')) return filePath;
+    const sdk = this.getSDK();
+    if (sdk) {
+      const { data } = await sdk.storage
+        .from(this.BUCKET)
+        .createSignedUrl(filePath, 31536000);
+      return data?.signedUrl || filePath;
+    }
+    return filePath;
+  },
+
+  async deleteFile(filePath) {
+    if (!filePath || !filePath.includes('/')) return { error: null };
+    const sdk = this.getSDK();
+    if (sdk) {
+      const { data, error } = await sdk.storage
+        .from(this.BUCKET)
+        .remove([filePath]);
+      return { data, error };
+    }
+    return { error: null };
+  }
+};
+
 console.log('[Supabase] Client loaded. Project: fhjqmxobbexbpjwuabgm');
