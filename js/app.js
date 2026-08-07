@@ -90,25 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== DYNAMIC GETTERS (Priority: localStorage -> Supabase cloud -> data.js -> defaults) =====
   function getDynamicProducts() {
     let sourceProducts = [];
+    if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
+      sourceProducts = window.CAKELOVER_DATA.products;
+    } else {
+      sourceProducts = DEFAULT_PRODUCTS;
+    }
+
     const stored = localStorage.getItem('cakelover_products');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) sourceProducts = parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const seenImgs = new Set();
+          const deduped = [];
+          parsed.forEach(p => {
+            if (p && p.img && !seenImgs.has(p.img)) {
+              seenImgs.add(p.img);
+              deduped.push(p);
+            }
+          });
+          sourceProducts = deduped;
+        }
       } catch(e) {}
-    }
-    if (sourceProducts.length === 0 && window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
-      sourceProducts = window.CAKELOVER_DATA.products;
-    }
-    if (sourceProducts.length === 0) {
-      sourceProducts = DEFAULT_PRODUCTS;
-    }
-
-    if (Array.isArray(sourceProducts) && sourceProducts.length < DEFAULT_PRODUCTS.length) {
-      const existingIds = new Set(sourceProducts.map(p => p.id));
-      DEFAULT_PRODUCTS.forEach(p => {
-        if (!existingIds.has(p.id)) sourceProducts.push(p);
-      });
     }
 
     return sourceProducts.filter(p => p.active !== false);
