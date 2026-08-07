@@ -246,8 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     items.forEach((p, idx) => {
       const card = document.createElement('div');
-      card.className = 'cake-card reveal visible';
-      card.style.setProperty('--i', idx);
+      card.className = 'cake-card reveal';
+      card.style.setProperty('--i', idx % 4);
       card.dataset.id = p.id;
       card.innerHTML = `
         <div class="cake-img-wrap">
@@ -279,6 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       productsGrid.appendChild(card);
     });
+
+    // Re-initialize scroll observer for newly rendered cards
+    initScrollReveal();
   }
 
   function filterProducts(cat) {
@@ -557,9 +560,9 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .cake-card, .reel-card, .occasion-card').forEach(el => {
       if (!el.classList.contains('visible')) observer.observe(el);
     });
   }
