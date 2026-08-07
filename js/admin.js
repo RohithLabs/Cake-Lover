@@ -1891,8 +1891,9 @@ function toggleStatus(id) {
 async function deleteCake(id) {
   const item = productsList.find(p => p.id === id);
   if (item && confirm(`Delete "${item.name}"?`)) {
-    if (item.filePath && window.SupabaseStorage) {
-      await SupabaseStorage.deleteFile(item.filePath);
+    const targetFile = item.filePath || (window.SupabaseStorage ? SupabaseStorage.extractFilePath(item.img) : null);
+    if (targetFile && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(targetFile);
     }
     productsList = productsList.filter(p => p.id !== id);
     saveProductsToStorage(true);
@@ -1908,14 +1909,17 @@ async function handleImageFileUpload(e) {
 
   if (window.SupabaseStorage) {
     showToast('Uploading cake photo to Supabase Storage...');
-    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'cakes', cakeId);
-    if (!error && signedUrl) {
-      document.getElementById('img-preview').src = signedUrl;
+    const { filePath, publicUrl, error } = await SupabaseStorage.uploadFile(file, 'cakes', cakeId);
+    if (!error && publicUrl) {
+      document.getElementById('img-preview').src = publicUrl;
       const urlInput = document.getElementById('cake-img-url');
-      urlInput.value = signedUrl;
+      urlInput.value = publicUrl;
       urlInput.dataset.filePath = filePath;
-      showToast('Cake photo uploaded to Supabase Storage!');
+      showToast('☁️ Cake photo uploaded to Supabase Storage!');
       return;
+    } else if (error) {
+      console.error('Supabase Storage upload error:', error);
+      showToast('⚠️ Supabase upload failed. Check Storage RLS policies.');
     }
   }
 
@@ -2031,14 +2035,17 @@ async function handleHeroImgFileUpload(e) {
 
   if (window.SupabaseStorage) {
     showToast('Uploading hero image to Supabase Storage...');
-    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'hero_slides', slideIdx);
-    if (!error && signedUrl) {
-      document.getElementById('hero-img-prev').src = signedUrl;
+    const { filePath, publicUrl, error } = await SupabaseStorage.uploadFile(file, 'hero_slides', slideIdx);
+    if (!error && publicUrl) {
+      document.getElementById('hero-img-prev').src = publicUrl;
       const urlInput = document.getElementById('hero-img-url');
-      urlInput.value = signedUrl;
+      urlInput.value = publicUrl;
       urlInput.dataset.filePath = filePath;
-      showToast('Hero image uploaded to Supabase Storage!');
+      showToast('☁️ Hero image uploaded to Supabase Storage!');
       return;
+    } else if (error) {
+      console.error('Supabase hero image upload failed:', error);
+      showToast('⚠️ Supabase upload failed. Check Storage RLS policies.');
     }
   }
 
@@ -2087,8 +2094,9 @@ function saveHeroSlide(e) {
 async function deleteHeroSlide(idx) {
   const item = heroSlidesList[idx];
   if (confirm(`Delete hero slide #${idx + 1}?`)) {
-    if (item && item.filePath && window.SupabaseStorage) {
-      await SupabaseStorage.deleteFile(item.filePath);
+    const targetFile = item ? (item.filePath || (window.SupabaseStorage ? SupabaseStorage.extractFilePath(item.img) : null)) : null;
+    if (targetFile && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(targetFile);
     }
     heroSlidesList.splice(idx, 1);
     saveHeroSlidesToStorage(true);
@@ -2172,15 +2180,17 @@ async function handleMarqueeImgFileUpload(e) {
 
   if (window.SupabaseStorage) {
     showToast('Uploading marquee image to Supabase Storage...');
-    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'marquee', marqueeIdx);
-    if (!error && signedUrl) {
-      document.getElementById('marquee-img-prev').src = signedUrl;
-      const urlInput = document.getElementById('marquee-label-input'); // target container
+    const { filePath, publicUrl, error } = await SupabaseStorage.uploadFile(file, 'marquee', marqueeIdx);
+    if (!error && publicUrl) {
+      document.getElementById('marquee-img-prev').src = publicUrl;
       const imgUrlInput = document.getElementById('marquee-img-url');
-      imgUrlInput.value = signedUrl;
+      imgUrlInput.value = publicUrl;
       imgUrlInput.dataset.filePath = filePath;
-      showToast('Marquee image uploaded to Supabase Storage!');
+      showToast('☁️ Marquee image uploaded to Supabase Storage!');
       return;
+    } else if (error) {
+      console.error('Supabase marquee image upload failed:', error);
+      showToast('⚠️ Supabase upload failed. Check Storage RLS policies.');
     }
   }
 
@@ -2215,8 +2225,9 @@ function saveMarqueeItem(e) {
 async function deleteMarqueeItem(idx) {
   const item = marqueeList[idx];
   if (confirm(`Delete marquee item #${idx + 1}?`)) {
-    if (item && item.filePath && window.SupabaseStorage) {
-      await SupabaseStorage.deleteFile(item.filePath);
+    const targetFile = item ? (item.filePath || (window.SupabaseStorage ? SupabaseStorage.extractFilePath(item.img) : null)) : null;
+    if (targetFile && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(targetFile);
     }
     marqueeList.splice(idx, 1);
     saveMarqueeItemsToStorage(true);
@@ -2255,14 +2266,17 @@ async function handleStoryImgUpload(e, num) {
 
   if (window.SupabaseStorage) {
     showToast(`Uploading story photo #${num} to Supabase Storage...`);
-    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'brand_story', `slot_${num}`);
-    if (!error && signedUrl) {
-      document.getElementById(`story-img${num}-prev`).src = signedUrl;
+    const { filePath, publicUrl, error } = await SupabaseStorage.uploadFile(file, 'brand_story', `slot_${num}`);
+    if (!error && publicUrl) {
+      document.getElementById(`story-img${num}-prev`).src = publicUrl;
       const urlInput = document.getElementById(`story-img${num}-url`);
-      urlInput.value = signedUrl;
+      urlInput.value = publicUrl;
       urlInput.dataset.filePath = filePath;
-      showToast(`Story photo #${num} uploaded to Supabase Storage!`);
+      showToast(`☁️ Story photo #${num} uploaded to Supabase Storage!`);
       return;
+    } else if (error) {
+      console.error(`Supabase story photo #${num} upload failed:`, error);
+      showToast('⚠️ Supabase upload failed. Check Storage RLS policies.');
     }
   }
 
@@ -2372,15 +2386,18 @@ async function handleReelImgFileUpload(e) {
   const reelIdx = document.getElementById('reel-index').value || 'new';
 
   if (window.SupabaseStorage) {
-    showToast('Uploading reel image to Supabase Storage...');
-    const { filePath, signedUrl, error } = await SupabaseStorage.uploadFile(file, 'reels', reelIdx);
-    if (!error && signedUrl) {
-      document.getElementById('reel-img-prev').src = signedUrl;
+    showToast('Uploading reel media to Supabase Storage...');
+    const { filePath, publicUrl, error } = await SupabaseStorage.uploadFile(file, 'reels', reelIdx);
+    if (!error && publicUrl) {
+      document.getElementById('reel-img-prev').src = publicUrl;
       const urlInput = document.getElementById('reel-img-url');
-      urlInput.value = signedUrl;
+      urlInput.value = publicUrl;
       urlInput.dataset.filePath = filePath;
-      showToast('Reel image uploaded to Supabase Storage!');
+      showToast('☁️ Reel media uploaded to Supabase Storage!');
       return;
+    } else if (error) {
+      console.error('Supabase reel media upload failed:', error);
+      showToast('⚠️ Supabase upload failed. Check Storage RLS policies.');
     }
   }
 
@@ -2419,8 +2436,9 @@ function saveReel(e) {
 async function deleteReel(idx) {
   const item = reelsList[idx];
   if (confirm(`Delete reel #${idx + 1}?`)) {
-    if (item && item.filePath && window.SupabaseStorage) {
-      await SupabaseStorage.deleteFile(item.filePath);
+    const targetFile = item ? (item.filePath || (window.SupabaseStorage ? SupabaseStorage.extractFilePath(item.img) : null)) : null;
+    if (targetFile && window.SupabaseStorage) {
+      await SupabaseStorage.deleteFile(targetFile);
     }
     reelsList.splice(idx, 1);
     saveReelsToStorage(true);

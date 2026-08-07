@@ -225,20 +225,32 @@ window.SupabaseStorage = {
     return window._supabaseClientInstance;
   },
 
+  // Helper to extract storage relative file path from public or signed URL
+  extractFilePath(urlOrPath) {
+    if (!urlOrPath || typeof urlOrPath !== 'string') return null;
+    if (!urlOrPath.includes('http')) return urlOrPath.replace(/^\/+/, '');
+    const match = urlOrPath.match(/\/storage\/v1\/object\/(?:public|sign)\/[^\/]+\/(.+)$/);
+    if (match && match[1]) {
+      return match[1].split('?')[0];
+    }
+    return null;
+  },
+
+  // Generate public URL for a file path in app-files bucket
+  getPublicUrl(filePath) {
+    if (!filePath) return null;
+    const cleanPath = filePath.replace(/^\/+/, '');
+    return `${this.url}/storage/v1/object/public/${this.BUCKET}/${cleanPath}`;
+  },
+
   async uploadFile(file, featureName, itemId = 'new') {
     const sdk = this.getSDK();
     const uuid = Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
-    const ext = file.name.split('.').pop() || 'jpg';
+    const cleanFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const ext = cleanFileName.split('.').pop() || 'jpg';
 
-    let userId = 'public-user';
-    if (sdk) {
-      try {
-        const { data: { user } } = await sdk.auth.getUser();
-        if (user?.id) userId = user.id;
-      } catch(e) {}
-    }
-
-    const filePath = `${userId}/${featureName}/${itemId}/${uuid}.${ext}`;
+    const filePath = `${featureName}/${itemId}/${uuid}.${ext}`;
+    const publicUrl = this.getPublicUrl(filePath);
 
     if (sdk) {
       const { data, error } = await sdk.storage
@@ -246,15 +258,11 @@ window.SupabaseStorage = {
         .upload(filePath, file, { upsert: true });
 
       if (error) {
-        console.error('[Supabase Storage] Upload error:', error);
-        return { filePath: null, signedUrl: null, error };
+        console.error('[Supabase Storage] SDK Upload error:', error);
+        return { filePath: null, publicUrl: null, signedUrl: null, error };
       }
 
-      const { data: signedData } = await sdk.storage
-        .from(this.BUCKET)
-        .createSignedUrl(filePath, 31536000);
-
-      return { filePath, signedUrl: signedData?.signedUrl || null, error: null };
+      return { filePath, publicUrl, signedUrl: publicUrl, error: null };
     } else {
       try {
         const formData = new FormData();
@@ -270,49 +278,59 @@ window.SupabaseStorage = {
         });
 
         const data = await res.json();
-        if (!res.ok) return { filePath: null, signedUrl: null, error: data };
+        if (!res.ok) {
+          console.error('[Supabase Storage] REST Upload error:', res.status, data);
+          return { filePath: null, publicUrl: null, signedUrl: null, error: data };
+        }
 
-        const signedRes = await fetch(`${this.url}/storage/v1/object/sign/${this.BUCKET}/${filePath}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': this.key,
-            'Authorization': 'Bearer ' + this.key
-          },
-          body: JSON.stringify({ expiresIn: 31536000 })
-        });
-        const signedJson = await signedRes.json();
-        const signedUrl = signedJson.signedURL ? `${this.url}/storage/v1${signedJson.signedURL}` : null;
-
-        return { filePath, signedUrl, error: null };
+        return { filePath, publicUrl, signedUrl: publicUrl, error: null };
       } catch (err) {
-        return { filePath: null, signedUrl: null, error: err };
+        console.error('[Supabase Storage] REST Upload exception:', err);
+        return { filePath: null, publicUrl: null, signedUrl: null, error: err };
       }
     }
   },
 
   async getSignedUrl(filePath) {
-    if (!filePath || !filePath.includes('/')) return filePath;
-    const sdk = this.getSDK();
-    if (sdk) {
-      const { data } = await sdk.storage
-        .from(this.BUCKET)
-        .createSignedUrl(filePath, 31536000);
-      return data?.signedUrl || filePath;
-    }
-    return filePath;
+    if (!filePath) return null;
+    return this.getPublicUrl(filePath);
   },
 
   async deleteFile(filePath) {
-    if (!filePath || !filePath.includes('/')) return { error: null };
+    const targetPath = this.extractFilePath(filePath);
+    if (!targetPath) return { error: null };
+
+    console.log('[Supabase Storage] Deleting file:', targetPath);
     const sdk = this.getSDK();
+
     if (sdk) {
-      const { data, error } = await sdk.storage
-        .from(this.BUCKET)
-        .remove([filePath]);
-      return { data, error };
+      try {
+        const { data, error } = await sdk.storage
+          .from(this.BUCKET)
+          .remove([targetPath]);
+        if (!error) return { data, error: null };
+      } catch (e) {
+        console.warn('[Supabase Storage] SDK delete failed, trying REST:', e);
+      }
     }
-    return { error: null };
+
+    try {
+      const res = await fetch(`${this.url}/storage/v1/object/${this.BUCKET}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': this.key,
+          'Authorization': 'Bearer ' + this.key
+        },
+        body: JSON.stringify({ prefixes: [targetPath] })
+      });
+      const data = await res.json();
+      if (!res.ok) console.warn('[Supabase Storage] REST delete error:', res.status, data);
+      return { data, error: null };
+    } catch (err) {
+      console.error('[Supabase Storage] Delete exception:', err);
+      return { data: null, error: err };
+    }
   }
 };
 
