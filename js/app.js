@@ -551,19 +551,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
-  // ===== SCROLL REVEAL =====
+  // ===== BIDIRECTIONAL SMOOTH SCROLL REVEAL (TOP-TO-BOTTOM & BOTTOM-TO-TOP) =====
+  let lastScrollY = window.scrollY;
+  let scrollDirection = 'down';
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+    lastScrollY = Math.max(0, currentScrollY);
+  }, { passive: true });
+
   function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          requestAnimationFrame(() => { entry.target.classList.add('visible'); });
-          observer.unobserve(entry.target);
+          if (scrollDirection === 'up') {
+            entry.target.classList.add('scroll-up');
+          } else {
+            entry.target.classList.remove('scroll-up');
+          }
+          requestAnimationFrame(() => {
+            entry.target.classList.add('visible');
+          });
+        } else {
+          const rect = entry.target.getBoundingClientRect();
+          if (rect.top > window.innerHeight || rect.bottom < 0) {
+            entry.target.classList.remove('visible');
+          }
         }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
+    }, { threshold: 0.05, rootMargin: '20px 0px 20px 0px' });
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .cake-card, .reel-card, .occasion-card').forEach(el => {
-      if (!el.classList.contains('visible')) observer.observe(el);
+      observer.observe(el);
     });
   }
 

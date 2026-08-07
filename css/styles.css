@@ -155,7 +155,17 @@ ul {
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
-.reveal.visible {
+.reveal.scroll-up,
+.cake-card.scroll-up,
+.reel-card.scroll-up,
+.occasion-card.scroll-up {
+  transform: translateY(-32px) translateZ(0);
+}
+
+.reveal.visible,
+.cake-card.visible,
+.reel-card.visible,
+.occasion-card.visible {
   opacity: 1;
   transform: translateY(0) translateZ(0);
 }
@@ -905,6 +915,38 @@ ul {
 
   100% {
     background-position: 200% center;
+  }
+}
+
+/* Rose Pink Lightening Text Animation (Zero to Med to Zero Level Cycle) */
+.text-rose-glow {
+  font-family: var(--font-heading);
+  font-style: italic;
+  display: inline-block;
+  color: #E01E5A;
+  background: linear-gradient(135deg, #E01E5A 0%, #FF5A79 50%, #C1121F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rose-lighting-pulse 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: filter, transform;
+}
+
+@keyframes rose-lighting-pulse {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(224, 30, 90, 0));
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(255, 90, 121, 0.85)) drop-shadow(0 0 32px rgba(224, 30, 90, 0.5));
+    transform: scale(1.025);
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(224, 30, 90, 0));
+    transform: scale(1);
+    opacity: 0.92;
   }
 }
 
