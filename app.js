@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.9★', orders: '33 Google Reviews' }
   ];
 
-  // ===== DYNAMIC GETTERS (PRIORITIZES CENTRAL DATA.JS) =====
+  // ===== DYNAMIC GETTERS (Priority: Supabase cloud -> data.js -> localStorage -> defaults) =====
   function getDynamicProducts() {
     if (window.CAKELOVER_DATA && Array.isArray(window.CAKELOVER_DATA.products) && window.CAKELOVER_DATA.products.length > 0) {
       return window.CAKELOVER_DATA.products.filter(p => p.active !== false);
@@ -137,11 +137,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // State
+  // ===== SUPABASE BACKGROUND REFRESH =====
+  // Loads latest config from Supabase cloud and re-renders the page if data was updated.
+  async function tryLoadFromSupabase() {
+    if (!window.SupabaseDB) return false;
+    try {
+      const cloudData = await SupabaseDB.loadConfig();
+      if (cloudData && (cloudData.products || cloudData.categories)) {
+        window.CAKELOVER_DATA = cloudData;
+        if (cloudData.products) localStorage.setItem('cakelover_products', JSON.stringify(cloudData.products));
+        if (cloudData.categories) localStorage.setItem('cakelover_categories', JSON.stringify(cloudData.categories));
+        if (cloudData.heroSlides) localStorage.setItem('cakelover_hero_slides', JSON.stringify(cloudData.heroSlides));
+        if (cloudData.marqueeItems) localStorage.setItem('cakelover_marquee_items', JSON.stringify(cloudData.marqueeItems));
+        if (cloudData.brandStory) localStorage.setItem('cakelover_brand_story', JSON.stringify(cloudData.brandStory));
+        if (cloudData.reels) localStorage.setItem('cakelover_reels', JSON.stringify(cloudData.reels));
+        console.log('[App] Loaded latest data from Supabase cloud.');
+        return true;
+      }
+    } catch (e) {
+      console.warn('[App] Supabase unavailable, using local data.', e);
+    }
+    return false;
+  }
+
+  // State - initial render uses data.js / localStorage
   let products = getDynamicProducts();
   const productsGrid = document.getElementById('products-grid');
   const searchInput = document.getElementById('search-input');
   const searchSuggestions = document.getElementById('search-suggestions');
+
 
   // ===== RENDER PRODUCTS GRID =====
   function renderProducts(items) {
@@ -558,6 +582,21 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initHeroCarousel();
   initTimer();
+
+  // ===== SUPABASE BACKGROUND REFRESH =====
+  // After initial paint (from data.js/localStorage), fetch the latest cloud data
+  // and silently re-render if Supabase has newer content.
+  tryLoadFromSupabase().then(loaded => {
+    if (loaded) {
+      products = getDynamicProducts();
+      renderProducts(products);
+      renderDynamicCategoryBar();
+      initHeroCarousel();
+      renderDynamicMarqueeTrack();
+      renderDynamicBrandStory();
+      renderDynamicReelsRow();
+    }
+  });
 });
 
 // ===== HAMBURGER MENU =====

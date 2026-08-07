@@ -1315,8 +1315,11 @@ ul {
 .filter-bar-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   padding-bottom: 6px;
+  margin-top: 24px;
   margin-bottom: 34px;
+  scrollbar-width: thin;
 }
 
 .filter-bar-wrap::-webkit-scrollbar {
@@ -1330,10 +1333,12 @@ ul {
 
 .filter-bar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: wrap;
   white-space: nowrap;
+  width: max-content;
+  min-width: 100%;
 }
 
 .filter-btn {
@@ -3288,4 +3293,179 @@ border-color: var(--clr-dark);
   .offer-sub-text {
     font-size: 0.62rem;
   }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES — Replacing inline styles for clean, professional HTML
+   ========================================================================== */
+
+/* ── Hero floating pill text block ── */
+.pill-text-block {
+  display: flex;
+  flex-direction: column;
+  color: #1A1A1A;
+  line-height: 1.2;
+}
+
+.pill-rating {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.pill-label {
+  font-size: 0.78rem;
+  color: #444;
+  font-weight: 600;
+}
+
+.pill-sub {
+  font-size: 0.72rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ── Store branch CTA button stack ── */
+.store-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.store-cta-group .btn-wa {
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.btn-wa-accent {
+  background: var(--clr-accent) !important;
+}
+
+.btn-wa-maps {
+  background: #4285F4 !important;
+  color: white !important;
+}
+
+.btn-google-reviews {
+  background: #4285F4;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  font-size: 0.88rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-google-reviews:hover {
+  background: #2a6fdc;
+  transform: translateY(-1px);
+}
+
+/* ── Testimonial author block ── */
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Testimonial CTA wrapper ── */
+.testimonial-cta-wrap {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Newsletter typography (without inline style) ── */
+.newsletter-title {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  color: var(--clr-dark);
+  margin: 10px 0 8px;
+  line-height: 1.2;
+}
+
+.newsletter-desc {
+  font-size: 0.9rem;
+  color: var(--clr-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ── Newsletter form — responsive ── */
+@media (max-width: 520px) {
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .newsletter-title {
+    font-size: 1.55rem;
+  }
+}
+
+/* ── Trust strip — better mobile spacing ── */
+@media (max-width: 600px) {
+  .trust-inner {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .trust-item {
+    font-size: 0.78rem;
+  }
+}
+
+/* ── Filter bar — horizontal scroll with snap on mobile ── */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-wrap: nowrap;
+    width: max-content;
+    scroll-snap-type: x mandatory;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
+/* ── Pincode row — responsive ── */
+@media (max-width: 480px) {
+  .pincode-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pincode-row input,
+  .pincode-row button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .store-cta-group {
+    gap: 8px;
+  }
+}
+
+/* ── Footer — safe area bottom ── */
+.site-footer {
+  padding-bottom: calc(28px + env(safe-area-inset-bottom));
+}
+
+/* ── Float WhatsApp button — safe area ── */
+.float-wa {
+  bottom: calc(24px + env(safe-area-inset-bottom));
 }

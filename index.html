@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#E8202A">
   <title>Cake Lover | Handcrafted Luxury Cakes — Namakkal &amp; Salem</title>
   <meta name="description" content="Explore handcrafted cakes from Cake Lover in Namakkal &amp; Salem. Signature chocolate, red velvet, and exotic cakes. Buy 1kg get ½kg free.">
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -135,11 +136,18 @@
           <!-- Floating pills -->
           <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer" class="hero-float-pill pill-top">
             <div class="pill-icon gold"><i class="fa-brands fa-google"></i></div>
-            <div style="color:#1A1A1A; font-weight:600; line-height:1.2;"><strong style="color:#1A1A1A; font-size:0.85rem;" id="hero-rating-val">4.95+★</strong> <span style="color:#333;">Rating</span><br><small style="color:#666666; font-size:0.72rem;" id="hero-orders-val">33 Google Reviews</small></div>
+            <div class="pill-text-block">
+              <strong class="pill-rating" id="hero-rating-val">4.95+★</strong>
+              <span class="pill-label">Rating</span>
+              <small class="pill-sub" id="hero-orders-val">33 Google Reviews</small>
+            </div>
           </a>
           <div class="hero-float-pill pill-bottom">
             <div class="pill-icon green"><i class="fa-solid fa-truck-fast"></i></div>
-            <div style="color:#1A1A1A; font-weight:600; line-height:1.2;"><strong style="color:#1A1A1A; font-size:0.85rem;">Express Delivery</strong><br><small style="color:#666666; font-size:0.72rem;">Same day available</small></div>
+            <div class="pill-text-block">
+              <strong class="pill-rating">Express Delivery</strong>
+              <small class="pill-sub">Same day available</small>
+            </div>
           </div>
         </div>
 
@@ -258,8 +266,8 @@
         <p class="sec-desc">All baked fresh. Just WhatsApp us and your cake is on the way.</p>
       </div>
 
-      <div class="filter-bar-wrap" style="margin-top:24px;">
-        <div class="filter-bar">
+      <div class="filter-bar-wrap">
+        <div class="filter-bar" role="group" aria-label="Filter cakes by category">
           <button class="filter-btn active" data-filter="all" aria-pressed="true">All (50)</button>
           <button class="filter-btn" data-filter="caramel-nut" aria-pressed="false">Caramel Nut</button>
           <button class="filter-btn" data-filter="flavored" aria-pressed="false">Flavored</button>
@@ -405,9 +413,9 @@
           <h4>Namakkal Branch</h4>
           <p>No 110/115, Mariyamman Kovil West Street,<br>Thillaipuram, Namakkal, Tamil Nadu — 637001</p>
           <p class="store-status open"><i class="fa-solid fa-circle"></i> Open Daily (Closes 11 PM)</p>
-          <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px;">
-            <a href="tel:+919159158325" class="btn-wa" style="background:var(--clr-accent); justify-content:center;"><i class="fa-solid fa-phone"></i> 091591 58325</a>
-            <a href="https://www.google.com/maps/place/Cake+Lover,+mpty+ward-1,+No+110%2F115mariyamman+Kovil,+west+Street,+Thillaipuram,+Namakkal,+Tamil+Nadu+641037/data=!4m2!3m1!1s0x3babcf495242bc67:0xc156fa8b8fe9ed79!18m1!1e1" target="_blank" rel="noopener noreferrer" class="btn-wa" style="background:#4285F4; justify-content:center; text-decoration:none;"><i class="fa-solid fa-location-arrow"></i> Directions on Google Maps</a>
+          <div class="store-cta-group">
+            <a href="tel:+919159158325" class="btn-wa btn-wa-accent"><i class="fa-solid fa-phone"></i> 091591 58325</a>
+            <a href="https://www.google.com/maps/place/Cake+Lover,+mpty+ward-1,+No+110%2F115mariyamman+Kovil,+west+Street,+Thillaipuram,+Namakkal,+Tamil+Nadu+641037/data=!4m2!3m1!1s0x3babcf495242bc67:0xc156fa8b8fe9ed79!18m1!1e1" target="_blank" rel="noopener noreferrer" class="btn-wa btn-wa-maps"><i class="fa-solid fa-location-arrow"></i> Directions on Google Maps</a>
           </div>
         </div>
         <div class="store-card reveal" style="--i:1">
@@ -449,33 +457,42 @@
         <span class="sec-label">Customer Reviews</span>
         <h2 class="sec-title">What our customers say</h2>
         <p class="sec-desc">These are real messages from people in Namakkal and Salem. We didn't make them up!</p>
-        <div style="margin-top:16px;">
-          <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer" class="btn-wa" style="background:#4285F4; color:white; display:inline-flex; align-items:center; gap:8px; padding:10px 22px; font-size:0.88rem; border-radius:var(--radius-full); text-decoration:none;"><i class="fa-brands fa-google"></i> View Google Rating &amp; Reviews</a>
+        <div class="testimonial-cta-wrap">
+          <a href="https://www.google.com/search?kgmid=%2Fg%2F11yp0jlg2m&hl=en-IN&q=Cake%20Lover&shem=epsd1%2Cltae%2Crimspwouoe&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm1%2F4&kgs=9a951f7b957d338a" target="_blank" rel="noopener noreferrer" class="btn-wa btn-google-reviews"><i class="fa-brands fa-google"></i> View Google Rating &amp; Reviews</a>
         </div>
       </div>
       <div class="testimonials-grid" style="margin-top:28px;">
         <div class="testimonial-card reveal" style="--i:0">
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-text">"Ordered for my daughter's birthday. Everyone kept asking which bakery it came from. The cream was fresh, not that artificial stuff. Already planning to order again for her half-year birthday!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">P</div>
-            <div><div class="testimonial-name">Priya Shankar</div><div class="testimonial-loc">Namakkal</div></div>
+            <div class="testimonial-avatar" aria-hidden="true">P</div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-name">Priya Shankar</div>
+              <div class="testimonial-loc">Namakkal</div>
+            </div>
           </div>
         </div>
         <div class="testimonial-card reveal" style="--i:1">
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-text">"Tried the Dark Chocolate cake for our anniversary. Honestly it was better than anything we've had in Chennai. My husband finished two slices before I even got one. Thank you Cake Lover!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">D</div>
-            <div><div class="testimonial-name">Deepa Raghavan</div><div class="testimonial-loc">Salem</div></div>
+            <div class="testimonial-avatar" aria-hidden="true">D</div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-name">Deepa Raghavan</div>
+              <div class="testimonial-loc">Salem</div>
+            </div>
           </div>
         </div>
         <div class="testimonial-card reveal" style="--i:2">
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-text">"Got the Butterscotch Crunch for an office celebration. 20 people, all finished. Someone thought I bought it from a 5-star hotel. Delivery was right on time too. The 1+½kg free offer is just too good."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">K</div>
-            <div><div class="testimonial-name">Karthik Murali</div><div class="testimonial-loc">Namakkal</div></div>
+            <div class="testimonial-avatar" aria-hidden="true">K</div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-name">Karthik Murali</div>
+              <div class="testimonial-loc">Namakkal</div>
+            </div>
           </div>
         </div>
       </div>
@@ -487,8 +504,8 @@
     <div class="container">
       <div class="newsletter-box reveal">
         <span class="sec-label">Don't miss out</span>
-        <h2 class="sec-title" style="font-size:1.8rem;">Get offers before anyone else</h2>
-        <p class="sec-desc" style="margin-bottom:0;">New cakes, festival deals, and special discounts — straight to your inbox.</p>
+        <h2 class="newsletter-title">Get offers before anyone else</h2>
+        <p class="newsletter-desc">New cakes, festival deals, and special discounts — straight to your inbox.</p>
         <form class="newsletter-form" onsubmit="handleNewsletter(event)">
           <input type="email" required placeholder="Enter your email" aria-label="Email address for newsletter">
           <button type="submit" id="newsletter-btn">Subscribe</button>
@@ -555,6 +572,7 @@
     <a href="https://wa.me/919159158325" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 
+  <script src="supabase.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

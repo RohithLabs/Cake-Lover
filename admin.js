@@ -149,8 +149,37 @@ let reelsList = [];
 
 const bc = window.BroadcastChannel ? new BroadcastChannel('cakelover_updates') : null;
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   checkAuth();
+
+  // Show a brief loading state
+  const adminContent = document.getElementById('admin-content');
+  if (adminContent) adminContent.style.opacity = '0.5';
+
+  // Try to load from Supabase first
+  let loadedFromCloud = false;
+  if (window.SupabaseDB) {
+    try {
+      const cloudData = await SupabaseDB.loadConfig();
+      if (cloudData && (cloudData.products || cloudData.categories)) {
+        // Merge cloud data into window.CAKELOVER_DATA and localStorage
+        window.CAKELOVER_DATA = cloudData;
+        localStorage.setItem('cakelover_products', JSON.stringify(cloudData.products || []));
+        localStorage.setItem('cakelover_categories', JSON.stringify(cloudData.categories || []));
+        localStorage.setItem('cakelover_hero_slides', JSON.stringify(cloudData.heroSlides || []));
+        localStorage.setItem('cakelover_marquee_items', JSON.stringify(cloudData.marqueeItems || []));
+        localStorage.setItem('cakelover_brand_story', JSON.stringify(cloudData.brandStory || {}));
+        localStorage.setItem('cakelover_reels', JSON.stringify(cloudData.reels || []));
+        loadedFromCloud = true;
+        console.log('[Admin] Data loaded from Supabase.');
+      }
+    } catch (e) {
+      console.warn('[Admin] Supabase load failed, using local data:', e);
+    }
+  }
+
+  if (adminContent) adminContent.style.opacity = '1';
+
   loadCategories();
   loadProducts();
   loadHeroSlides();
@@ -1004,7 +1033,7 @@ function importDataJSON(e) {
   reader.readAsText(file);
 }
 
-// ===== REAL-TIME CENTRAL SERVER SYNC =====
+// ===== REAL-TIME CENTRAL SYNC (Supabase + localStorage + Server) =====
 function syncLiveDataToServer(msg) {
   const fullPayload = {
     categories: categoriesList,
@@ -1015,16 +1044,38 @@ function syncLiveDataToServer(msg) {
     reels: reelsList
   };
 
+  // 1. Update in-memory global
   window.CAKELOVER_DATA = fullPayload;
 
+  // 2. Save to localStorage (instant local cache)
+  localStorage.setItem('cakelover_products', JSON.stringify(productsList));
+  localStorage.setItem('cakelover_categories', JSON.stringify(categoriesList));
+  localStorage.setItem('cakelover_hero_slides', JSON.stringify(heroSlidesList));
+  localStorage.setItem('cakelover_marquee_items', JSON.stringify(marqueeList));
+  localStorage.setItem('cakelover_brand_story', JSON.stringify(brandStoryData));
+  localStorage.setItem('cakelover_reels', JSON.stringify(reelsList));
+
+  // 3. Save to Supabase (cloud persistence — primary source of truth)
+  if (window.SupabaseDB) {
+    SupabaseDB.saveConfig(fullPayload).then(result => {
+      if (result.success) {
+        if (msg) showToast('☁️ ' + msg);
+      } else {
+        console.warn('[Admin] Supabase save failed, data saved locally only.', result.error);
+        if (msg) showToast(msg + ' (local only)');
+      }
+    });
+  } else {
+    if (msg) showToast(msg);
+  }
+
+  // 4. Legacy: also try to save to server.js if running locally
   fetch('/api/save-data', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(fullPayload)
-  }).then(res => res.json()).then(data => {
-    if (msg) showToast(msg);
   }).catch(() => {
-    if (msg) showToast(msg);
+    // Silent fail — server may not be running in production
   });
 }
 
