@@ -1265,7 +1265,7 @@ window.CAKELOVER_DATA = {
       "basePrice": 1899,
       "originalPrice": 2499,
       "offerText": "Customized to order",
-      "rating": 4.99,
+      "rating": 4.9,
       "img": "./ai cakes/ai cakes/Gemini_Generated_Image_wdm15wwdm15wwdm1.png",
       "desc": "Bespoke 3-tier golden marble geode cake with edible crystal quartz.",
       "active": true
@@ -1276,91 +1276,91 @@ window.CAKELOVER_DATA = {
       "name": "Choco Scotch Cake",
       "img": "./cakes/cakes/caramel chocolate.jfif",
       "rating": "4.8★",
-      "orders": "33 Google Reviews"
+      "orders": "28 Google Reviews"
     },
     {
       "name": "Red Scotch Cake",
       "img": "./cakes/cakes/Red velvet Cake .jfif",
       "rating": "4.9★",
-      "orders": "33 Google Reviews"
+      "orders": "45 Google Reviews"
     },
     {
       "name": "Ferro Scotch Cake",
       "img": "./cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif",
-      "rating": "4.95★",
-      "orders": "33 Google Reviews"
+      "rating": "4.85★",
+      "orders": "32 Google Reviews"
     },
     {
       "name": "Rasmalai Scotch Cake",
       "img": "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif",
       "rating": "4.85★",
-      "orders": "33 Google Reviews"
+      "orders": "19 Google Reviews"
     },
     {
       "name": "Black Forest Cake",
       "img": "./cakes/cakes/Black forest cake recipe.jfif",
       "rating": "4.8★",
-      "orders": "33 Google Reviews"
+      "orders": "41 Google Reviews"
     },
     {
       "name": "Strawberry Delight",
       "img": "./cakes/cakes/cakestrawberry.jfif",
       "rating": "4.8★",
-      "orders": "33 Google Reviews"
+      "orders": "26 Google Reviews"
     },
     {
       "name": "Ritch Choco KitKat Cake",
       "img": "./cakes/cakes/download (5).jfif",
-      "rating": "4.95★",
-      "orders": "33 Google Reviews"
+      "rating": "4.9★",
+      "orders": "48 Google Reviews"
     },
     {
       "name": "Mango Premium Cake",
       "img": "./cakes/cakes/Mango Chiffon Cake.jfif",
       "rating": "4.9★",
-      "orders": "33 Google Reviews"
+      "orders": "37 Google Reviews"
     },
     {
       "name": "White Forest Cake",
       "img": "./cakes/cakes/White Forest Cake.jfif",
       "rating": "4.8★",
-      "orders": "33 Google Reviews"
+      "orders": "22 Google Reviews"
     },
     {
       "name": "Pineapple Cake",
       "img": "./cakes/cakes/Dole Whip Cake.jfif",
       "rating": "4.7★",
-      "orders": "33 Google Reviews"
+      "orders": "15 Google Reviews"
     },
     {
       "name": "Butterscotch Cake",
       "img": "./cakes2/cakes2/butterscotch.jfif",
       "rating": "4.7★",
-      "orders": "33 Google Reviews"
+      "orders": "34 Google Reviews"
     },
     {
       "name": "Blueberry Cake",
       "img": "./cakes2/cakes2/Blueberry Cake.jfif",
       "rating": "4.9★",
-      "orders": "33 Google Reviews"
+      "orders": "50 Google Reviews"
     },
     {
       "name": "Rasmalai Fusion",
       "img": "./cakes2/cakes2/rasmalai cake.jfif",
-      "rating": "4.95★",
-      "orders": "33 Google Reviews"
+      "rating": "4.85★",
+      "orders": "43 Google Reviews"
     },
     {
       "name": "Red Velvet Premium Cake",
       "img": "./cakes2/cakes2/Red Velvet White Chocolate.jfif",
-      "rating": "4.95★",
-      "orders": "33 Google Reviews"
+      "rating": "4.9★",
+      "orders": "29 Google Reviews"
     },
     {
       "name": "Tender Coconut Delight",
       "img": "./cakes2/cakes2/Dream cake.jfif",
       "rating": "4.9★",
-      "orders": "33 Google Reviews"
+      "orders": "38 Google Reviews"
     }
   ],
   "marqueeItems": [

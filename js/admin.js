@@ -1307,21 +1307,21 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const DEFAULT_HERO_SLIDES = [
-  { name: 'Choco Scotch Cake', img: './cakes/cakes/caramel chocolate.jfif', rating: '4.8★', orders: '33 Google Reviews' },
-  { name: 'Red Scotch Cake', img: './cakes/cakes/Red velvet Cake .jfif', rating: '4.9★', orders: '33 Google Reviews' },
-  { name: 'Ferro Scotch Cake', img: './cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif', rating: '4.95★', orders: '33 Google Reviews' },
-  { name: 'Rasmalai Scotch Cake', img: "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", rating: '4.85★', orders: '33 Google Reviews' },
-  { name: 'Black Forest Cake', img: './cakes/cakes/Black forest cake recipe.jfif', rating: '4.8★', orders: '33 Google Reviews' },
-  { name: 'Strawberry Delight', img: './cakes/cakes/cakestrawberry.jfif', rating: '4.8★', orders: '33 Google Reviews' },
-  { name: 'Ritch Choco KitKat Cake', img: './cakes/cakes/download (5).jfif', rating: '4.95★', orders: '33 Google Reviews' },
-  { name: 'Mango Premium Cake', img: './cakes/cakes/Mango Chiffon Cake.jfif', rating: '4.9★', orders: '33 Google Reviews' },
-  { name: 'White Forest Cake', img: './cakes/cakes/White Forest Cake.jfif', rating: '4.8★', orders: '33 Google Reviews' },
-  { name: 'Pineapple Cake', img: './cakes/cakes/Dole Whip Cake.jfif', rating: '4.7★', orders: '33 Google Reviews' },
-  { name: 'Butterscotch Cake', img: './cakes2/cakes2/butterscotch.jfif', rating: '4.7★', orders: '33 Google Reviews' },
-  { name: 'Blueberry Cake', img: './cakes2/cakes2/Blueberry Cake.jfif', rating: '4.9★', orders: '33 Google Reviews' },
-  { name: 'Rasmalai Fusion', img: './cakes2/cakes2/rasmalai cake.jfif', rating: '4.95★', orders: '33 Google Reviews' },
-  { name: 'Red Velvet Premium Cake', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif', rating: '4.95★', orders: '33 Google Reviews' },
-  { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.9★', orders: '33 Google Reviews' }
+  { name: 'Choco Scotch Cake', img: './cakes/cakes/caramel chocolate.jfif', rating: '4.8★', orders: '28 Google Reviews' },
+  { name: 'Red Scotch Cake', img: './cakes/cakes/Red velvet Cake .jfif', rating: '4.9★', orders: '45 Google Reviews' },
+  { name: 'Ferro Scotch Cake', img: './cakes/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif', rating: '4.85★', orders: '32 Google Reviews' },
+  { name: 'Rasmalai Scotch Cake', img: "./cakes/cakes/Crissie's Homemade _ Colorado Springs CO.jfif", rating: '4.85★', orders: '19 Google Reviews' },
+  { name: 'Black Forest Cake', img: './cakes/cakes/Black forest cake recipe.jfif', rating: '4.8★', orders: '41 Google Reviews' },
+  { name: 'Strawberry Delight', img: './cakes/cakes/cakestrawberry.jfif', rating: '4.8★', orders: '26 Google Reviews' },
+  { name: 'Ritch Choco KitKat Cake', img: './cakes/cakes/download (5).jfif', rating: '4.9★', orders: '48 Google Reviews' },
+  { name: 'Mango Premium Cake', img: './cakes/cakes/Mango Chiffon Cake.jfif', rating: '4.9★', orders: '37 Google Reviews' },
+  { name: 'White Forest Cake', img: './cakes/cakes/White Forest Cake.jfif', rating: '4.8★', orders: '22 Google Reviews' },
+  { name: 'Pineapple Cake', img: './cakes/cakes/Dole Whip Cake.jfif', rating: '4.7★', orders: '15 Google Reviews' },
+  { name: 'Butterscotch Cake', img: './cakes2/cakes2/butterscotch.jfif', rating: '4.7★', orders: '34 Google Reviews' },
+  { name: 'Blueberry Cake', img: './cakes2/cakes2/Blueberry Cake.jfif', rating: '4.9★', orders: '50 Google Reviews' },
+  { name: 'Rasmalai Fusion', img: './cakes2/cakes2/rasmalai cake.jfif', rating: '4.85★', orders: '43 Google Reviews' },
+  { name: 'Red Velvet Premium Cake', img: './cakes2/cakes2/Red Velvet White Chocolate.jfif', rating: '4.9★', orders: '29 Google Reviews' },
+  { name: 'Tender Coconut Delight', img: './cakes2/cakes2/Dream cake.jfif', rating: '4.9★', orders: '38 Google Reviews' }
 ];
 
 const DEFAULT_MARQUEE_ITEMS = [
@@ -1697,6 +1697,12 @@ function loadProducts() {
   } else {
     productsList = [...DEFAULT_PRODUCTS];
   }
+  productsList = productsList.map(p => {
+    let rating = Number(p.rating) || 4.8;
+    if (rating > 4.9) rating = 4.9;
+    if (rating < 4.6) rating = 4.6;
+    return { ...p, rating, tag: p.tag || '1 kg + ½ kg FREE' };
+  });
   renderCategoryDropdowns();
   renderAdminTable(productsList);
   updateStats();
@@ -1827,6 +1833,8 @@ function openCakeModal(cakeId = null) {
     }
   } else {
     title.innerHTML = `<i class="fa-solid fa-plus-circle"></i> Add New Cake`;
+    document.getElementById('cake-tag').value = '1 kg + ½ kg FREE';
+    document.getElementById('cake-rating').value = 4.8;
   }
   modal.classList.add('open');
 }
@@ -1841,7 +1849,9 @@ function saveCake(e) {
   const tag = document.getElementById('cake-tag').value.trim();
   const basePrice = Number(document.getElementById('cake-price').value);
   const originalPrice = document.getElementById('cake-original-price').value ? Number(document.getElementById('cake-original-price').value) : (basePrice + 400);
-  const rating = Number(document.getElementById('cake-rating').value) || 4.8;
+  let rating = Number(document.getElementById('cake-rating').value) || 4.8;
+  if (rating > 4.9) rating = 4.9;
+  if (rating < 4.6) rating = 4.6;
   const active = document.getElementById('cake-active').value === 'true';
   const desc = document.getElementById('cake-desc').value.trim();
   const imgUrlInput = document.getElementById('cake-img-url');
@@ -1850,14 +1860,16 @@ function saveCake(e) {
 
   if (!name || !basePrice) { alert('Please fill in Cake Name and Price'); return; }
 
+  const effectiveTag = tag || '1 kg + ½ kg FREE';
+
   if (idInput) {
     const index = productsList.findIndex(p => p.id === Number(idInput));
     if (index !== -1) {
-      productsList[index] = { ...productsList[index], name, category, tag, basePrice, originalPrice, rating, active, desc, img: imgUrl, filePath: filePath || productsList[index].filePath };
+      productsList[index] = { ...productsList[index], name, category, tag: effectiveTag, basePrice, originalPrice, rating, active, desc, img: imgUrl, filePath: filePath || productsList[index].filePath };
     }
   } else {
     const newId = productsList.length > 0 ? Math.max(...productsList.map(p => p.id)) + 1 : 1;
-    productsList.unshift({ id: newId, name, category, tag: tag || '1 kg + ½ kg FREE', basePrice, originalPrice, offerText: tag || 'Buy 1kg get ½kg free', rating, active, desc, img: imgUrl, filePath });
+    productsList.unshift({ id: newId, name, category, tag: effectiveTag, basePrice, originalPrice, offerText: effectiveTag, rating, active, desc, img: imgUrl, filePath });
   }
 
   saveProductsToStorage(true);
@@ -1929,35 +1941,51 @@ function loadHeroSlides() {
     heroSlidesList = [...DEFAULT_HERO_SLIDES];
     saveHeroSlidesToStorage(false);
   }
-  renderHeroTable();
+  renderHeroSlidesTable();
 }
 
 function saveHeroSlidesToStorage(notify = true) {
   localStorage.setItem(STORAGE_HERO_KEY, JSON.stringify(heroSlidesList));
   if (bc) bc.postMessage('hero_updated');
-  renderHeroTable();
+  renderHeroSlidesTable();
   if (notify) showToast('Hero Slides updated live!');
 }
 
 function renderHeroTable() {
-  const countEl = document.getElementById('count-hero');
-  if (countEl) countEl.textContent = heroSlidesList.length;
+  renderHeroSlidesTable();
+}
 
-  const tbody = document.getElementById('admin-hero-rows');
+function renderHeroSlidesTable() {
+  const tbody = document.getElementById('hero-slide-rows');
   if (!tbody) return;
   tbody.innerHTML = '';
+
   if (heroSlidesList.length === 0) {
     tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#888;">No hero slides. Click "Add New Hero Slide".</td></tr>`;
     return;
   }
 
+  const presetReviews = [28, 45, 32, 19, 41, 26, 48, 37, 22, 15, 34, 50, 43, 29, 38];
+
   heroSlidesList.forEach((slide, idx) => {
+    let ratingStr = slide.rating || '4.8★';
+    const numR = parseFloat(ratingStr);
+    if (!isNaN(numR) && numR > 4.9) {
+      ratingStr = '4.9★';
+      slide.rating = ratingStr;
+    }
+    let ordersStr = slide.orders;
+    if (!ordersStr || ordersStr === '33 Google Reviews') {
+      const count = presetReviews[idx % presetReviews.length] || (((idx * 7 + 13) % 41) + 10);
+      ordersStr = `${count} Google Reviews`;
+      slide.orders = ordersStr;
+    }
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><img src="${slide.img}" alt="${escapeHtml(slide.name)}" class="cake-thumb"></td>
       <td><strong>${escapeHtml(slide.name)}</strong></td>
-      <td><span class="cat-badge" style="background:#FFF0F2; color:var(--logo-red);">${escapeHtml(slide.rating || '4.9★')}</span></td>
-      <td><span style="font-size:0.8rem; color:#555;">${escapeHtml(slide.orders || '33 Google Reviews')}</span></td>
+      <td><span class="cat-badge" style="background:#FFF0F2; color:var(--logo-red);">${escapeHtml(ratingStr)}</span></td>
+      <td><span style="font-size:0.8rem; color:#555;">${escapeHtml(ordersStr)}</span></td>
       <td style="text-align:center;">
         <div class="action-btn-group">
           <button class="btn-table-action edit" onclick="editHeroSlide(${idx})"><i class="fa-solid fa-pen"></i></button>
@@ -1981,13 +2009,15 @@ function openHeroSlideModal(idx = null) {
       document.getElementById('hero-modal-title').innerHTML = `<i class="fa-solid fa-pen-to-square"></i> Edit Hero Slide #${idx + 1}`;
       document.getElementById('hero-slide-index').value = idx;
       document.getElementById('hero-slide-name-input').value = item.name;
-      document.getElementById('hero-slide-rating-input').value = item.rating || '4.9★';
-      document.getElementById('hero-slide-orders-input').value = item.orders || '33 Google Reviews';
+      document.getElementById('hero-slide-rating-input').value = item.rating || '4.8★';
+      document.getElementById('hero-slide-orders-input').value = item.orders || `${Math.floor(Math.random() * 41) + 10} Google Reviews`;
       document.getElementById('hero-img-url').value = item.img;
       document.getElementById('hero-img-prev').src = item.img;
     }
   } else {
     document.getElementById('hero-modal-title').innerHTML = `<i class="fa-solid fa-plus-circle"></i> Add New Hero Slide`;
+    document.getElementById('hero-slide-rating-input').value = '4.8★';
+    document.getElementById('hero-slide-orders-input').value = `${Math.floor(Math.random() * 41) + 10} Google Reviews`;
   }
   modal.classList.add('open');
 }
@@ -2026,8 +2056,16 @@ function saveHeroSlide(e) {
   e.preventDefault();
   const idxVal = document.getElementById('hero-slide-index').value;
   const name = document.getElementById('hero-slide-name-input').value.trim();
-  const rating = document.getElementById('hero-slide-rating-input').value.trim() || '4.9★';
-  const orders = document.getElementById('hero-slide-orders-input').value.trim() || '33 Google Reviews';
+  let rating = document.getElementById('hero-slide-rating-input').value.trim() || '4.8★';
+  const numR = parseFloat(rating);
+  if (!isNaN(numR)) {
+    if (numR > 4.9) rating = '4.9★';
+    else if (numR < 4.6) rating = '4.6★';
+  }
+  let orders = document.getElementById('hero-slide-orders-input').value.trim();
+  if (!orders || orders === '33 Google Reviews') {
+    orders = `${Math.floor(Math.random() * 41) + 10} Google Reviews`;
+  }
   const imgUrlInput = document.getElementById('hero-img-url');
   const img = imgUrlInput.value.trim() || document.getElementById('hero-img-prev').src;
   const filePath = imgUrlInput.dataset.filePath || null;
