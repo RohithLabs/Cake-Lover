@@ -622,7 +622,7 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   border-radius: 12px;
   font-weight: 700;
   font-size: 0.82rem;
@@ -632,9 +632,9 @@
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
-  flex-shrink: 0;
+  flex: 1 1 0px;
+  min-width: 82px;
   scroll-snap-align: start;
-  min-width: 72px;
 }
 
 .admin-tab-btn i {
@@ -1094,15 +1094,15 @@
     gap: 6px;
   }
 
-  .btn-admin-success span,
-  .btn-admin-secondary span,
-  .btn-admin-outline-danger span {
+  .admin-toolbar .btn-admin-success span,
+  .admin-toolbar .btn-admin-secondary span,
+  .admin-toolbar .btn-admin-outline-danger span {
     display: none;
   }
 
-  .btn-admin-success,
-  .btn-admin-secondary,
-  .btn-admin-outline-danger {
+  .admin-toolbar .btn-admin-success,
+  .admin-toolbar .btn-admin-secondary,
+  .admin-toolbar .btn-admin-outline-danger {
     padding: 10px;
     justify-content: center;
     flex: 0 0 auto;
@@ -1186,25 +1186,25 @@
    ========================================================================== */
 @media (max-width: 768px) {
   .admin-navbar {
-    padding: 12px 14px !important;
+    padding: 10px 14px !important;
   }
   .admin-nav-inner {
-    flex-direction: column !important;
-    gap: 12px !important;
-    align-items: stretch !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
   .admin-brand {
-    justify-content: center !important;
+    justify-content: flex-start !important;
   }
-  .admin-top-actions {
-    justify-content: center !important;
-    width: 100% !important;
+  .admin-nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
-  .admin-top-actions .btn {
-    flex: 1 !important;
-    justify-content: center !important;
-    padding: 8px 12px !important;
-    font-size: 0.8rem !important;
+  .admin-nav-website-btn {
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
   }
   .admin-tabs-nav {
     display: flex !important;

@@ -1968,7 +1968,7 @@ function renderHeroTable() {
 }
 
 function renderHeroSlidesTable() {
-  const tbody = document.getElementById('hero-slide-rows');
+  const tbody = document.getElementById('admin-hero-rows') || document.getElementById('hero-slide-rows');
   if (!tbody) return;
   tbody.innerHTML = '';
 
