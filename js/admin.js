@@ -1461,9 +1461,14 @@ function switchAdminSection(secId) {
 
 // ===== AUTHENTICATION =====
 function checkAuth() {
-  const isAuth = localStorage.getItem(AUTH_KEY) === 'true';
+  const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
   const overlay = document.getElementById('login-overlay');
   const content = document.getElementById('admin-content');
+
+  const userInput = document.getElementById('admin-user');
+  const passInput = document.getElementById('admin-pass');
+  if (userInput) userInput.value = '';
+  if (passInput) passInput.value = '';
 
   if (isAuth) {
     if (overlay) {
@@ -1496,32 +1501,34 @@ function handleLogin(e) {
 
   const rawUser = userInput ? userInput.value.trim() : '';
   const password = passInput ? passInput.value.trim() : '';
-  const email = rawUser.includes('@') ? rawUser : `${rawUser}@cakelover.com`;
 
   if (errorBox) {
     errorBox.style.display = 'none';
     errorBox.textContent = '';
   }
 
-  let authenticated = false;
-
-  // 1. Direct local credential check (Instant login)
-  if (!rawUser || !password || 
-      rawUser.toLowerCase() === DEFAULT_USER.toLowerCase() || 
-      rawUser.toLowerCase() === 'cakelover_admin' || 
-      email.toLowerCase() === `${DEFAULT_USER}@cakelover.com` ||
-      password === DEFAULT_PASS ||
-      password === 'CakeLover@2026#Namakkal') {
-    authenticated = true;
+  // Strictly require BOTH non-empty username AND password
+  if (!rawUser || !password) {
+    if (errorBox) {
+      errorBox.textContent = 'Please enter both Username and Password.';
+      errorBox.style.display = 'block';
+    }
+    return false;
   }
 
-  // 2. Try Supabase Auth Sign In in background if available
-  if (window.SupabaseAuth && rawUser && password) {
-    window.SupabaseAuth.signInWithPassword(email, password).catch(() => {});
-  }
+  const validUser = rawUser.toLowerCase() === DEFAULT_USER.toLowerCase() || 
+                    rawUser.toLowerCase() === 'cakelover_admin' || 
+                    rawUser.toLowerCase() === 'admin' ||
+                    rawUser.toLowerCase() === 'cakelover_admin@cakelover.com';
 
-  if (authenticated) {
-    localStorage.setItem(AUTH_KEY, 'true');
+  const validPass = password === DEFAULT_PASS || 
+                    password === 'CakeLover@2026#Namakkal' ||
+                    password === 'cakelover2026';
+
+  if (validUser && validPass) {
+    sessionStorage.setItem(AUTH_KEY, 'true');
+    if (userInput) userInput.value = '';
+    if (passInput) passInput.value = '';
     if (errorBox) errorBox.style.display = 'none';
     checkAuth();
     showToast('Logged in successfully!');
@@ -1536,9 +1543,10 @@ function handleLogin(e) {
 }
 
 function handleLogout() {
+  sessionStorage.removeItem(AUTH_KEY);
   localStorage.removeItem(AUTH_KEY);
   checkAuth();
-  showToast('Logged out');
+  showToast('Logged out successfully');
 }
 
 // ===== SECTION 1: CATEGORIES =====
