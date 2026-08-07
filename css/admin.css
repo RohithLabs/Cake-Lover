@@ -1180,3 +1180,65 @@
     padding: 10px 8px;
   }
 }
+
+/* ==========================================================================
+   ADMIN PANEL MOBILE PERFECTION
+   ========================================================================== */
+@media (max-width: 768px) {
+  .admin-navbar {
+    padding: 12px 14px !important;
+  }
+  .admin-nav-inner {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .admin-brand {
+    justify-content: center !important;
+  }
+  .admin-top-actions {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .admin-top-actions .btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+  }
+  .admin-tabs-nav {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 6px 4px !important;
+    gap: 6px !important;
+  }
+  .admin-tab-btn {
+    flex-shrink: 0 !important;
+    padding: 8px 14px !important;
+    font-size: 0.82rem !important;
+  }
+  .admin-table-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .admin-table-controls .search-box,
+  .admin-table-controls select,
+  .admin-table-controls button {
+    width: 100% !important;
+  }
+  .table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 12px !important;
+  }
+  .modal-card {
+    width: 95% !important;
+    max-height: 92vh !important;
+    border-radius: 16px !important;
+  }
+  .modal-body {
+    padding: 16px !important;
+  }
+}
