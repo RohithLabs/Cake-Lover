@@ -1513,15 +1513,13 @@ ul {
   gap: 24px;
 }
 
-/* Product floating levitation animation */
-@keyframes cakeLevitate {
+/* Product image floating levitation animation (only the image div floats, keeping text/buttons solid) */
+@keyframes cakeImageFloat {
   0%, 100% {
     transform: translateY(0) scale(1) translateZ(0);
-    box-shadow: 0 8px 24px rgba(224, 30, 90, 0.07);
   }
   50% {
-    transform: translateY(-9px) scale(1.008) translateZ(0);
-    box-shadow: 0 18px 40px rgba(224, 30, 90, 0.16);
+    transform: translateY(-7px) scale(1.015) translateZ(0);
   }
 }
 
@@ -1532,29 +1530,37 @@ ul {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 24px rgba(224, 30, 90, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   opacity: 0;
   transform: translateY(20px) scale(0.98) translateZ(0);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s ease,
               border-color 0.3s ease;
-  will-change: transform, opacity, box-shadow;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
 .cake-card.visible {
   opacity: 1;
-  animation: cakeLevitate 4.5s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.5s + 0.2s);
+  transform: translateY(0) scale(1) translateZ(0);
+}
+
+.cake-card.visible .cake-img-wrap {
+  animation: cakeImageFloat 4.2s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.4s + 0.1s);
+  will-change: transform;
 }
 
 .cake-card:hover {
-  transform: translateY(-12px) scale(1.02) translateZ(0) !important;
-  box-shadow: 0 24px 52px rgba(224, 30, 90, 0.22) !important;
+  transform: translateY(-6px) translateZ(0);
+  box-shadow: 0 16px 40px rgba(224, 30, 90, 0.15);
+  border-color: rgba(224, 30, 90, 0.22);
+}
+
+.cake-card:hover .cake-img-wrap {
   animation-play-state: paused;
-  border-color: rgba(224, 30, 90, 0.28);
 }
 
 .cake-img-wrap {

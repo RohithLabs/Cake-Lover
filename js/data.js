@@ -213,7 +213,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 920,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.75,
-      "img": "./cakes2/cakes2/choconillla",
+      "img": "./cakes2/cakes2/choconillla.jfif",
       "desc": "Dual-flavored marble swirl of rich cocoa and pure vanilla.",
       "active": true
     },

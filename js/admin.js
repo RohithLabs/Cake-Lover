@@ -247,7 +247,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 920,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./cakes2/cakes2/choconillla",
+    "img": "./cakes2/cakes2/choconillla.jfif",
     "desc": "Dual-flavored marble swirl of rich cocoa and pure vanilla.",
     "active": true
   },
@@ -1686,11 +1686,11 @@ function loadProducts() {
     try {
       const parsed = JSON.parse(stored);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        const seenImgs = new Set();
+        const seenIds = new Set();
         const deduped = [];
         parsed.forEach(p => {
-          if (p && p.img && !seenImgs.has(p.img)) {
-            seenImgs.add(p.img);
+          if (p && p.id != null && !seenIds.has(p.id)) {
+            seenIds.add(p.id);
             deduped.push(p);
           }
         });
@@ -1707,7 +1707,7 @@ function loadProducts() {
   }
   productsList = productsList.map(p => {
     let rating = Number(p.rating) || 4.8;
-    if (rating > 4.9) rating = 4.9;
+    if (rating > 5.0) rating = 5.0;
     if (rating < 4.6) rating = 4.6;
     return { ...p, rating, tag: p.tag || '1 kg + ½ kg FREE' };
   });
@@ -1792,11 +1792,11 @@ function renderAdminTable(items) {
       <td><span class="offer-tag-badge">${escapeHtml(p.tag || p.offerText || 'Special Offer')}</span></td>
       <td><span class="price-tag">₹${p.basePrice}</span></td>
       <td><span class="original-price-tag">${p.originalPrice ? '₹' + p.originalPrice : '-'}</span></td>
-      <td><button class="status-badge ${isActive ? 'active' : 'hidden'}" onclick="toggleStatus(${p.id})"><i class="fa-solid ${isActive ? 'fa-check' : 'fa-eye-slash'}"></i> ${isActive ? 'Active' : 'Hidden'}</button></td>
+      <td><button class="status-badge ${isActive ? 'active' : 'hidden'}" onclick="toggleStatus('${p.id}')"><i class="fa-solid ${isActive ? 'fa-check' : 'fa-eye-slash'}"></i> ${isActive ? 'Active' : 'Hidden'}</button></td>
       <td>
         <div class="action-btn-group">
-          <button class="btn-table-action edit" onclick="editCake(${p.id})"><i class="fa-solid fa-pen"></i></button>
-          <button class="btn-table-action delete" onclick="deleteCake(${p.id})"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="btn-table-action edit" onclick="editCake('${p.id}')"><i class="fa-solid fa-pen"></i></button>
+          <button class="btn-table-action delete" onclick="deleteCake('${p.id}')"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       </td>
     `;
@@ -1824,7 +1824,7 @@ function openCakeModal(cakeId = null) {
   document.getElementById('img-preview').src = './cakes/cakes/caramel chocolate.jfif';
 
   if (cakeId) {
-    const item = productsList.find(p => p.id === cakeId);
+    const item = productsList.find(p => p.id == cakeId);
     if (item) {
       title.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> Edit: ${escapeHtml(item.name)}`;
       document.getElementById('edit-cake-id').value = item.id;
@@ -1858,7 +1858,7 @@ function saveCake(e) {
   const basePrice = Number(document.getElementById('cake-price').value);
   const originalPrice = document.getElementById('cake-original-price').value ? Number(document.getElementById('cake-original-price').value) : (basePrice + 400);
   let rating = Number(document.getElementById('cake-rating').value) || 4.8;
-  if (rating > 4.9) rating = 4.9;
+  if (rating > 5.0) rating = 5.0;
   if (rating < 4.6) rating = 4.6;
   const active = document.getElementById('cake-active').value === 'true';
   const desc = document.getElementById('cake-desc').value.trim();
@@ -1871,12 +1871,12 @@ function saveCake(e) {
   const effectiveTag = tag || '1 kg + ½ kg FREE';
 
   if (idInput) {
-    const index = productsList.findIndex(p => p.id === Number(idInput));
+    const index = productsList.findIndex(p => p.id == idInput);
     if (index !== -1) {
       productsList[index] = { ...productsList[index], name, category, tag: effectiveTag, basePrice, originalPrice, rating, active, desc, img: imgUrl, filePath: filePath || productsList[index].filePath };
     }
   } else {
-    const newId = productsList.length > 0 ? Math.max(...productsList.map(p => p.id)) + 1 : 1;
+    const newId = productsList.length > 0 ? Math.max(0, ...productsList.map(p => Number(p.id) || 0)) + 1 : 1;
     productsList.unshift({ id: newId, name, category, tag: effectiveTag, basePrice, originalPrice, offerText: effectiveTag, rating, active, desc, img: imgUrl, filePath });
   }
 
@@ -1887,7 +1887,7 @@ function saveCake(e) {
 }
 
 function toggleStatus(id) {
-  const index = productsList.findIndex(p => p.id === id);
+  const index = productsList.findIndex(p => p.id == id);
   if (index !== -1) {
     productsList[index].active = productsList[index].active === false ? true : false;
     saveProductsToStorage(true);
@@ -1897,13 +1897,13 @@ function toggleStatus(id) {
 }
 
 async function deleteCake(id) {
-  const item = productsList.find(p => p.id === id);
+  const item = productsList.find(p => p.id == id);
   if (item && confirm(`Delete "${item.name}"?`)) {
     const targetFile = item.filePath || (window.SupabaseStorage ? SupabaseStorage.extractFilePath(item.img) : null);
     if (targetFile && window.SupabaseStorage) {
       await SupabaseStorage.deleteFile(targetFile);
     }
-    productsList = productsList.filter(p => p.id !== id);
+    productsList = productsList.filter(p => p.id != id);
     saveProductsToStorage(true);
     renderAdminTable(productsList);
     updateStats();

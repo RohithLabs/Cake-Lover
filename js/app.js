@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id:13, name:"Strawberry Cake",            category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:574,  originalPrice:850,  offerText:"Buy 1kg get ½kg free", rating:4.75, img:"./cakes/cakes/cakestrawberry.jfif", desc:"Fresh strawberry compote layered with sweet vanilla cream.", active:true },
     { id:14, name:"Red Velvet Cake",            category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:750,  originalPrice:1100, offerText:"Buy 1kg get ½kg free", rating:4.9, img:"./cakes2/cakes2/Red Velvet White Chocolate.jfif", desc:"Soft crimson cocoa sponge layered with rich cream cheese.", active:true },
     { id:15, name:"Black Forest Cake [500 G]",  category:"flavored",        tag:"1 kg + ½ kg FREE", basePrice:515,  originalPrice:750,  offerText:"Buy 1kg get ½kg free", rating:4.8, img:"./cakes/cakes/Black forest cake recipe.jfif", desc:"Classic dark chocolate shavings with maraschino cherries in a half kg pack.", active:true },
-    { id:16, name:"Choco Vanilla Cake",         category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.75, img:"./cakes2/cakes2/choconillla", desc:"Dual-flavored marble swirl of rich cocoa and pure vanilla.", active:true },
+    { id:16, name:"Choco Vanilla Cake",         category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.75, img:"./cakes2/cakes2/choconillla.jfif", desc:"Dual-flavored marble swirl of rich cocoa and pure vanilla.", active:true },
     { id:17, name:"Choco Strawberry Cake",      category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:625,  originalPrice:920,  offerText:"Buy 1kg get ½kg free", rating:4.85, img:"./cakes/cakes/cakestrawberry.jfif", desc:"Decadent dark chocolate ganache paired with fresh strawberry cream.", active:true },
     { id:18, name:"Butterscotch And Blueberry Cake", category:"extreme-combo", tag:"1 kg + ½ kg FREE", basePrice:706, originalPrice:1050, offerText:"Buy 1kg get ½kg free", rating:4.9, img:"./cakes2/cakes2/Blueberry Cake.jfif", desc:"Fruity blueberry swirls combined with crunchy butterscotch bits.", active:true },
     { id:19, name:"German Black Forest Cake",   category:"extreme-combo",   tag:"1 kg + ½ kg FREE", basePrice:721,  originalPrice:1080, offerText:"Buy 1kg get ½kg free", rating:4.9, img:"./cakes/cakes/black-forest-gateau.jfif", desc:"Authentic German-style dark chocolate cake loaded with cherries.", active:true },
@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const seenImgs = new Set();
+          const seenIds = new Set();
           const deduped = [];
           parsed.forEach(p => {
-            if (p && p.img && !seenImgs.has(p.img)) {
-              seenImgs.add(p.img);
+            if (p && p.id != null && !seenIds.has(p.id)) {
+              seenIds.add(p.id);
               deduped.push(p);
             }
           });
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return sourceProducts.filter(p => p.active !== false).map(p => {
       let rating = Number(p.rating) || 4.8;
-      if (rating > 4.9) rating = 4.9;
+      if (rating > 5.0) rating = 5.0;
       if (rating < 4.6) rating = 4.6;
       return {
         ...p,
@@ -263,9 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="weight-selector">
             <span class="weight-label">Select Weight:</span>
             <div class="weight-btns">
-              <button class="weight-btn" data-weight="0.5" onclick="selectWeight(${p.id}, 0.5, this)">0.5 kg</button>
-              <button class="weight-btn active" data-weight="1" onclick="selectWeight(${p.id}, 1, this)">1 kg</button>
-              <button class="weight-btn" data-weight="2" onclick="selectWeight(${p.id}, 2, this)">2 kg</button>
+              <button class="weight-btn" data-weight="0.5" onclick="selectWeight('${p.id}', 0.5, this)">0.5 kg</button>
+              <button class="weight-btn active" data-weight="1" onclick="selectWeight('${p.id}', 1, this)">1 kg</button>
+              <button class="weight-btn" data-weight="2" onclick="selectWeight('${p.id}', 2, this)">2 kg</button>
             </div>
           </div>
           <div class="cake-footer">
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="price-now" id="price-${p.id}">₹${p.basePrice}</span>
               <span class="price-was" id="orig-${p.id}">${p.originalPrice ? '₹' + p.originalPrice : ''}</span>
             </div>
-            <button class="btn-order" onclick="orderWA(${p.id})"><i class="fa-brands fa-whatsapp"></i> Order</button>
+            <button class="btn-order" onclick="orderWA('${p.id}')"><i class="fa-brands fa-whatsapp"></i> Order</button>
           </div>
         </div>
       `;
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = el.closest('.cake-card');
     card.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
-    const p = products.find(x => x.id === id);
+    const p = products.find(x => x.id == id);
     if (!p) return;
 
     let priceMult = weight;
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== WHATSAPP ORDER =====
   window.orderWA = function(id) {
-    const p = products.find(x => x.id === id);
+    const p = products.find(x => x.id == id);
     if (!p) return;
     const card = document.querySelector(`.cake-card[data-id="${id}"]`);
     const w = card?.querySelector('.weight-btn.active')?.dataset.weight || '1';
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const matches = products.filter(p => p.name.toLowerCase().includes(q) || p.category.includes(q) || (p.desc && p.desc.toLowerCase().includes(q)));
     if (matches.length) {
       searchSuggestions.innerHTML = matches.map(m => `
-        <div class="suggestion-item" onclick="pickSearch(${m.id})">
+        <div class="suggestion-item" onclick="pickSearch('${m.id}')">
           <img src="${m.img}" class="suggestion-thumb" alt="${m.name}">
           <div><div style="font-weight:700;font-size:0.85rem;">${m.name}</div><div style="font-size:0.75rem;color:var(--clr-accent);font-weight:700;">₹${m.basePrice} (${m.offerText || m.tag})</div></div>
         </div>`).join('');
@@ -532,6 +532,23 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       result.innerHTML = `<span style="color:var(--clr-accent);font-weight:700;"><i class="fa-solid fa-circle-xmark"></i> Enter a valid 6-digit pincode.</span>`;
     }
+  };
+
+  // ===== NEWSLETTER =====
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+  window.showToast = showToast;
+
+  window.handleNewsletter = function(e) {
+    if (e) e.preventDefault();
+    const form = e ? e.target : document.querySelector('.newsletter-form');
+    showToast('🎂 Thank you for subscribing! Special offers will arrive in your inbox.');
+    if (form && typeof form.reset === 'function') form.reset();
   };
 
   // ===== TIMER =====
