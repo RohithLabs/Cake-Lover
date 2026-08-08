@@ -2656,8 +2656,8 @@ window.exportDataJSON = exportDataJSON;
 window.importDataJSON = importDataJSON;
 window.resetToDefaults = resetToDefaults;
 window.handleLogin = handleLogin;
-window.handleAuthSubmit = handleAuthSubmit;
-window.toggleAuthMode = toggleAuthMode;
+window.handleAuthSubmit = handleLogin;
+window.toggleAuthMode = typeof toggleAuthMode !== 'undefined' ? toggleAuthMode : function(){};
 window.handleLogout = handleLogout;
 window.switchAdminSection = switchAdminSection;
 window.switchTab = switchAdminSection; // alias for backward compatibility
