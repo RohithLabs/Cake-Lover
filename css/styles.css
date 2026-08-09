@@ -515,6 +515,7 @@ ul {
   color: var(--logo-red);
   line-height: 1.1;
   letter-spacing: -0.4px;
+  white-space: nowrap;
 }
 
 .logo-tagline {
@@ -523,6 +524,7 @@ ul {
   color: var(--clr-gold);
   letter-spacing: 2px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* Nav links */
@@ -3655,7 +3657,7 @@ border-color: var(--clr-dark);
   }
 
   /* Section Spacing & Containers */
-  .section-padding {
+  .section-padding, .section-pad {
     padding: 32px 14px !important;
   }
   .container {
@@ -3663,89 +3665,175 @@ border-color: var(--clr-dark);
     padding-right: 14px !important;
   }
 
-  /* Header & Navigation */
-  .header {
-    padding: 10px 14px !important;
+  /* Navbar & Header */
+  .navbar-inner {
+    height: 70px !important;
+    gap: 10px !important;
+    padding: 0 4px !important;
   }
-  .nav-brand img {
-    height: 38px !important;
+
+  .logo {
+    gap: 8px !important;
+    flex-shrink: 0 !important;
   }
-  .nav-actions .btn {
+
+  .logo img {
+    height: 42px !important;
+    width: 42px !important;
+  }
+
+  .logo-brand {
+    font-size: 1.25rem !important;
+    white-space: nowrap !important;
+  }
+
+  .logo-tagline {
+    font-size: 0.58rem !important;
+    letter-spacing: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-right {
+    gap: 8px !important;
+  }
+
+  /* Hide wide search box input in navbar header on mobile to prevent overflow */
+  .nav-search {
+    display: none !important;
+  }
+
+  /* Hide redundant admin button in top navbar on mobile (available in hamburger drawer) */
+  .btn-admin-nav {
+    display: none !important;
+  }
+
+  /* Compact Order Button for mobile header */
+  .btn-wa {
     padding: 8px 14px !important;
     font-size: 0.82rem !important;
+    gap: 5px !important;
+  }
+
+  /* Navigation Links (desktop bar) hidden on mobile */
+  .nav-links {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 6px !important;
   }
 
   /* Hero Section */
-  .hero-inner {
+  .hero {
+    padding: 16px 0 32px !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
     flex-direction: column-reverse !important;
     gap: 24px !important;
     text-align: center !important;
-    padding-top: 16px !important;
+    min-height: auto !important;
   }
-  .hero-text {
+
+  .hero-content {
     width: 100% !important;
-    max-width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
+
   .hero-title {
     font-size: clamp(1.8rem, 6.5vw, 2.5rem) !important;
     line-height: 1.25 !important;
+    margin-bottom: 12px !important;
   }
+
   .hero-desc {
-    font-size: 0.95rem !important;
-    margin: 0 auto 20px !important;
+    font-size: 0.92rem !important;
+    margin: 0 auto 16px !important;
+    max-width: 100% !important;
   }
-  .hero-ctas {
+
+  .hero-slide-name-wrap {
+    justify-content: center !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-actions {
     justify-content: center !important;
     flex-wrap: wrap !important;
     gap: 10px !important;
-  }
-  .hero-ctas .btn {
     width: 100% !important;
-    max-width: 320px !important;
   }
+
+  .hero-actions .btn-wa,
+  .hero-phone {
+    justify-content: center !important;
+  }
+
+  .hero-actions .btn-wa {
+    width: 100% !important;
+    max-width: 280px !important;
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
+  }
+
   .hero-img-frame {
     width: 100% !important;
-    max-width: 360px !important;
+    max-width: 380px !important;
     margin: 0 auto !important;
-    height: 260px !important;
   }
 
   /* Offer Countdown Strip */
   .countdown-strip {
-    padding: 16px 12px !important;
+    padding: 14px 10px !important;
   }
-  .countdown-strip .container {
+
+  .countdown-inner {
     flex-direction: column !important;
-    gap: 14px !important;
+    gap: 12px !important;
+    align-items: center !important;
     text-align: center !important;
   }
-  .countdown-title {
-    font-size: 1rem !important;
+
+  .countdown-label {
+    font-size: 0.95rem !important;
   }
-  .timer-blocks {
+
+  .countdown-timer {
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
-  .timer-box {
-    min-width: 46px !important;
-    padding: 8px 10px !important;
+
+  .timer-block {
+    min-width: 44px !important;
+    padding: 6px 8px !important;
   }
+
   .timer-num {
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
   }
+
   .timer-unit {
     font-size: 0.65rem !important;
   }
-  .countdown-cta-btn {
+
+  .countdown-cta {
     width: 100% !important;
-    max-width: 280px !important;
-    text-align: center !important;
+    max-width: 260px !important;
+    justify-content: center !important;
   }
 
   /* Category Filter Bar */
   .filter-bar-wrapper {
-    margin: 20px 0 28px !important;
+    margin: 16px 0 24px !important;
   }
+
   .filter-bar {
     display: flex !important;
     overflow-x: auto !important;
@@ -3755,9 +3843,11 @@ border-color: var(--clr-dark);
     gap: 8px !important;
     flex-wrap: nowrap !important;
   }
+
   .filter-bar::-webkit-scrollbar {
     display: none !important;
   }
+
   .filter-btn {
     flex-shrink: 0 !important;
     padding: 8px 16px !important;
@@ -3772,6 +3862,7 @@ border-color: var(--clr-dark);
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
   }
+
   .cake-card {
     border-radius: 16px !important;
     padding: 10px !important;
@@ -3779,13 +3870,16 @@ border-color: var(--clr-dark);
     flex-direction: column !important;
     justify-content: space-between !important;
   }
+
   .cake-card-img-wrap {
     height: 155px !important;
     border-radius: 12px !important;
   }
+
   .cake-card-body {
     padding: 10px 4px 4px !important;
   }
+
   .cake-card-title {
     font-size: 0.92rem !important;
     line-height: 1.25 !important;
@@ -3795,18 +3889,23 @@ border-color: var(--clr-dark);
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
   }
+
   .cake-card-desc {
     display: none !important;
   }
+
   .cake-card-prices {
     margin-top: 6px !important;
   }
+
   .price-now {
     font-size: 1.1rem !important;
   }
+
   .price-was {
     font-size: 0.75rem !important;
   }
+
   .cake-card-btn {
     width: 100% !important;
     padding: 9px 4px !important;
@@ -3820,6 +3919,7 @@ border-color: var(--clr-dark);
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
   }
+
   .occasion-card {
     padding: 16px 10px !important;
   }
@@ -3832,6 +3932,7 @@ border-color: var(--clr-dark);
     gap: 12px !important;
     padding-bottom: 12px !important;
   }
+
   .reel-card {
     width: 220px !important;
     flex-shrink: 0 !important;
@@ -3842,10 +3943,12 @@ border-color: var(--clr-dark);
     flex-direction: column !important;
     gap: 24px !important;
   }
+
   .brand-story-imgs {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px !important;
   }
+
   .brand-story-img {
     height: 130px !important;
   }
@@ -3856,15 +3959,42 @@ border-color: var(--clr-dark);
     gap: 28px !important;
     text-align: center !important;
   }
+
   .footer-col h5 {
     margin-bottom: 10px !important;
   }
 }
 
+@media (max-width: 480px) {
+  .logo-brand {
+    font-size: 1.15rem !important;
+  }
+
+  .logo-tagline {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .btn-wa {
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
 @media (max-width: 380px) {
+  .logo-tagline {
+    display: none !important;
+  }
+
   .products-grid {
     grid-template-columns: 1fr !important;
   }
+
   .cake-card-img-wrap {
     height: 190px !important;
   }
