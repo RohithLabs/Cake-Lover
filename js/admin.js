@@ -78,7 +78,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1099,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes/caramel-chocolate.jfif",
+    "img": "./images/cakes/caramel-chocolate.jpg",
     "desc": "Delicious blend of rich chocolate and golden butterscotch crunch.",
     "active": true
   },
@@ -91,7 +91,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1299,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.9,
-    "img": "./images/cakes/red-velvet-cake.jfif",
+    "img": "./images/cakes/red-velvet-cake.jpg",
     "desc": "Soft red velvet sponge with a crispy butterscotch crunch layer.",
     "active": true
   },
@@ -104,7 +104,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1150,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jfif",
+    "img": "./images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jpg",
     "desc": "Premium Ferrero-style hazelnut crunch combined with rich caramel.",
     "active": true
   },
@@ -117,7 +117,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1050,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.85,
-    "img": "./images/cakes/crissie-s-homemade-colorado-springs-co.jfif",
+    "img": "./images/cakes/crissie-s-homemade-colorado-springs-co.jpg",
     "desc": "Desi rasmalai milk sponge paired with golden butterscotch bits.",
     "active": true
   },
@@ -130,7 +130,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1150,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes2/butterscotch.jfif",
+    "img": "./images/cakes2/butterscotch.jpg",
     "desc": "Triple-layered caramel mousse and crispy praline nuggets.",
     "active": true
   },
@@ -143,7 +143,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1250,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes2/cake.jfif",
+    "img": "./images/cakes2/cake.jpg",
     "desc": "Silky milk cream sponge infused with butterscotch crunch.",
     "active": true
   },
@@ -156,7 +156,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 890,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes/white-forest-cake.jfif",
+    "img": "./images/cakes/white-forest-cake.jpg",
     "desc": "White chocolate curls over vanilla sponge with cherry fillings.",
     "active": true
   },
@@ -169,7 +169,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 850,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.85,
-    "img": "./images/cakes/mango-chiffon-cake.jfif",
+    "img": "./images/cakes/mango-chiffon-cake.jpg",
     "desc": "Fresh Alphonso mango pulp blended into light whipped cream.",
     "active": true
   },
@@ -182,7 +182,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 850,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.7,
-    "img": "./images/cakes/dole-whip-cake.jfif",
+    "img": "./images/cakes/dole-whip-cake.jpg",
     "desc": "Juicy pineapple compote layered with light vanilla cream.",
     "active": true
   },
@@ -195,7 +195,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 920,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.9,
-    "img": "./images/cakes2/blueberry-cake.jfif",
+    "img": "./images/cakes2/blueberry-cake.jpg",
     "desc": "Wild blueberry reduction swirled into smooth vanilla frosting.",
     "active": true
   },
@@ -208,7 +208,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 850,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes/cakestrawberry.jfif",
+    "img": "./images/cakes/cakestrawberry.jpg",
     "desc": "Fresh strawberry compote layered with sweet vanilla cream.",
     "active": true
   },
@@ -221,7 +221,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1100,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes2/red-velvet-white-chocolate.jfif",
+    "img": "./images/cakes2/red-velvet-white-chocolate.jpg",
     "desc": "Soft crimson cocoa sponge layered with rich cream cheese.",
     "active": true
   },
@@ -234,7 +234,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 750,
     "offerText": "500g Pack",
     "rating": 4.8,
-    "img": "./images/cakes/black-forest-cake-recipe.jfif",
+    "img": "./images/cakes/black-forest-cake-recipe.jpg",
     "desc": "Classic dark chocolate shavings with maraschino cherries in a half kg pack.",
     "active": true
   },
@@ -247,7 +247,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 920,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes2/choconillla.jfif",
+    "img": "./images/cakes2/choconillla.jpg",
     "desc": "Dual-flavored marble swirl of rich cocoa and pure vanilla.",
     "active": true
   },
@@ -260,7 +260,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1080,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes/black-forest-gateau.jfif",
+    "img": "./images/cakes/black-forest-gateau.jpg",
     "desc": "Authentic German-style dark chocolate cake loaded with cherries.",
     "active": true
   },
@@ -273,7 +273,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1080,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes/dark-chocolate.jfif",
+    "img": "./images/cakes/dark-chocolate.jpg",
     "desc": "Rich chocolate cake with coconut-pecan filling and fudge.",
     "active": true
   },
@@ -286,7 +286,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 920,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.7,
-    "img": "./images/cakes2/download-5.jfif",
+    "img": "./images/cakes2/download-5.jpg",
     "desc": "Rich moist cocoa sponge smothered in silky chocolate frosting.",
     "active": true
   },
@@ -299,7 +299,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1050,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes/download-3.jfif",
+    "img": "./images/cakes/download-3.jpg",
     "desc": "Pure chocolate fudge layered with silky cream and truffle glaze.",
     "active": true
   },
@@ -312,7 +312,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1100,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.9,
-    "img": "./images/cakes2/download-8.jfif",
+    "img": "./images/cakes2/download-8.jpg",
     "desc": "Overloaded with melted dark chocolate, fudge & choco chips.",
     "active": true
   },
@@ -325,7 +325,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1199,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes/download-5.jfif",
+    "img": "./images/cakes/download-5.jpg",
     "desc": "Bordered with crispy KitKat bars and topped with choco balls.",
     "active": true
   },
@@ -338,7 +338,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1150,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes/coffee-mocha-cake.jfif",
+    "img": "./images/cakes/coffee-mocha-cake.jpg",
     "desc": "Rich chocolate sponge packed with roasted crunchy walnuts.",
     "active": true
   },
@@ -351,7 +351,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1199,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes2/cake3.jfif",
+    "img": "./images/cakes2/cake3.jpg",
     "desc": "Creamy milk chocolate truffle with white cocoa drippings.",
     "active": true
   },
@@ -364,7 +364,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.85,
-    "img": "./images/cakes2/download-4.jfif",
+    "img": "./images/cakes2/download-4.jpg",
     "desc": "Exotic blackcurrant berry glaze over soft vanilla sponge.",
     "active": true
   },
@@ -377,7 +377,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes2/dream-cake.jfif",
+    "img": "./images/cakes2/dream-cake.jpg",
     "desc": "Zesty lemon curd cream layered into fresh vanilla chiffon sponge.",
     "active": true
   },
@@ -390,7 +390,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes2/download-6.jfif",
+    "img": "./images/cakes2/download-6.jpg",
     "desc": "Luscious condensed milk sponge with whipped white cream.",
     "active": true
   },
@@ -403,7 +403,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1390,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.95,
-    "img": "./images/cakes2/rasmalai-cake.jfif",
+    "img": "./images/cakes2/rasmalai-cake.jpg",
     "desc": "Real Iranian pistachio cream swirled into aromatic cardamom sponge.",
     "active": true
   },
@@ -416,7 +416,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.9,
-    "img": "./images/cakes/birthday-cake.jfif",
+    "img": "./images/cakes/birthday-cake.jpg",
     "desc": "Fresh tender coconut malai folded into light vanilla cream.",
     "active": true
   },
@@ -429,7 +429,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.8,
-    "img": "./images/cakes/sprinkle-birthday-cake-hungry-happenings.jfif",
+    "img": "./images/cakes/sprinkle-birthday-cake-hungry-happenings.jpg",
     "desc": "Luscious fresh strawberry crush layered with velvety cream.",
     "active": true
   },
@@ -442,7 +442,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.85,
-    "img": "./images/cakes/white-wedding-cake.jfif",
+    "img": "./images/cakes/white-wedding-cake.jpg",
     "desc": "Rich butterscotch cream with extra crispy golden praline.",
     "active": true
   },
@@ -455,7 +455,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.75,
-    "img": "./images/cakes/download-4.jfif",
+    "img": "./images/cakes/download-4.jpg",
     "desc": "Sweet mango puree swirled into soft vanilla sponge.",
     "active": true
   },
@@ -468,7 +468,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.9,
-    "img": "./images/cakes2/download-7.jfif",
+    "img": "./images/cakes2/download-7.jpg",
     "desc": "Royal dark chocolate fudge with silky whipped cream accent.",
     "active": true
   },
@@ -481,7 +481,7 @@ const DEFAULT_PRODUCTS = [
     "originalPrice": 1290,
     "offerText": "Buy 1kg get ½kg free",
     "rating": 4.85,
-    "img": "./images/cakes2/13-facebook.jfif",
+    "img": "./images/cakes2/13-facebook.jpg",
     "desc": "Wild blueberry crush layered with vanilla sponge & cream.",
     "active": true
   },
@@ -1307,61 +1307,61 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const DEFAULT_HERO_SLIDES = [
-  { name: 'Choco Scotch Cake', img: './images/cakes/caramel-chocolate.jfif', rating: '4.8★', orders: '28 Google Reviews' },
-  { name: 'Red Scotch Cake', img: './images/cakes/red-velvet-cake.jfif', rating: '4.9★', orders: '45 Google Reviews' },
-  { name: 'Ferro Scotch Cake', img: './images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jfif', rating: '4.85★', orders: '32 Google Reviews' },
-  { name: 'Rasmalai Scotch Cake', img: "./images/cakes/crissie-s-homemade-colorado-springs-co.jfif", rating: '4.85★', orders: '19 Google Reviews' },
-  { name: 'Black Forest Cake', img: './images/cakes/black-forest-cake-recipe.jfif', rating: '4.8★', orders: '41 Google Reviews' },
-  { name: 'Strawberry Delight', img: './images/cakes/cakestrawberry.jfif', rating: '4.8★', orders: '26 Google Reviews' },
-  { name: 'Ritch Choco KitKat Cake', img: './images/cakes/download-5.jfif', rating: '4.9★', orders: '48 Google Reviews' },
-  { name: 'Mango Premium Cake', img: './images/cakes/mango-chiffon-cake.jfif', rating: '4.9★', orders: '37 Google Reviews' },
-  { name: 'White Forest Cake', img: './images/cakes/white-forest-cake.jfif', rating: '4.8★', orders: '22 Google Reviews' },
-  { name: 'Pineapple Cake', img: './images/cakes/dole-whip-cake.jfif', rating: '4.7★', orders: '15 Google Reviews' },
-  { name: 'Butterscotch Cake', img: './images/cakes2/butterscotch.jfif', rating: '4.7★', orders: '34 Google Reviews' },
-  { name: 'Blueberry Cake', img: './images/cakes2/blueberry-cake.jfif', rating: '4.9★', orders: '50 Google Reviews' },
-  { name: 'Rasmalai Fusion', img: './images/cakes2/rasmalai-cake.jfif', rating: '4.85★', orders: '43 Google Reviews' },
-  { name: 'Red Velvet Premium Cake', img: './images/cakes2/red-velvet-white-chocolate.jfif', rating: '4.9★', orders: '29 Google Reviews' },
-  { name: 'Tender Coconut Delight', img: './images/cakes2/dream-cake.jfif', rating: '4.9★', orders: '38 Google Reviews' }
+  { name: 'Choco Scotch Cake', img: './images/cakes/caramel-chocolate.jpg', rating: '4.8★', orders: '28 Google Reviews' },
+  { name: 'Red Scotch Cake', img: './images/cakes/red-velvet-cake.jpg', rating: '4.9★', orders: '45 Google Reviews' },
+  { name: 'Ferro Scotch Cake', img: './images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jpg', rating: '4.85★', orders: '32 Google Reviews' },
+  { name: 'Rasmalai Scotch Cake', img: "./images/cakes/crissie-s-homemade-colorado-springs-co.jpg", rating: '4.85★', orders: '19 Google Reviews' },
+  { name: 'Black Forest Cake', img: './images/cakes/black-forest-cake-recipe.jpg', rating: '4.8★', orders: '41 Google Reviews' },
+  { name: 'Strawberry Delight', img: './images/cakes/cakestrawberry.jpg', rating: '4.8★', orders: '26 Google Reviews' },
+  { name: 'Ritch Choco KitKat Cake', img: './images/cakes/download-5.jpg', rating: '4.9★', orders: '48 Google Reviews' },
+  { name: 'Mango Premium Cake', img: './images/cakes/mango-chiffon-cake.jpg', rating: '4.9★', orders: '37 Google Reviews' },
+  { name: 'White Forest Cake', img: './images/cakes/white-forest-cake.jpg', rating: '4.8★', orders: '22 Google Reviews' },
+  { name: 'Pineapple Cake', img: './images/cakes/dole-whip-cake.jpg', rating: '4.7★', orders: '15 Google Reviews' },
+  { name: 'Butterscotch Cake', img: './images/cakes2/butterscotch.jpg', rating: '4.7★', orders: '34 Google Reviews' },
+  { name: 'Blueberry Cake', img: './images/cakes2/blueberry-cake.jpg', rating: '4.9★', orders: '50 Google Reviews' },
+  { name: 'Rasmalai Fusion', img: './images/cakes2/rasmalai-cake.jpg', rating: '4.85★', orders: '43 Google Reviews' },
+  { name: 'Red Velvet Premium Cake', img: './images/cakes2/red-velvet-white-chocolate.jpg', rating: '4.9★', orders: '29 Google Reviews' },
+  { name: 'Tender Coconut Delight', img: './images/cakes2/dream-cake.jpg', rating: '4.9★', orders: '38 Google Reviews' }
 ];
 
 const DEFAULT_MARQUEE_ITEMS = [
-  { img: "./images/cakes/red-velvet-cake.jfif", label: "Red Velvet" },
-  { img: "./images/cakes/caramel-chocolate.jfif", label: "Nutella Delight" },
-  { img: "./images/cakes/dole-whip-cake.jfif", label: "Pineapple" },
-  { img: "./images/cakes/black-forest-cake-recipe.jfif", label: "Black Forest" },
-  { img: "./images/cakes/mango-chiffon-cake.jfif", label: "Mango" },
-  { img: "./images/cakes/white-forest-cake.jfif", label: "White Forest" },
-  { img: "./images/cakes/cakestrawberry.jfif", label: "Strawberry" },
-  { img: "./images/cakes/dark-chocolate.jfif", label: "Dark Chocolate" },
-  { img: "./images/cakes/download-5.jfif", label: "Kitkat Nuts" },
-  { img: "./images/cakes/download-3.jfif", label: "Choco Truffle" },
-  { img: "./images/cakes/birthday-cake.jfif", label: "Birthday Special" },
-  { img: "./images/cakes2/butterscotch.jfif", label: "Butterscotch Dream" },
-  { img: "./images/cakes2/blueberry-cake.jfif", label: "Blueberry Blossom" },
-  { img: "./images/cakes2/rasmalai-cake.jfif", label: "Rasmalai Special" },
-  { img: "./images/cakes2/red-velvet-white-chocolate.jfif", label: "Red Velvet White Choco" },
-  { img: "./images/cakes2/dream-cake.jfif", label: "Dream Cake Special" },
-  { img: "./images/cakes2/cake3.jfif", label: "Luxury Celebration" }
+  { img: "./images/cakes/red-velvet-cake.jpg", label: "Red Velvet" },
+  { img: "./images/cakes/caramel-chocolate.jpg", label: "Nutella Delight" },
+  { img: "./images/cakes/dole-whip-cake.jpg", label: "Pineapple" },
+  { img: "./images/cakes/black-forest-cake-recipe.jpg", label: "Black Forest" },
+  { img: "./images/cakes/mango-chiffon-cake.jpg", label: "Mango" },
+  { img: "./images/cakes/white-forest-cake.jpg", label: "White Forest" },
+  { img: "./images/cakes/cakestrawberry.jpg", label: "Strawberry" },
+  { img: "./images/cakes/dark-chocolate.jpg", label: "Dark Chocolate" },
+  { img: "./images/cakes/download-5.jpg", label: "Kitkat Nuts" },
+  { img: "./images/cakes/download-3.jpg", label: "Choco Truffle" },
+  { img: "./images/cakes/birthday-cake.jpg", label: "Birthday Special" },
+  { img: "./images/cakes2/butterscotch.jpg", label: "Butterscotch Dream" },
+  { img: "./images/cakes2/blueberry-cake.jpg", label: "Blueberry Blossom" },
+  { img: "./images/cakes2/rasmalai-cake.jpg", label: "Rasmalai Special" },
+  { img: "./images/cakes2/red-velvet-white-chocolate.jpg", label: "Red Velvet White Choco" },
+  { img: "./images/cakes2/dream-cake.jpg", label: "Dream Cake Special" },
+  { img: "./images/cakes2/cake3.jpg", label: "Luxury Celebration" }
 ];
 
 const DEFAULT_BRAND_STORY = {
-  img1: './images/cakes/red-velvet-cake.jfif',
-  img2: './images/cakes2/butterscotch.jfif',
-  img3: './images/cakes/black-forest-cake-recipe.jfif',
-  img4: './images/cakes2/dream-cake.jfif',
+  img1: './images/cakes/red-velvet-cake.jpg',
+  img2: './images/cakes2/butterscotch.jpg',
+  img3: './images/cakes/black-forest-cake-recipe.jpg',
+  img4: './images/cakes2/dream-cake.jpg',
   quote: `"If we wouldn't serve it at our own family function, we won't sell it to you."`,
   body: `Cake Lover started in Namakkal with one goal — bake cakes the way they should be. Real butter, fresh cream, and no shortcuts. Every cake is made on the day of your order. No frozen bases, no readymade fillings. Just honest baking, every single day.`
 };
 
 const DEFAULT_REELS = [
-  { img: "./images/cakes/birthday-cake.jfif", title: "Celebration Cakes", desc: "Crafted for magical moments 🎉", views: "9.7k", shares: "41", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes/sprinkle-birthday-cake-hungry-happenings.jfif", title: "Sprinkle Birthday", desc: "Colorful & joyful ✨", views: "3.9k", shares: "13", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes/dark-chocolate.jfif", title: "Dark Chocolate", desc: "Pure cocoa indulgence 🍫", views: "4.5k", shares: "26", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes/dole-whip-cake.jfif", title: "Tropical Pineapple", desc: "Fresh whipped delight 🍍", views: "2.5k", shares: "12", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes/caramel-chocolate.jfif", title: "Caramel Drizzle", desc: "Golden & buttery 🍯", views: "5.1k", shares: "32", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes2/dream-cake.jfif", title: "Dream Cake", desc: "Pastel perfection 🌸", views: "7.2k", shares: "48", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes2/red-velvet-white-chocolate.jfif", title: "Red Velvet White Choco", desc: "Velvet meets white gold ❤️", views: "6.8k", shares: "39", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
-  { img: "./images/cakes2/cake3.jfif", title: "Luxury Celebration", desc: "Gold-touched grandeur ✨", views: "8.1k", shares: "55", link: "https://www.instagram.com/cakes_lover_namakkal_official/" }
+  { img: "./images/cakes/birthday-cake.jpg", title: "Celebration Cakes", desc: "Crafted for magical moments 🎉", views: "9.7k", shares: "41", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes/sprinkle-birthday-cake-hungry-happenings.jpg", title: "Sprinkle Birthday", desc: "Colorful & joyful ✨", views: "3.9k", shares: "13", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes/dark-chocolate.jpg", title: "Dark Chocolate", desc: "Pure cocoa indulgence 🍫", views: "4.5k", shares: "26", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes/dole-whip-cake.jpg", title: "Tropical Pineapple", desc: "Fresh whipped delight 🍍", views: "2.5k", shares: "12", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes/caramel-chocolate.jpg", title: "Caramel Drizzle", desc: "Golden & buttery 🍯", views: "5.1k", shares: "32", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes2/dream-cake.jpg", title: "Dream Cake", desc: "Pastel perfection 🌸", views: "7.2k", shares: "48", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes2/red-velvet-white-chocolate.jpg", title: "Red Velvet White Choco", desc: "Velvet meets white gold ❤️", views: "6.8k", shares: "39", link: "https://www.instagram.com/cakes_lover_namakkal_official/" },
+  { img: "./images/cakes2/cake3.jpg", title: "Luxury Celebration", desc: "Gold-touched grandeur ✨", views: "8.1k", shares: "55", link: "https://www.instagram.com/cakes_lover_namakkal_official/" }
 ];
 
 const bc = window.BroadcastChannel ? new BroadcastChannel('cakelover_updates') : null;
@@ -1786,7 +1786,7 @@ function renderAdminTable(items) {
     const tr = document.createElement('tr');
     const isActive = p.active !== false;
     tr.innerHTML = `
-      <td><img src="${p.img || './images/cakes/caramel-chocolate.jfif'}" alt="${escapeHtml(p.name)}" class="cake-thumb" onerror="this.src='./images/cakes/caramel-chocolate.jfif'"></td>
+      <td><img src="${p.img || './images/cakes/caramel-chocolate.jpg'}" alt="${escapeHtml(p.name)}" class="cake-thumb" onerror="this.src='./images/cakes/caramel-chocolate.jpg'"></td>
       <td class="cake-name-cell"><strong>${escapeHtml(p.name)}</strong><small>${escapeHtml(p.desc || '')}</small></td>
       <td><span class="cat-badge">${escapeHtml(getCategoryName(p.category))}</span></td>
       <td><span class="offer-tag-badge">${escapeHtml(p.tag || p.offerText || 'Special Offer')}</span></td>
@@ -1821,7 +1821,7 @@ function openCakeModal(cakeId = null) {
   const form = document.getElementById('cake-form');
   form.reset();
   document.getElementById('edit-cake-id').value = '';
-  document.getElementById('img-preview').src = './images/cakes/caramel-chocolate.jfif';
+  document.getElementById('img-preview').src = './images/cakes/caramel-chocolate.jpg';
 
   if (cakeId) {
     const item = productsList.find(p => p.id == cakeId);
@@ -2013,7 +2013,7 @@ function openHeroSlideModal(idx = null) {
   const modal = document.getElementById('hero-slide-modal');
   document.getElementById('hero-slide-form').reset();
   document.getElementById('hero-slide-index').value = '';
-  document.getElementById('hero-img-prev').src = './images/cakes/caramel-chocolate.jfif';
+  document.getElementById('hero-img-prev').src = './images/cakes/caramel-chocolate.jpg';
 
   if (idx !== null) {
     const item = heroSlidesList[idx];
@@ -2162,7 +2162,7 @@ function openMarqueeModal(idx = null) {
   const modal = document.getElementById('marquee-modal');
   document.getElementById('marquee-form').reset();
   document.getElementById('marquee-item-index').value = '';
-  document.getElementById('marquee-img-prev').src = './images/cakes/red-velvet-cake.jfif';
+  document.getElementById('marquee-img-prev').src = './images/cakes/red-velvet-cake.jpg';
 
   if (idx !== null) {
     const item = marqueeList[idx];
@@ -2365,7 +2365,7 @@ function openReelModal(idx = null) {
   const modal = document.getElementById('reel-modal');
   document.getElementById('reel-form').reset();
   document.getElementById('reel-index').value = '';
-  document.getElementById('reel-img-prev').src = './images/cakes/birthday-cake.jfif';
+  document.getElementById('reel-img-prev').src = './images/cakes/birthday-cake.jpg';
 
   if (idx !== null) {
     const item = reelsList[idx];
