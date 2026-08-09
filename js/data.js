@@ -44,7 +44,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1099,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes/caramel chocolate.jfif",
+      "img": "./images/cakes/caramel-chocolate.jfif",
       "desc": "Delicious blend of rich chocolate and golden butterscotch crunch.",
       "active": true
     },
@@ -57,7 +57,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1299,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.9,
-      "img": "./images/cakes/Red velvet Cake .jfif",
+      "img": "./images/cakes/red-velvet-cake.jfif",
       "desc": "Soft red velvet sponge with a crispy butterscotch crunch layer.",
       "active": true
     },
@@ -70,7 +70,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1150,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.95,
-      "img": "./images/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif",
+      "img": "./images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jfif",
       "desc": "Premium Ferrero-style hazelnut crunch combined with rich caramel.",
       "active": true
     },
@@ -83,7 +83,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1050,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.85,
-      "img": "./images/cakes/Crissie's Homemade _ Colorado Springs CO.jfif",
+      "img": "./images/cakes/crissie-s-homemade-colorado-springs-co.jfif",
       "desc": "Desi rasmalai milk sponge paired with golden butterscotch bits.",
       "active": true
     },
@@ -122,7 +122,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 890,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes/White Forest Cake.jfif",
+      "img": "./images/cakes/white-forest-cake.jfif",
       "desc": "White chocolate curls over vanilla sponge with cherry fillings.",
       "active": true
     },
@@ -135,7 +135,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 850,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.85,
-      "img": "./images/cakes/Mango Chiffon Cake.jfif",
+      "img": "./images/cakes/mango-chiffon-cake.jfif",
       "desc": "Fresh Alphonso mango pulp blended into light whipped cream.",
       "active": true
     },
@@ -148,7 +148,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 850,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.7,
-      "img": "./images/cakes/Dole Whip Cake.jfif",
+      "img": "./images/cakes/dole-whip-cake.jfif",
       "desc": "Juicy pineapple compote layered with light vanilla cream.",
       "active": true
     },
@@ -161,7 +161,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 920,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.9,
-      "img": "./images/cakes2/Blueberry Cake.jfif",
+      "img": "./images/cakes2/blueberry-cake.jfif",
       "desc": "Wild blueberry reduction swirled into smooth vanilla frosting.",
       "active": true
     },
@@ -187,7 +187,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1100,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.95,
-      "img": "./images/cakes2/Red Velvet White Chocolate.jfif",
+      "img": "./images/cakes2/red-velvet-white-chocolate.jfif",
       "desc": "Soft crimson cocoa sponge layered with rich cream cheese.",
       "active": true
     },
@@ -200,7 +200,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 750,
       "offerText": "500g Pack",
       "rating": 4.8,
-      "img": "./images/cakes/Black forest cake recipe.jfif",
+      "img": "./images/cakes/black-forest-cake-recipe.jfif",
       "desc": "Classic dark chocolate shavings with maraschino cherries in a half kg pack.",
       "active": true
     },
@@ -239,7 +239,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1080,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes/Dark Chocolate .jfif",
+      "img": "./images/cakes/dark-chocolate.jfif",
       "desc": "Rich chocolate cake with coconut-pecan filling and fudge.",
       "active": true
     },
@@ -252,7 +252,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 920,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.7,
-      "img": "./images/cakes2/download (5).jfif",
+      "img": "./images/cakes2/download-5.jfif",
       "desc": "Rich moist cocoa sponge smothered in silky chocolate frosting.",
       "active": true
     },
@@ -265,7 +265,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1050,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.95,
-      "img": "./images/cakes/download (3).jfif",
+      "img": "./images/cakes/download-3.jfif",
       "desc": "Pure chocolate fudge layered with silky cream and truffle glaze.",
       "active": true
     },
@@ -278,7 +278,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1100,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.9,
-      "img": "./images/cakes2/download (8).jfif",
+      "img": "./images/cakes2/download-8.jfif",
       "desc": "Overloaded with melted dark chocolate, fudge & choco chips.",
       "active": true
     },
@@ -291,7 +291,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1199,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.95,
-      "img": "./images/cakes/download (5).jfif",
+      "img": "./images/cakes/download-5.jfif",
       "desc": "Bordered with crispy KitKat bars and topped with choco balls.",
       "active": true
     },
@@ -304,7 +304,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1150,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes/coffee_mocha_cake.jfif",
+      "img": "./images/cakes/coffee-mocha-cake.jfif",
       "desc": "Rich chocolate sponge packed with roasted crunchy walnuts.",
       "active": true
     },
@@ -330,7 +330,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.85,
-      "img": "./images/cakes2/download (4).jfif",
+      "img": "./images/cakes2/download-4.jfif",
       "desc": "Exotic blackcurrant berry glaze over soft vanilla sponge.",
       "active": true
     },
@@ -343,7 +343,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.75,
-      "img": "./images/cakes2/Dream cake.jfif",
+      "img": "./images/cakes2/dream-cake.jfif",
       "desc": "Zesty lemon curd cream layered into fresh vanilla chiffon sponge.",
       "active": true
     },
@@ -356,7 +356,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes2/download (6).jfif",
+      "img": "./images/cakes2/download-6.jfif",
       "desc": "Luscious condensed milk sponge with whipped white cream.",
       "active": true
     },
@@ -369,7 +369,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1390,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.95,
-      "img": "./images/cakes2/rasmalai cake.jfif",
+      "img": "./images/cakes2/rasmalai-cake.jfif",
       "desc": "Real Iranian pistachio cream swirled into aromatic cardamom sponge.",
       "active": true
     },
@@ -382,7 +382,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.9,
-      "img": "./images/cakes/birthday cake.jfif",
+      "img": "./images/cakes/birthday-cake.jfif",
       "desc": "Fresh tender coconut malai folded into light vanilla cream.",
       "active": true
     },
@@ -395,7 +395,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.8,
-      "img": "./images/cakes/Sprinkle Birthday Cake _ Hungry Happenings.jfif",
+      "img": "./images/cakes/sprinkle-birthday-cake-hungry-happenings.jfif",
       "desc": "Luscious fresh strawberry crush layered with velvety cream.",
       "active": true
     },
@@ -421,7 +421,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.75,
-      "img": "./images/cakes/download (4).jfif",
+      "img": "./images/cakes/download-4.jfif",
       "desc": "Sweet mango puree swirled into soft vanilla sponge.",
       "active": true
     },
@@ -434,7 +434,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.9,
-      "img": "./images/cakes2/download (7).jfif",
+      "img": "./images/cakes2/download-7.jfif",
       "desc": "Royal dark chocolate fudge with silky whipped cream accent.",
       "active": true
     },
@@ -447,7 +447,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1290,
       "offerText": "Buy 1kg get ½kg free",
       "rating": 4.85,
-      "img": "./images/cakes2/(13) Facebook.jfif",
+      "img": "./images/cakes2/13-facebook.jfif",
       "desc": "Wild blueberry crush layered with vanilla sponge & cream.",
       "active": true
     },
@@ -460,7 +460,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/Aug 7, 2026, 11_49_54 AM.png",
+      "img": "./images/ai-cakes/aug-7-2026-11-49-54-am.png",
       "desc": "Handcrafted royal butterfly themed celebration cake with edible sugar wings.",
       "active": true
     },
@@ -473,7 +473,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2199,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 09_42_47 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-09-42-47-am.png",
       "desc": "Majestic princess crown cake layered with strawberry cream and golden fondant accents.",
       "active": true
     },
@@ -486,7 +486,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 09_52_40 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-09-52-40-am.png",
       "desc": "Elegant white and gold pearl embellished tiered cake with handcrafted sugar flowers.",
       "active": true
     },
@@ -499,7 +499,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.85,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 09_54_46 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-09-54-46-am.png",
       "desc": "Minimalist pastel buttercream cake topped with fresh organic edible blooms.",
       "active": true
     },
@@ -512,7 +512,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 09_57_20 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-09-57-20-am.png",
       "desc": "Magical unicorn cake with golden horn and pastel rainbow swirl mane.",
       "active": true
     },
@@ -525,7 +525,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 09_58_34 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-09-58-34-am.png",
       "desc": "Adorable handcrafted 3D teddy bear sleeping on fluffy sugar clouds.",
       "active": true
     },
@@ -538,7 +538,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2299,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_01_04 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-01-04-am.png",
       "desc": "Luxury 2-tier crimson red velvet cake with gold leaf and handcrafted sugar roses.",
       "active": true
     },
@@ -551,7 +551,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.88,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_04_39 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-04-39-am.png",
       "desc": "Deep space navy galaxy mirror glaze cake with edible constellation sparkles.",
       "active": true
     },
@@ -564,7 +564,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_09_12 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-09-12-am.png",
       "desc": "Coquette aesthetic vintage piped buttercream cake with satin sugar ribbons.",
       "active": true
     },
@@ -577,7 +577,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2199,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_10_54 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-10-54-am.png",
       "desc": "Grand milestone anniversary cake with 24k gold foil and dark chocolate fudge.",
       "active": true
     },
@@ -590,7 +590,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_16_22 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-16-22-am.png",
       "desc": "Charming forest theme baby shower cake with hand-painted woodland critters.",
       "active": true
     },
@@ -603,7 +603,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.85,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_22_14 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-22-14-am.png",
       "desc": "Modern architectural cake with rose gold marble textures and sharp lines.",
       "active": true
     },
@@ -616,7 +616,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_25_11 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-25-11-am.png",
       "desc": "Exotic passionfruit and mango cake adorned with handcrafted sugar orchids.",
       "active": true
     },
@@ -629,7 +629,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_27_30 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-27-30-am.png",
       "desc": "Iridescent seafoam mermaid tail cake with chocolate pearls and ocean waves.",
       "active": true
     },
@@ -642,7 +642,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.88,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_30_52 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-30-52-am.png",
       "desc": "Festive birthday cake topped with edible mini fondant balloon cluster.",
       "active": true
     },
@@ -655,7 +655,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2199,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_39_14 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-39-14-am.png",
       "desc": "3D sculpted sports car theme cake for motorsport enthusiasts.",
       "active": true
     },
@@ -668,7 +668,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_42_25 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-42-25-am.png",
       "desc": "Japanese sakura branch hand-piped over light white chocolate mousse.",
       "active": true
     },
@@ -681,7 +681,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_46_39 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-46-39-am.png",
       "desc": "Action-packed 3D superhero emblem cake with chocolate truffle filling.",
       "active": true
     },
@@ -694,7 +694,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_50_37 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-50-37-am.png",
       "desc": "Personalized gold monogram crest cake with white truffle and vanilla bean.",
       "active": true
     },
@@ -707,7 +707,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.88,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_53_51 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-53-51-am.png",
       "desc": "Playful dino safari cake with chocolate soil and hand-modeled dinosaurs.",
       "active": true
     },
@@ -720,7 +720,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2299,
       "offerText": "Customized to order",
       "rating": 4.98,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 10_57_52 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-10-57-52-am.png",
       "desc": "Diamond faceted geode cake with edible crystal quartz and silver leaf.",
       "active": true
     },
@@ -733,7 +733,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_01_13 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-01-13-am.png",
       "desc": "Delicate sugar lace and teapot topper cake for high-tea celebrations.",
       "active": true
     },
@@ -746,7 +746,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_09_29 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-09-29-am.png",
       "desc": "Out-of-this-world astronaut cake with planet spheres and dark cocoa.",
       "active": true
     },
@@ -759,7 +759,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.94,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_13_43 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-13-43-am.png",
       "desc": "Stacked french macarons and fresh berries over swiss meringue buttercream.",
       "active": true
     },
@@ -772,7 +772,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2050,
       "offerText": "Customized to order",
       "rating": 4.96,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_15_25 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-15-25-am.png",
       "desc": "Hand-applied edible rose gold confetti sequins with red velvet layers.",
       "active": true
     },
@@ -785,7 +785,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.89,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_17_38 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-17-38-am.png",
       "desc": "Adorable panda bear eating sugar bamboo shoots over cookies and cream.",
       "active": true
     },
@@ -798,7 +798,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.91,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_20_25 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-20-25-am.png",
       "desc": "Over-the-top drip cake loaded with glazed mini donuts and chocolate bars.",
       "active": true
     },
@@ -811,7 +811,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2399,
       "offerText": "Customized to order",
       "rating": 4.99,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_35_32 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-35-32-am.png",
       "desc": "Romantic 3-tier engagement cake with oversized sugar peony flowers.",
       "active": true
     },
@@ -824,7 +824,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_41_01 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-41-01-am.png",
       "desc": "Majestic golden lion king 1st birthday theme cake with jungle leaves.",
       "active": true
     },
@@ -837,7 +837,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.93,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_43_50 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-43-50-am.png",
       "desc": "Trendy coquette heart shaped cake with pink ruffled piping and satin bows.",
       "active": true
     },
@@ -850,7 +850,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2499,
       "offerText": "Customized to order",
       "rating": 4.99,
-      "img": "./images/ai-cakes/ChatGPT Image Aug 7, 2026, 11_46_32 AM.png",
+      "img": "./images/ai-cakes/chatgpt-image-aug-7-2026-11-46-32-am.png",
       "desc": "Showstopping crystal chandelier wedding cake with edible glass crystals.",
       "active": true
     },
@@ -863,7 +863,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.87,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_4gw3nx4gw3nx4gw3.png",
+      "img": "./images/ai-cakes/gemini-generated-image-4gw3nx4gw3nx4gw3.png",
       "desc": "Gradient ombre buttercream cake with delicate white sugar hydrangeas.",
       "active": true
     },
@@ -876,7 +876,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_5k081u5k081u5k08.png",
+      "img": "./images/ai-cakes/gemini-generated-image-5k081u5k081u5k08.png",
       "desc": "Rich red velvet sponge crowned with fresh raspberries and gold dusting.",
       "active": true
     },
@@ -889,7 +889,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_6v1tu86v1tu86v1t.png",
+      "img": "./images/ai-cakes/gemini-generated-image-6v1tu86v1tu86v1t.png",
       "desc": "Wizarding world themed cake with golden snitch and magic spellbook.",
       "active": true
     },
@@ -902,7 +902,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.89,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_7a079l7a079l7a07.png",
+      "img": "./images/ai-cakes/gemini-generated-image-7a079l7a079l7a07.png",
       "desc": "Sweet little bunny rabbit in a floral meadow for 1st birthday celebrations.",
       "active": true
     },
@@ -915,7 +915,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2099,
       "offerText": "Customized to order",
       "rating": 4.96,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_7zzywf7zzywf7zzy.png",
+      "img": "./images/ai-cakes/gemini-generated-image-7zzywf7zzywf7zzy.png",
       "desc": "Intense dark Belgian chocolate cake featuring amethyst rock crystal geode.",
       "active": true
     },
@@ -928,7 +928,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2399,
       "offerText": "Customized to order",
       "rating": 4.98,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_8ihknx8ihknx8ihk.png",
+      "img": "./images/ai-cakes/gemini-generated-image-8ihknx8ihknx8ihk.png",
       "desc": "Grand 50th golden jubilee cake with shimmering gold leaf and vanilla bean.",
       "active": true
     },
@@ -941,7 +941,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_aj9m98aj9m98aj9m.png",
+      "img": "./images/ai-cakes/gemini-generated-image-aj9m98aj9m98aj9m.png",
       "desc": "3D Spiderman web-slinging over midnight city skyscraper cake.",
       "active": true
     },
@@ -954,7 +954,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.88,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_ap1j7jap1j7jap1j.png",
+      "img": "./images/ai-cakes/gemini-generated-image-ap1j7jap1j7jap1j.png",
       "desc": "Whimsical candy land cake with giant lollipops and gumdrop waterfall.",
       "active": true
     },
@@ -967,7 +967,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1699,
       "offerText": "Customized to order",
       "rating": 4.86,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_arnl2garnl2garnl.png",
+      "img": "./images/ai-cakes/gemini-generated-image-arnl2garnl2garnl.png",
       "desc": "Contemporary palette knife textured cake with subtle gold leaf stroke.",
       "active": true
     },
@@ -980,7 +980,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_bx7cdlbx7cdlbx7c.png",
+      "img": "./images/ai-cakes/gemini-generated-image-bx7cdlbx7cdlbx7c.png",
       "desc": "Winter wonderland ice castle cake with translucent isomalt sugar crystals.",
       "active": true
     },
@@ -993,7 +993,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2499,
       "offerText": "Customized to order",
       "rating": 4.99,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_c1urjlc1urjlc1ur.png",
+      "img": "./images/ai-cakes/gemini-generated-image-c1urjlc1urjlc1ur.png",
       "desc": "Pristine 3-tier white wedding cake with delicate sugar lace and gold leaf.",
       "active": true
     },
@@ -1006,7 +1006,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.89,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_djavi1djavi1djav.png",
+      "img": "./images/ai-cakes/gemini-generated-image-djavi1djavi1djav.png",
       "desc": "3D sculpted basketball theme cake for sports champions.",
       "active": true
     },
@@ -1019,7 +1019,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2099,
       "offerText": "Customized to order",
       "rating": 4.93,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_dmqt3bdmqt3bdmqt.png",
+      "img": "./images/ai-cakes/gemini-generated-image-dmqt3bdmqt3bdmqt.png",
       "desc": "Intricate steampunk clockwork cake with metallic bronze cogs and gears.",
       "active": true
     },
@@ -1032,7 +1032,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_fxrzdvfxrzdvfxrz.png",
+      "img": "./images/ai-cakes/gemini-generated-image-fxrzdvfxrzdvfxrz.png",
       "desc": "Soft pastel rainbow gradient cake with fluffy marshmallows and sprinkles.",
       "active": true
     },
@@ -1045,7 +1045,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_i5jhhai5jhhai5jh.png",
+      "img": "./images/ai-cakes/gemini-generated-image-i5jhhai5jhhai5jh.png",
       "desc": "Rich espresso coffee sponge with roasted hazelnuts and dark ganache.",
       "active": true
     },
@@ -1058,7 +1058,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1799,
       "offerText": "Customized to order",
       "rating": 4.88,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_jc87djjc87djjc87.png",
+      "img": "./images/ai-cakes/gemini-generated-image-jc87djjc87djjc87.png",
       "desc": "Playful kitten playing with sugar yarn ball for cat lovers.",
       "active": true
     },
@@ -1071,7 +1071,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2299,
       "offerText": "Customized to order",
       "rating": 4.97,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_jqz6p8jqz6p8jqz6.png",
+      "img": "./images/ai-cakes/gemini-generated-image-jqz6p8jqz6p8jqz6.png",
       "desc": "Stunning emerald green marble finish cake with gold veining.",
       "active": true
     },
@@ -1084,7 +1084,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.91,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_k9sjcvk9sjcvk9sj.png",
+      "img": "./images/ai-cakes/gemini-generated-image-k9sjcvk9sjcvk9sj.png",
       "desc": "Pink pearl tiara cake crafted for royal little princesses.",
       "active": true
     },
@@ -1097,7 +1097,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.89,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_l959stl959stl959.png",
+      "img": "./images/ai-cakes/gemini-generated-image-l959stl959stl959.png",
       "desc": "Semi-naked rustic cake decorated with fresh wildflowers and honey drizzle.",
       "active": true
     },
@@ -1110,7 +1110,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2099,
       "offerText": "Customized to order",
       "rating": 4.96,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_lkhv35lkhv35lkhv.png",
+      "img": "./images/ai-cakes/gemini-generated-image-lkhv35lkhv35lkhv.png",
       "desc": "Pyramid tower of Ferrero Rocher chocolates over hazelnut praline.",
       "active": true
     },
@@ -1123,7 +1123,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_m3w5z2m3w5z2m3w5.png",
+      "img": "./images/ai-cakes/gemini-generated-image-m3w5z2m3w5z2m3w5.png",
       "desc": "Baby elephant holding a 3D sugar balloon for 1st birthday celebrations.",
       "active": true
     },
@@ -1136,7 +1136,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1999,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_nmioh2nmioh2nmio.png",
+      "img": "./images/ai-cakes/gemini-generated-image-nmioh2nmioh2nmio.png",
       "desc": "Dramatic gothic midnight velvet cake with sugar roses and metallic accents.",
       "active": true
     },
@@ -1149,7 +1149,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2199,
       "offerText": "Customized to order",
       "rating": 4.95,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_nv3lvpnv3lvpnv3l.png",
+      "img": "./images/ai-cakes/gemini-generated-image-nv3lvpnv3lvpnv3l.png",
       "desc": "Graceful swan topper with feather piped cream and gold sparkles.",
       "active": true
     },
@@ -1162,7 +1162,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.91,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_ocec7kocec7kocec.png",
+      "img": "./images/ai-cakes/gemini-generated-image-ocec7kocec7kocec.png",
       "desc": "Fresh strawberry shortcake stacked high with vanilla cream and compote.",
       "active": true
     },
@@ -1175,7 +1175,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2299,
       "offerText": "Customized to order",
       "rating": 4.94,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_pr7qkepr7qkepr7q.png",
+      "img": "./images/ai-cakes/gemini-generated-image-pr7qkepr7qkepr7q.png",
       "desc": "Gentleman's gift box cake sculpted with realistic luxury watch detail.",
       "active": true
     },
@@ -1188,7 +1188,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_sls7clsls7clsls7.png",
+      "img": "./images/ai-cakes/gemini-generated-image-sls7clsls7clsls7.png",
       "desc": "Delightful pastel unicorn cake with gold eyelash detailing.",
       "active": true
     },
@@ -1201,7 +1201,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1950,
       "offerText": "Customized to order",
       "rating": 4.93,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_sqzvi6sqzvi6sqzv.png",
+      "img": "./images/ai-cakes/gemini-generated-image-sqzvi6sqzvi6sqzv.png",
       "desc": "Loaded with fudgy brownie cubes, chocolate drip, and chocochips.",
       "active": true
     },
@@ -1214,7 +1214,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1850,
       "offerText": "Customized to order",
       "rating": 4.91,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_srmr0vsrmr0vsrmr.png",
+      "img": "./images/ai-cakes/gemini-generated-image-srmr0vsrmr0vsrmr.png",
       "desc": "Teddy bear sitting on crescent moon surrounded by glowing sugar stars.",
       "active": true
     },
@@ -1227,7 +1227,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 1899,
       "offerText": "Customized to order",
       "rating": 4.92,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_vbmc2cvbmc2cvbmc.png",
+      "img": "./images/ai-cakes/gemini-generated-image-vbmc2cvbmc2cvbmc.png",
       "desc": "Vintage heart-shaped red velvet cake with ruffled cream and satin bows.",
       "active": true
     },
@@ -1240,7 +1240,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2299,
       "offerText": "Customized to order",
       "rating": 4.96,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_vh5mfdvh5mfdvh5m.png",
+      "img": "./images/ai-cakes/gemini-generated-image-vh5mfdvh5mfdvh5m.png",
       "desc": "Quilted pillow cushion cake topped with 3D royal imperial crown.",
       "active": true
     },
@@ -1253,7 +1253,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2399,
       "offerText": "Customized to order",
       "rating": 4.98,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_w2wedww2wedww2we.png",
+      "img": "./images/ai-cakes/gemini-generated-image-w2wedww2wedww2we.png",
       "desc": "Pure white wedding cake cascading with elegant sugar orchids.",
       "active": true
     },
@@ -1266,7 +1266,7 @@ window.CAKELOVER_DATA = {
       "originalPrice": 2499,
       "offerText": "Customized to order",
       "rating": 4.9,
-      "img": "./images/ai-cakes/Gemini_Generated_Image_wdm15wwdm15wwdm1.png",
+      "img": "./images/ai-cakes/gemini-generated-image-wdm15wwdm15wwdm1.png",
       "desc": "Bespoke 3-tier golden marble geode cake with edible crystal quartz.",
       "active": true
     }
@@ -1274,31 +1274,31 @@ window.CAKELOVER_DATA = {
   "heroSlides": [
     {
       "name": "Choco Scotch Cake",
-      "img": "./images/cakes/caramel chocolate.jfif",
+      "img": "./images/cakes/caramel-chocolate.jfif",
       "rating": "4.8★",
       "orders": "28 Google Reviews"
     },
     {
       "name": "Red Scotch Cake",
-      "img": "./images/cakes/Red velvet Cake .jfif",
+      "img": "./images/cakes/red-velvet-cake.jfif",
       "rating": "4.9★",
       "orders": "45 Google Reviews"
     },
     {
       "name": "Ferro Scotch Cake",
-      "img": "./images/cakes/Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif",
+      "img": "./images/cakes/southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jfif",
       "rating": "4.85★",
       "orders": "32 Google Reviews"
     },
     {
       "name": "Rasmalai Scotch Cake",
-      "img": "./images/cakes/Crissie's Homemade _ Colorado Springs CO.jfif",
+      "img": "./images/cakes/crissie-s-homemade-colorado-springs-co.jfif",
       "rating": "4.85★",
       "orders": "19 Google Reviews"
     },
     {
       "name": "Black Forest Cake",
-      "img": "./images/cakes/Black forest cake recipe.jfif",
+      "img": "./images/cakes/black-forest-cake-recipe.jfif",
       "rating": "4.8★",
       "orders": "41 Google Reviews"
     },
@@ -1310,25 +1310,25 @@ window.CAKELOVER_DATA = {
     },
     {
       "name": "Ritch Choco KitKat Cake",
-      "img": "./images/cakes/download (5).jfif",
+      "img": "./images/cakes/download-5.jfif",
       "rating": "4.9★",
       "orders": "48 Google Reviews"
     },
     {
       "name": "Mango Premium Cake",
-      "img": "./images/cakes/Mango Chiffon Cake.jfif",
+      "img": "./images/cakes/mango-chiffon-cake.jfif",
       "rating": "4.9★",
       "orders": "37 Google Reviews"
     },
     {
       "name": "White Forest Cake",
-      "img": "./images/cakes/White Forest Cake.jfif",
+      "img": "./images/cakes/white-forest-cake.jfif",
       "rating": "4.8★",
       "orders": "22 Google Reviews"
     },
     {
       "name": "Pineapple Cake",
-      "img": "./images/cakes/Dole Whip Cake.jfif",
+      "img": "./images/cakes/dole-whip-cake.jfif",
       "rating": "4.7★",
       "orders": "15 Google Reviews"
     },
@@ -1340,52 +1340,52 @@ window.CAKELOVER_DATA = {
     },
     {
       "name": "Blueberry Cake",
-      "img": "./images/cakes2/Blueberry Cake.jfif",
+      "img": "./images/cakes2/blueberry-cake.jfif",
       "rating": "4.9★",
       "orders": "50 Google Reviews"
     },
     {
       "name": "Rasmalai Fusion",
-      "img": "./images/cakes2/rasmalai cake.jfif",
+      "img": "./images/cakes2/rasmalai-cake.jfif",
       "rating": "4.85★",
       "orders": "43 Google Reviews"
     },
     {
       "name": "Red Velvet Premium Cake",
-      "img": "./images/cakes2/Red Velvet White Chocolate.jfif",
+      "img": "./images/cakes2/red-velvet-white-chocolate.jfif",
       "rating": "4.9★",
       "orders": "29 Google Reviews"
     },
     {
       "name": "Tender Coconut Delight",
-      "img": "./images/cakes2/Dream cake.jfif",
+      "img": "./images/cakes2/dream-cake.jfif",
       "rating": "4.9★",
       "orders": "38 Google Reviews"
     }
   ],
   "marqueeItems": [
     {
-      "img": "./images/cakes/Red velvet Cake .jfif",
+      "img": "./images/cakes/red-velvet-cake.jfif",
       "label": "Red Velvet"
     },
     {
-      "img": "./images/cakes/caramel chocolate.jfif",
+      "img": "./images/cakes/caramel-chocolate.jfif",
       "label": "Nutella Delight"
     },
     {
-      "img": "./images/cakes/Dole Whip Cake.jfif",
+      "img": "./images/cakes/dole-whip-cake.jfif",
       "label": "Pineapple"
     },
     {
-      "img": "./images/cakes/Black forest cake recipe.jfif",
+      "img": "./images/cakes/black-forest-cake-recipe.jfif",
       "label": "Black Forest"
     },
     {
-      "img": "./images/cakes/Mango Chiffon Cake.jfif",
+      "img": "./images/cakes/mango-chiffon-cake.jfif",
       "label": "Mango"
     },
     {
-      "img": "./images/cakes/White Forest Cake.jfif",
+      "img": "./images/cakes/white-forest-cake.jfif",
       "label": "White Forest"
     },
     {
@@ -1393,19 +1393,19 @@ window.CAKELOVER_DATA = {
       "label": "Strawberry"
     },
     {
-      "img": "./images/cakes/Dark Chocolate .jfif",
+      "img": "./images/cakes/dark-chocolate.jfif",
       "label": "Dark Chocolate"
     },
     {
-      "img": "./images/cakes/download (5).jfif",
+      "img": "./images/cakes/download-5.jfif",
       "label": "Kitkat Nuts"
     },
     {
-      "img": "./images/cakes/download (3).jfif",
+      "img": "./images/cakes/download-3.jfif",
       "label": "Choco Truffle"
     },
     {
-      "img": "./images/cakes/birthday cake.jfif",
+      "img": "./images/cakes/birthday-cake.jfif",
       "label": "Birthday Special"
     },
     {
@@ -1413,19 +1413,19 @@ window.CAKELOVER_DATA = {
       "label": "Butterscotch Dream"
     },
     {
-      "img": "./images/cakes2/Blueberry Cake.jfif",
+      "img": "./images/cakes2/blueberry-cake.jfif",
       "label": "Blueberry Blossom"
     },
     {
-      "img": "./images/cakes2/rasmalai cake.jfif",
+      "img": "./images/cakes2/rasmalai-cake.jfif",
       "label": "Rasmalai Special"
     },
     {
-      "img": "./images/cakes2/Red Velvet White Chocolate.jfif",
+      "img": "./images/cakes2/red-velvet-white-chocolate.jfif",
       "label": "Red Velvet White Choco"
     },
     {
-      "img": "./images/cakes2/Dream cake.jfif",
+      "img": "./images/cakes2/dream-cake.jfif",
       "label": "Dream Cake Special"
     },
     {
@@ -1434,9 +1434,9 @@ window.CAKELOVER_DATA = {
     }
   ],
   "brandStory": {
-    "img1": "./images/cakes/Red velvet Cake .jfif",
-    "img2": "./images/cakes/White Forest Cake.jfif",
-    "img3": "./images/cakes/Black forest cake recipe.jfif",
+    "img1": "./images/cakes/red-velvet-cake.jfif",
+    "img2": "./images/cakes/white-forest-cake.jfif",
+    "img3": "./images/cakes/black-forest-cake-recipe.jfif",
     "img4": "./images/cakes2/cake.jfif",
     "quote": "\"If we wouldn't serve it at our own family function, we won't sell it to you.\"",
     "body": "Cake Lover started in Namakkal with one goal — bake cakes the way they should be. Real butter, fresh cream, and no shortcuts. Every cake is made on the day of your order. No frozen bases, no readymade fillings. Just honest baking, every single day."
@@ -1447,7 +1447,7 @@ window.CAKELOVER_DATA = {
       "desc": "Freshly layered cream cheese & crimson sponge",
       "views": "14.2k",
       "shares": "382",
-      "img": "./images/cakes/Red velvet Cake .jfif",
+      "img": "./images/cakes/red-velvet-cake.jfif",
       "link": "https://www.instagram.com/cakes_lover_namakkal_official/"
     },
     {
@@ -1455,7 +1455,7 @@ window.CAKELOVER_DATA = {
       "desc": "Real butterscotch crunch & liquid gold caramel",
       "views": "28.9k",
       "shares": "891",
-      "img": "./images/cakes/caramel chocolate.jfif",
+      "img": "./images/cakes/caramel-chocolate.jfif",
       "link": "https://www.instagram.com/cakes_lover_namakkal_official/"
     },
     {
@@ -1463,7 +1463,7 @@ window.CAKELOVER_DATA = {
       "desc": "Pure dark chocolate shavings & maraschino cherry",
       "views": "19.5k",
       "shares": "420",
-      "img": "./images/cakes/Dark Chocolate .jfif",
+      "img": "./images/cakes/dark-chocolate.jfif",
       "link": "https://www.instagram.com/cakes_lover_namakkal_official/"
     },
     {
@@ -1471,7 +1471,7 @@ window.CAKELOVER_DATA = {
       "desc": "Fresh Alphonso pulp blended with light cream",
       "views": "11.8k",
       "shares": "215",
-      "img": "./images/cakes/Mango Chiffon Cake.jfif",
+      "img": "./images/cakes/mango-chiffon-cake.jfif",
       "link": "https://www.instagram.com/cakes_lover_namakkal_official/"
     }
   ],
