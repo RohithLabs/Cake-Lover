@@ -3,6 +3,91 @@
    Loaded by all browsers (Chrome, Edge, Safari, Mobile) and synced live.
    ========================================================================== */
 
+window.sanitizeImagePath = function(path) {
+  if (!path || typeof path !== 'string') return path;
+  let url = path.trim();
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url;
+  }
+  url = url.replace(/^(\.\/)+/, '').replace(/^\/+/, '');
+
+  url = url
+    .replace(/^cakes\/cakes\//g, 'images/cakes/')
+    .replace(/^cakes2\/cakes2\//g, 'images/cakes2/')
+    .replace(/^ai cakes\/ai cakes\//g, 'images/ai-cakes/')
+    .replace(/^images\/cakes\/cakes\//g, 'images/cakes/')
+    .replace(/^images\/cakes2\/cakes2\//g, 'images/cakes2/')
+    .replace(/^images\/ai cakes\/ai cakes\//g, 'images/ai-cakes/')
+    .replace(/^images\/ai cakes\//g, 'images/ai-cakes/');
+
+  const lastSlash = url.lastIndexOf('/');
+  let dir = lastSlash !== -1 ? url.substring(0, lastSlash + 1) : 'images/';
+  let fname = lastSlash !== -1 ? url.substring(lastSlash + 1) : url;
+
+  const map = {
+    'caramel chocolate.jfif': 'caramel-chocolate.jfif',
+    'Red velvet Cake .jfif': 'red-velvet-cake.jfif',
+    'Southern Caramel Cake_ 5-Star Recipe You Must Try - My Favorite Recipes.jfif': 'southern-caramel-cake-5-star-recipe-you-must-try-my-favorite-recipes.jfif',
+    "Crissie's Homemade _ Colorado Springs CO.jfif": 'crissie-s-homemade-colorado-springs-co.jfif',
+    'butterscotch.jfif': 'butterscotch.jfif',
+    'White Forest Cake.jfif': 'white-forest-cake.jfif',
+    'Mango Chiffon Cake.jfif': 'mango-chiffon-cake.jfif',
+    'Dole Whip Cake.jfif': 'dole-whip-cake.jfif',
+    'Blueberry Cake.jfif': 'blueberry-cake.jfif',
+    'cakestrawberry.jfif': 'cakestrawberry.jfif',
+    'Red Velvet White Chocolate.jfif': 'red-velvet-white-chocolate.jfif',
+    'Black forest cake recipe.jfif': 'black-forest-cake-recipe.jfif',
+    'choconillla.jfif': 'choconillla.jfif',
+    'choconillla': 'choconillla.jfif',
+    'black-forest-gateau.jfif': 'black-forest-gateau.jfif',
+    'Dark Chocolate .jfif': 'dark-chocolate.jfif',
+    'download (3).jfif': 'download-3.jfif',
+    'download (4).jfif': 'download-4.jfif',
+    'download (5).jfif': 'download-5.jfif',
+    'download (6).jfif': 'download-6.jfif',
+    'download (7).jfif': 'download-7.jfif',
+    'download (8).jfif': 'download-8.jfif',
+    'coffee_mocha_cake.jfif': 'coffee-mocha-cake.jfif',
+    'cake3.jfif': 'cake3.jfif',
+    'Dream cake.jfif': 'dream-cake.jfif',
+    'rasmalai cake.jfif': 'rasmalai-cake.jfif',
+    'birthday cake.jfif': 'birthday-cake.jfif',
+    'Sprinkle Birthday Cake _ Hungry Happenings.jfif': 'sprinkle-birthday-cake-hungry-happenings.jfif',
+    'white-wedding-cake.jfif': 'white-wedding-cake.jfif',
+    '(13) Facebook.jfif': '13-facebook.jfif',
+    'cake-logo.jpg': 'cake-logo.jpg',
+    'bike.png': 'bike.png'
+  };
+
+  if (map[fname]) {
+    fname = map[fname];
+  } else {
+    let ext = '';
+    const dotIdx = fname.lastIndexOf('.');
+    if (dotIdx !== -1) {
+      ext = fname.substring(dotIdx).toLowerCase().trim();
+      fname = fname.substring(0, dotIdx);
+    } else {
+      ext = '.jfif';
+    }
+    let clean = fname
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    if (!clean) clean = 'image';
+    fname = clean + ext;
+  }
+
+  if (!dir.startsWith('images/')) {
+    if (dir.includes('cakes2')) dir = 'images/cakes2/';
+    else if (dir.includes('ai')) dir = 'images/ai-cakes/';
+    else if (dir.includes('cakes')) dir = 'images/cakes/';
+    else dir = 'images/';
+  }
+
+  return './' + dir + fname;
+};
+
 window.CAKELOVER_DATA = {
   "categories": [
     {

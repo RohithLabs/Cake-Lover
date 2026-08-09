@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (rating < 4.6) rating = 4.6;
       return {
         ...p,
+        img: (window.sanitizeImagePath ? window.sanitizeImagePath(p.img) : p.img),
         rating,
         tag: p.tag || '1 kg + ½ kg FREE'
       };
@@ -167,7 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const count = presetReviews[idx % presetReviews.length] || (((idx * 7 + 13) % 41) + 10);
         ordersStr = `${count} Google Reviews`;
       }
-      return { ...s, rating: ratingStr, orders: ordersStr };
+      return {
+        ...s,
+        img: (window.sanitizeImagePath ? window.sanitizeImagePath(s.img) : s.img),
+        rating: ratingStr,
+        orders: ordersStr
+      };
     });
   }
 
@@ -213,6 +219,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const cloudData = await SupabaseDB.loadConfig();
       if (cloudData && (cloudData.products || cloudData.categories)) {
+        if (cloudData.products && Array.isArray(cloudData.products)) {
+          cloudData.products.forEach(p => { if (p && p.img) p.img = window.sanitizeImagePath ? window.sanitizeImagePath(p.img) : p.img; });
+        }
+        if (cloudData.heroSlides && Array.isArray(cloudData.heroSlides)) {
+          cloudData.heroSlides.forEach(s => { if (s && s.img) s.img = window.sanitizeImagePath ? window.sanitizeImagePath(s.img) : s.img; });
+        }
         window.CAKELOVER_DATA = cloudData;
         if (cloudData.products) localStorage.setItem('cakelover_products', JSON.stringify(cloudData.products));
         if (cloudData.categories) localStorage.setItem('cakelover_categories', JSON.stringify(cloudData.categories));
