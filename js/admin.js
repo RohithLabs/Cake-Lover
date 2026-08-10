@@ -1709,7 +1709,7 @@ function loadProducts() {
     let rating = Number(p.rating) || 4.8;
     if (rating > 5.0) rating = 5.0;
     if (rating < 4.6) rating = 4.6;
-    return { ...p, rating, tag: p.tag || '1 kg + ½ kg FREE' };
+    return { ...p, rating, tag: p.tag || '1 kg + ½ kg FREE', weights: (Array.isArray(p.weights) && p.weights.length > 0) ? p.weights : [0.5, 1, 2] };
   });
   renderCategoryDropdowns();
   renderAdminTable(productsList);
@@ -1836,6 +1836,8 @@ function openCakeModal(cakeId = null) {
       document.getElementById('cake-rating').value = item.rating || 4.8;
       document.getElementById('cake-active').value = String(item.active !== false);
       document.getElementById('cake-desc').value = item.desc || '';
+      const weightsEl = document.getElementById('cake-weights');
+      if (weightsEl) weightsEl.value = (item.weights && Array.isArray(item.weights) && item.weights.length > 0) ? item.weights.join(', ') : '0.5, 1, 2';
       document.getElementById('cake-img-url').value = item.img || '';
       if (item.img) document.getElementById('img-preview').src = item.img;
     }
@@ -1843,6 +1845,8 @@ function openCakeModal(cakeId = null) {
     title.innerHTML = `<i class="fa-solid fa-plus-circle"></i> Add New Cake`;
     document.getElementById('cake-tag').value = '1 kg + ½ kg FREE';
     document.getElementById('cake-rating').value = 4.8;
+    const weightsEl = document.getElementById('cake-weights');
+    if (weightsEl) weightsEl.value = '0.5, 1, 2';
   }
   modal.classList.add('open');
 }
@@ -1862,6 +1866,11 @@ function saveCake(e) {
   if (rating < 4.6) rating = 4.6;
   const active = document.getElementById('cake-active').value === 'true';
   const desc = document.getElementById('cake-desc').value.trim();
+
+  const rawWeightsStr = document.getElementById('cake-weights') ? document.getElementById('cake-weights').value.trim() : '';
+  let weightsArr = rawWeightsStr ? rawWeightsStr.split(',').map(s => parseFloat(s.trim())).filter(n => !isNaN(n) && n > 0) : [];
+  if (weightsArr.length === 0) weightsArr = [0.5, 1, 2];
+
   const imgUrlInput = document.getElementById('cake-img-url');
   const imgUrl = imgUrlInput.value.trim() || document.getElementById('img-preview').src;
   const filePath = imgUrlInput.dataset.filePath || null;
@@ -1873,11 +1882,11 @@ function saveCake(e) {
   if (idInput) {
     const index = productsList.findIndex(p => p.id == idInput);
     if (index !== -1) {
-      productsList[index] = { ...productsList[index], name, category, tag: effectiveTag, basePrice, originalPrice, rating, active, desc, img: imgUrl, filePath: filePath || productsList[index].filePath };
+      productsList[index] = { ...productsList[index], name, category, tag: effectiveTag, basePrice, originalPrice, rating, active, desc, weights: weightsArr, img: imgUrl, filePath: filePath || productsList[index].filePath };
     }
   } else {
     const newId = productsList.length > 0 ? Math.max(0, ...productsList.map(p => Number(p.id) || 0)) + 1 : 1;
-    productsList.unshift({ id: newId, name, category, tag: effectiveTag, basePrice, originalPrice, offerText: effectiveTag, rating, active, desc, img: imgUrl, filePath });
+    productsList.unshift({ id: newId, name, category, tag: effectiveTag, basePrice, originalPrice, offerText: effectiveTag, rating, active, desc, weights: weightsArr, img: imgUrl, filePath });
   }
 
   saveProductsToStorage(true);

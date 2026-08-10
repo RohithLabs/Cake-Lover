@@ -261,6 +261,19 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'cake-card reveal';
       card.style.setProperty('--i', idx % 4);
       card.dataset.id = p.id;
+
+      const weights = (Array.isArray(p.weights) && p.weights.length > 0) ? p.weights : [0.5, 1, 2];
+      const defaultWeight = weights.includes(1) ? 1 : weights[0];
+      const initialMult = (p.name && (p.name.includes('[500 G]') || (p.tag && p.tag.includes('500g')))) ? (defaultWeight / 0.5) : defaultWeight;
+      const initialPrice = Math.round(p.basePrice * initialMult);
+      const initialOrig = p.originalPrice ? Math.round(p.originalPrice * initialMult) : '';
+
+      let weightBtnsHtml = '';
+      weights.forEach(w => {
+        const isActive = (w === defaultWeight) ? ' active' : '';
+        weightBtnsHtml += `<button class="weight-btn${isActive}" data-weight="${w}" onclick="selectWeight('${p.id}', ${w}, this)">${w} kg</button>`;
+      });
+
       card.innerHTML = `
         <div class="cake-img-wrap">
           <span class="card-tag">${p.tag}</span>
@@ -275,15 +288,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="weight-selector">
             <span class="weight-label">Select Weight:</span>
             <div class="weight-btns">
-              <button class="weight-btn" data-weight="0.5" onclick="selectWeight('${p.id}', 0.5, this)">0.5 kg</button>
-              <button class="weight-btn active" data-weight="1" onclick="selectWeight('${p.id}', 1, this)">1 kg</button>
-              <button class="weight-btn" data-weight="2" onclick="selectWeight('${p.id}', 2, this)">2 kg</button>
+              ${weightBtnsHtml}
             </div>
           </div>
           <div class="cake-footer">
             <div class="price-wrap">
-              <span class="price-now" id="price-${p.id}">₹${p.basePrice}</span>
-              <span class="price-was" id="orig-${p.id}">${p.originalPrice ? '₹' + p.originalPrice : ''}</span>
+              <span class="price-now" id="price-${p.id}">₹${initialPrice}</span>
+              <span class="price-was" id="orig-${p.id}">${initialOrig ? '₹' + initialOrig : ''}</span>
             </div>
             <button class="btn-order" onclick="orderWA('${p.id}')"><i class="fa-brands fa-whatsapp"></i> Order</button>
           </div>
@@ -457,11 +468,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (p.name.includes('[500 G]') || p.tag.includes('500g')) {
       priceMult = weight / 0.5;
       origMult = weight / 0.5;
-      tagText = weight === 0.5 ? '500g Pack' : weight === 1 ? '1 kg Pack (Buy 1kg Get ½kg FREE)' : '2 kg Pack (Buy 2kg Get 1kg FREE)';
+      tagText = weight === 0.5 ? '500g Pack' : `${weight} kg Pack`;
     } else {
       if (weight === 0.5) tagText = '0.5 kg Pack';
+      else if (weight === 1) tagText = p.tag;
       else if (weight === 2) tagText = p.tag.includes('1 kg FREE') ? '2 kg + 2 kg FREE (4 kg Total)' : '2 kg + 1 kg FREE (3 kg Total)';
-      else tagText = p.tag;
+      else tagText = `${weight} kg Custom Size`;
     }
 
     const priceNowEl = document.getElementById(`price-${id}`);
